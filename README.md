@@ -23,10 +23,10 @@ A micro service application to handle authentification: will store users and aut
 
 ## Development guide lines
 - TDD 
-- `Continuous integration (using [drone.io][])`
+- Continuous integration (using [drone.io][1])
 
 ## Deployement
-`Should be [dartvoid][2]`
+Should be [dartvoid][2]
 
 
 [1]: http://www.drone.io
