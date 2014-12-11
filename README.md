@@ -9,9 +9,13 @@ Use cases :
 
 ## Stack
 
+This stack will produce resuable code :
+- on client side with polymer components
+- on server side with authentication service
+
 2 applications 
 
-### app-find-dartisans: 
+### app-connecting-dartisans: 
 The current application
 - Client: polymer.dart
 - Server: force on mongodb 
@@ -21,7 +25,9 @@ The current application
 A micro service application to handle authentification: will store users and authorizations 
 - Server: force on mongodb 
 
+
 ## Development guide lines
+- Write reusable code
 - TDD 
 - Continuous integration (using [drone.io][1])
 
