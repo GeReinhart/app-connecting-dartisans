@@ -1,4 +1,4 @@
-# Application find-dartisans
+# Application connecting-dartisans
 
 ## Aim
 
