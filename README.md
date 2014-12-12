@@ -7,6 +7,8 @@ Use cases :
 -  As a Dartisan company, I want to register  (Name, Level, Location as GPS point, Ready to Hire...), so that I can be found by other Dartisans
 -  As a Dartisan, I want to find Dartisan by different criteria : Location, Ready to Hire,  Ready for Dojo..., so that I can interact with other Dartisans
 
+See the [backlog][3]
+
 ## Stack
 
 This stack will produce resuable code :
@@ -18,6 +20,7 @@ This stack will produce resuable code :
 ### app-connecting-dartisans: 
 The current application
 - Client: polymer.dart
+  - using [gex-common-ui-elements][4]
 - Server: force on mongodb 
   - using ms-gex-auth
 
@@ -28,6 +31,7 @@ A micro service application to handle authentification: will store users and aut
 
 ## Development guide lines
 - Write reusable code
+- Mobile first
 - TDD 
 - Continuous integration (using [drone.io][1])
 
@@ -37,3 +41,5 @@ Should be [dartvoid][2]
 
 [1]: http://www.drone.io
 [2]: http://www.dartvoid.com
+[3]: https://trello.com/b/5y2Qyd8P/connecting-dartisans
+[4]: https://github.com/GeReinhart/dart-gex-common-ui-elements 
