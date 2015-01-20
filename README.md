@@ -1,4 +1,10 @@
+
 # Application connecting-dartisans
+
+[![Build Status](https://drone.io/github.com/GeReinhart/dart-gex-common-ui-elements/status.png)](https://drone.io/github.com/GeReinhart/dart-gex-common-ui-elements/latest) [![App in QA](https://raw.githubusercontent.com/GeReinhart/app-connecting-dartisans/master/doc/images/appQa.png)](https://qa-connecting-dartisans.herokuapp.com/)
+
+
+
 
 ## Aim
 
