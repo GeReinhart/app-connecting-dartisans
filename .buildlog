@@ -1395,3 +1395,18 @@ build.dart --machine --changed=README.md
 
 build.dart finished [1316 ms]
 
+---
+build.dart --machine --changed=pubspec.lock
+
+build.dart finished [1839 ms]
+
+---
+build.dart --machine --changed=doc/images/appQa.png
+
+build.dart finished [1292 ms]
+
+---
+build.dart --machine --changed=doc/images/appLive.png
+
+build.dart finished [1299 ms]
+
