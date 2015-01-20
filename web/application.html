@@ -1,0 +1,38 @@
+<!-- import polymer-element's definition -->
+<link rel="import" href="../../packages/polymer/polymer.html">
+<link rel="import" href="../../packages/gex_common_ui_elements/elements/application.html">
+<link rel="import" href="../../packages/gex_common_ui_elements/elements/space.html">
+<link rel="import" href="../../packages/gex_common_ui_elements/elements/button.html">
+<link rel="import" href="../../packages/gex_common_ui_elements/elements/toolbar.html">
+<link rel="import" href="../../packages/gex_common_ui_elements/elements/view_port.html">
+
+
+<link rel="import" href="pages/home.html">
+
+<link rel="import" href="pages/search.html">
+<link rel="import" href="pages/map.html">
+<link rel="import" href="pages/list.html">
+<link rel="import" href="pages/details.html">
+
+<link rel="import" href="pages/login.html">
+<link rel="import" href="pages/register.html">
+
+<link rel="import" href="pages/about.html">
+
+
+<polymer-element name="connecting-dartisans" extends="gex-application">
+  <style shim-shadowdom>
+      body /deep/ h1 {
+        font-size: xx-large;
+        font-weight: bold;
+        font-family: "Roboto, arial, sans-serif";
+      }
+      body /deep/ span {
+        font-family: "Roboto, arial, sans-serif;";
+      }      
+  </style>       
+  <template>
+    <shadow></shadow>
+  </template>
+  <script type="application/dart" src="application.dart"></script>
+</polymer-element>

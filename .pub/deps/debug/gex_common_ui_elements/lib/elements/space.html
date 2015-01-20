@@ -1,0 +1,23 @@
+<!-- import polymer-element's definition -->
+<link rel="import" href="../../../packages/polymer/polymer.html">
+
+<polymer-element name="gex-space">
+  <template>
+    <style>
+      :host {
+          position: absolute;
+          overflow-x: hidden;
+          overflow-y: hidden;
+          margin: 0px; 
+          padding: 0px; 
+          width: 100%;
+          height: 100%;
+       }
+       :host img {
+          position: absolute;
+       }
+    </style>
+    <content></content>
+  </template>
+  <script type="application/dart" src="space.dart"></script>
+</polymer-element>

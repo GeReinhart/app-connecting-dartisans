@@ -1,0 +1,24 @@
+<!--
+  Copyright (c) 2014, Gérald Reinhart. All rights reserved. Use of this source code
+  is governed by a BSD-style license that can be found in the LICENSE file.
+-->
+
+<!-- import polymer-element's definition -->
+<link rel="import" href="../../../packages/polymer/polymer.html">
+
+<link rel="import" href="../../../packages/gex_common_ui_elements/elements/space.html">
+<link rel="import" href="../../../packages/gex_common_ui_elements/elements/button.html">
+<link rel="import" href="../../../packages/gex_common_ui_elements/elements/toolbar.html">
+<link rel="import" href="../../../packages/gex_common_ui_elements/elements/view_port.html">
+<link rel="import" href="../../../packages/gex_common_ui_elements/elements/layout.html">
+
+<polymer-element name="gex-application">
+  <template>
+    <gex-view-port id="viewPort">
+      <div id="toolBars" ></div>
+      <div id="pages" ></div>
+      <content></content>
+    </gex-view-port>
+  </template>
+  <script type="application/dart" src="application.dart"></script>
+</polymer-element>
