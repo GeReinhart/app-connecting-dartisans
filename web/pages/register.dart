@@ -30,9 +30,9 @@ class PageRegister extends Page with Showable  {
        layout = $["layout"] as Layout ;
        
        List<ButtonModel> buttonModels = new List<ButtonModel>();
-       buttonModels.add( new ButtonModel(label: "Save & Map",action:action1,image:"/images/button/save29.png" )  );
-       buttonModels.add( new ButtonModel(label: "Save & Stay",action:action2,image:"/images/button/save29.png" )  );
-       buttonModels.add( new ButtonModel(label: "Cancel" ,action:action3,image:"/images/button/back57.png")  );
+       buttonModels.add( new ButtonModel(label: "Save & Map",action:action1,image:new Image(mainImageUrl:  "/images/button/save29.png",mainImageUrl2:"/images/button/map32.png" ))  );
+       buttonModels.add( new ButtonModel(label: "Save & Stay",action:action2,image:new Image(mainImageUrl:  "/images/button/save29.png" ))  );
+       buttonModels.add( new ButtonModel(label: "Cancel" ,action:action3,image:new Image(mainImageUrl:  "/images/button/back57.png")  ));
        ToolbarModel toolbarModel = new ToolbarModel(buttons:buttonModels, color: mainColor,colorUsage: ColorUsage.ALTERNATE_WITH_LIGHT , orientation: Orientation.est);  
 
        LayoutModel layoutModel = new LayoutModel(toolbarModel: toolbarModel,color: mainColor);

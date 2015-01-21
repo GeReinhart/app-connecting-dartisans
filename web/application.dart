@@ -38,17 +38,17 @@ class ConnectingDartisansApplication  extends Application{
     addPage( new Element.tag('page-details') ) ;
     
     List<ButtonModel> topToolbar = new List<ButtonModel>();
-    topToolbar.add( new ButtonModel(label: "Home", image: "images/button/back57.png",action:(p)=>showPage(pageIndex: 0) )  );
-    topToolbar.add( new ButtonModel(label: "Search", image: "images/button/search54.png",action:(p)=>showPage(pageIndex: 1) )  );
-    topToolbar.add( new ButtonModel(label: "Map", image: "images/button/map32.png",action:(p)=>showPage(pageIndex: 2) )  );
-    topToolbar.add( new ButtonModel(label: "List", image: "images/button/list23.png",action:(p)=>showPage(pageIndex: 3) )  );
+    topToolbar.add( new ButtonModel(label: "Home", image: new Image(mainImageUrl:  "images/button/back57.png"),action:(p)=>showPage(pageIndex: 0) )  );
+    topToolbar.add( new ButtonModel(label: "Search", image:new Image(mainImageUrl:  "images/button/search54.png"),action:(p)=>showPage(pageIndex: 1) )  );
+    topToolbar.add( new ButtonModel(label: "Map", image:new Image(mainImageUrl:  "images/button/map32.png"),action:(p)=>showPage(pageIndex: 2) )  );
+    topToolbar.add( new ButtonModel(label: "List", image: new Image(mainImageUrl: "images/button/list23.png"),action:(p)=>showPage(pageIndex: 3) )  );
     ToolbarModel topToolbarModel = new ToolbarModel(buttons:topToolbar, color: mainColor, colorUsage: ColorUsage.ALTERNATE_WITH_LIGHT );
     addToolbar(topToolbarModel);
     
     List<ButtonModel> bottomToolbar = new List<ButtonModel>();
-    bottomToolbar.add( new ButtonModel(label: "Login", image: "images/button/login.png",action:(p)=>showPage(pageIndex: 4) )  );
-    bottomToolbar.add( new ButtonModel(label: "Register", image: "images/button/create1.png",action:(p)=>showPage(pageIndex: 5) )  );
-    bottomToolbar.add( new ButtonModel(label: "About", image: "images/button/info24.png",action:(p)=>showPage(pageIndex: 6) )  );
+    bottomToolbar.add( new ButtonModel(label: "Login", image:new Image(mainImageUrl:  "images/button/login.png"),action:(p)=>showPage(pageIndex: 4) )  );
+    bottomToolbar.add( new ButtonModel(label: "Register", image: new Image(mainImageUrl: "images/button/create1.png"),action:(p)=>showPage(pageIndex: 5) )  );
+    bottomToolbar.add( new ButtonModel(label: "About", image: new Image(mainImageUrl: "images/button/info24.png"),action:(p)=>showPage(pageIndex: 6) )  );
     ToolbarModel bottomToolbarModel = new ToolbarModel(buttons:bottomToolbar, color: mainColor, colorUsage: ColorUsage.ALTERNATE_WITH_LIGHT );
     addToolbar(bottomToolbarModel);    
     
