@@ -23,6 +23,7 @@ class ConnectingDartisansApplication  extends Application{
   @override
   void ready() {
     super.ready();
+    
     _setAttributes();
   }
   
@@ -46,7 +47,7 @@ class ConnectingDartisansApplication  extends Application{
     
     List<ButtonModel> bottomToolbar = new List<ButtonModel>();
     bottomToolbar.add( new ButtonModel(label: "Login", image: "images/button/login.png",action:(p)=>showPage(pageIndex: 4) )  );
-    bottomToolbar.add( new ButtonModel(label: "Register", image: "images/button/user58.png",action:(p)=>showPage(pageIndex: 5) )  );
+    bottomToolbar.add( new ButtonModel(label: "Register", image: "images/button/create1.png",action:(p)=>showPage(pageIndex: 5) )  );
     bottomToolbar.add( new ButtonModel(label: "About", image: "images/button/info24.png",action:(p)=>showPage(pageIndex: 6) )  );
     ToolbarModel bottomToolbarModel = new ToolbarModel(buttons:bottomToolbar, color: mainColor, colorUsage: ColorUsage.ALTERNATE_WITH_LIGHT );
     addToolbar(bottomToolbarModel);    
