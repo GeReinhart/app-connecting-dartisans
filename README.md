@@ -47,7 +47,7 @@ A micro service application to handle authentification: will store users and aut
 Should be [dartvoid][2]
 
 
-[1]: http://www.drone.io
+[1]: https://drone.io/github.com/GeReinhart/dart-gex-common-ui-elements/latest)
 [2]: http://www.dartvoid.com
 [3]: https://trello.com/b/5y2Qyd8P/connecting-dartisans
 [4]: https://github.com/GeReinhart/dart-gex-common-ui-elements 
