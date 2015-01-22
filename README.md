@@ -1,7 +1,7 @@
 
 # Application connecting-dartisans
 
-[![Build Status](https://drone.io/github.com/GeReinhart/dart-gex-common-ui-elements/status.png)](https://drone.io/github.com/GeReinhart/dart-gex-common-ui-elements/latest) [![App in QA](https://raw.githubusercontent.com/GeReinhart/app-connecting-dartisans/master/doc/images/appQa.png)](https://qa-connecting-dartisans.herokuapp.com/)
+[![Build Status](https://drone.io/github.com/GeReinhart/app-connecting-dartisans/status.png)](https://drone.io/github.com/GeReinhart/app-connecting-dartisans/latest)[ ![App in QA](https://raw.githubusercontent.com/GeReinhart/app-connecting-dartisans/master/doc/images/appQa.png)](https://qa-connecting-dartisans.herokuapp.com/)
 
 
 
@@ -47,7 +47,7 @@ A micro service application to handle authentification: will store users and aut
 Should be [dartvoid][2]
 
 
-[1]: https://drone.io/github.com/GeReinhart/dart-gex-common-ui-elements/latest)
+[1]: https://drone.io/github.com/GeReinhart/dapp-connecting-dartisans/latest
 [2]: http://www.dartvoid.com
 [3]: https://trello.com/b/5y2Qyd8P/connecting-dartisans
 [4]: https://github.com/GeReinhart/dart-gex-common-ui-elements 
