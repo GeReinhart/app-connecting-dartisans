@@ -31,7 +31,7 @@ class PageLogin extends Page with Showable  {
        
        List<ButtonModel> buttonModels = new List<ButtonModel>();
        buttonModels.add( new ButtonModel(label: "Login & Search",action:action1,image:new Image(mainImageUrl:  "/images/button/login.png",mainImageUrl2:"/images/button/search54.png") )  );
-       buttonModels.add( new ButtonModel(label: "Login & Map",action:action2,image:new Image(mainImageUrl:  "/images/button/login.png") )  );
+       buttonModels.add( new ButtonModel(label: "Login & Map",action:action2,image:new Image(mainImageUrl:  "/images/button/login.png" ,mainImageUrl2:  "images/button/map32.png" ) )  );
        buttonModels.add( new ButtonModel(label: "Cancel",action:action3,image:new Image(mainImageUrl:  "/images/button/back57.png") )  );
        ToolbarModel toolbarModel = new ToolbarModel(buttons:buttonModels, color: mainColor, orientation: Orientation.est,colorUsage: ColorUsage.ALTERNATE_WITH_LIGHT );  
 
