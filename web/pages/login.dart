@@ -30,9 +30,9 @@ class PageLogin extends Page with Showable  {
        layout = $["layout"] as Layout ;
        
        List<ButtonModel> buttonModels = new List<ButtonModel>();
-       buttonModels.add( new ButtonModel(label: "Login & Search",action:action1,image:new Image(mainImageUrl:  "/images/button/login.png",mainImageUrl2:"/images/button/search54.png") )  );
-       buttonModels.add( new ButtonModel(label: "Login & Map",action:action2,image:new Image(mainImageUrl:  "/images/button/login.png" ,mainImageUrl2:  "images/button/map32.png" ) )  );
-       buttonModels.add( new ButtonModel(label: "Cancel",action:action3,image:new Image(mainImageUrl:  "/images/button/back57.png") )  );
+       buttonModels.add( new ButtonModel(label: "Login & Search",action:loginAndSearch,image:new Image(mainImageUrl:  "/images/button/login.png",mainImageUrl2:"/images/button/search54.png") )  );
+       buttonModels.add( new ButtonModel(label: "Login & Map",action:loginAndMap,image:new Image(mainImageUrl:  "/images/button/login.png" ,mainImageUrl2:  "images/button/map32.png" ) )  );
+       buttonModels.add( new ButtonModel(label: "Cancel",action:cancel,image:new Image(mainImageUrl:  "/images/button/back57.png") )  );
        ToolbarModel toolbarModel = new ToolbarModel(buttons:buttonModels, color: mainColor, orientation: Orientation.est,colorUsage: ColorUsage.ALTERNATE_WITH_LIGHT );  
 
        LayoutModel layoutModel = new LayoutModel(toolbarModel: toolbarModel,color: mainColor);
@@ -41,13 +41,15 @@ class PageLogin extends Page with Showable  {
        
      }
     
-    action1(Parameters params){
-      layout.style.backgroundColor =mainColor.strongColor ;
+    loginAndSearch(Parameters params){
+      // TODO Login
+      fireApplicationEvent(new PageCallEvent( sender: this,  pageName:'PageSearch' )  );
     }
-    action2(Parameters params){
-      layout.style.backgroundColor =mainColor.mainColor ;
+    loginAndMap(Parameters params){
+      // TODO Login
+      fireApplicationEvent(new PageCallEvent( sender: this,  pageName:'PageMap' )  );
     }
-    action3(Parameters params){
+    cancel(Parameters params){
       layout.style.backgroundColor =mainColor.lightColor ;
     }
   

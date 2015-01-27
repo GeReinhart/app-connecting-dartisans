@@ -1,4 +1,4 @@
-library connecting_dartisans.pages.map;
+library connecting_dartisans.pages.details;
 
 import "dart:html";
 import 'package:logging/logging.dart';

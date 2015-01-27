@@ -5,6 +5,14 @@ import 'package:logging/logging.dart';
 import 'package:polymer/polymer.dart';
 import 'package:gex_common_ui_elements/common_ui_elements.dart' ;
 import 'package:gex_common_ui_elements/elements/application.dart' ;
+import 'pages/about.dart' ;
+import 'pages/details.dart' ;
+import 'pages/home.dart' ;
+import 'pages/list.dart' ;
+import 'pages/login.dart' ;
+import 'pages/map.dart' ;
+import 'pages/register.dart' ;
+import 'pages/search.dart' ;
 
 @CustomTag('connecting-dartisans')
 class ConnectingDartisansApplication  extends Application{
@@ -15,16 +23,17 @@ class ConnectingDartisansApplication  extends Application{
   
   final Logger log = new Logger('ConnectingDartisansApplication');
   
-  Color mainColor = DART_BLUE_ORANGE.inverseLightColorAsColor ;
+  Color mainColor = DART_BLUE_ORANGE ;
   
   ConnectingDartisansApplication.created() : super.created(){
   } 
-  
   @override
   void ready() {
     super.ready();
     
     _setAttributes();
+    this.setApplicationEventBus(new ApplicationEventBus() );
+    fireApplicationEvent(new PageCallEvent( sender: this,  pageName:'PageHome' )  );
   }
   
   void _setAttributes() {
@@ -38,22 +47,21 @@ class ConnectingDartisansApplication  extends Application{
     addPage( new Element.tag('page-details') ) ;
     
     List<ButtonModel> topToolbar = new List<ButtonModel>();
-    topToolbar.add( new ButtonModel(label: "Home", image: new Image(mainImageUrl:  "images/button/back57.png"),action:(p)=>showPage(pageIndex: 0) )  );
-    topToolbar.add( new ButtonModel(label: "Search", image:new Image(mainImageUrl:  "images/button/search54.png"),action:(p)=>showPage(pageIndex: 1) )  );
-    topToolbar.add( new ButtonModel(label: "Map", image:new Image(mainImageUrl:  "images/button/map32.png"),action:(p)=>showPage(pageIndex: 2) )  );
-    topToolbar.add( new ButtonModel(label: "List", image: new Image(mainImageUrl: "images/button/list23.png"),action:(p)=>showPage(pageIndex: 3) )  );
+    topToolbar.add( new ButtonModel(label: "Home", image: new Image(mainImageUrl:  "images/button/back57.png"),type: ButtonType.PAGE_LAUNCHER , targetPageKey: new PageKey(name: "PageHome")   )  );
+    topToolbar.add( new ButtonModel(label: "Search", image:new Image(mainImageUrl:  "images/button/search54.png"),type: ButtonType.PAGE_LAUNCHER , targetPageKey: new PageKey(name: "PageSearch") )  );
+    topToolbar.add( new ButtonModel(label: "Map", image:new Image(mainImageUrl:  "images/button/map32.png"),type: ButtonType.PAGE_LAUNCHER , targetPageKey: new PageKey(name: "PageMap") )  );
+    topToolbar.add( new ButtonModel(label: "List", image: new Image(mainImageUrl: "images/button/list23.png"),type: ButtonType.PAGE_LAUNCHER , targetPageKey: new PageKey(name: "PageList") )  );
     ToolbarModel topToolbarModel = new ToolbarModel(buttons:topToolbar, color: mainColor, colorUsage: ColorUsage.ALTERNATE_WITH_LIGHT );
     addToolbar(topToolbarModel);
     
     List<ButtonModel> bottomToolbar = new List<ButtonModel>();
-    bottomToolbar.add( new ButtonModel(label: "Login", image:new Image(mainImageUrl:  "images/button/login.png"),action:(p)=>showPage(pageIndex: 4) )  );
-    bottomToolbar.add( new ButtonModel(label: "Register", image: new Image(mainImageUrl: "images/button/create1.png"),action:(p)=>showPage(pageIndex: 5) )  );
-    bottomToolbar.add( new ButtonModel(label: "About", image: new Image(mainImageUrl: "images/button/info24.png"),action:(p)=>showPage(pageIndex: 6) )  );
+    bottomToolbar.add( new ButtonModel(label: "Login", image:new Image(mainImageUrl:  "images/button/login.png"),type: ButtonType.PAGE_LAUNCHER , targetPageKey: new PageKey(name: "PageLogin") )  );
+    bottomToolbar.add( new ButtonModel(label: "Register", image: new Image(mainImageUrl: "images/button/create1.png"),type: ButtonType.PAGE_LAUNCHER , targetPageKey: new PageKey(name: "PageRegister") )  );
+    bottomToolbar.add( new ButtonModel(label: "About", image: new Image(mainImageUrl: "images/button/info24.png"),type: ButtonType.PAGE_LAUNCHER , targetPageKey: new PageKey(name: "PageAbout") )  );
     ToolbarModel bottomToolbarModel = new ToolbarModel(buttons:bottomToolbar, color: mainColor, colorUsage: ColorUsage.ALTERNATE_WITH_LIGHT );
     addToolbar(bottomToolbarModel);    
     
     fitWithWindow();
-    pages[0].show();
   }
   
   
