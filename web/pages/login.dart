@@ -12,7 +12,8 @@ import '../application.dart' ;
 @CustomTag('page-login')
 class PageLogin extends Page with Showable  {
   
-  final Logger log = new Logger('PageLogin');
+  static final String NAME = "PageLogin" ;  
+  final Logger log = new Logger(NAME);
   
   Color mainColor = ConnectingDartisansApplication.DART_BLUE_ORANGE.lightColorAsColor;
     
@@ -36,7 +37,7 @@ class PageLogin extends Page with Showable  {
        ToolbarModel toolbarModel = new ToolbarModel(buttons:buttonModels, color: mainColor, orientation: Orientation.est,colorUsage: ColorUsage.ALTERNATE_WITH_LIGHT );  
 
        LayoutModel layoutModel = new LayoutModel(toolbarModel: toolbarModel,color: mainColor);
-       PageModel model = new PageModel(layoutModel:layoutModel );
+       PageModel model = new PageModel(name:NAME,layoutModel:layoutModel );
        this.init(model) ;
        
      }

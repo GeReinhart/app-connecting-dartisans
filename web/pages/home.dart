@@ -12,7 +12,8 @@ import '../application.dart' ;
 @CustomTag('page-home')
 class PageHome extends Page with Showable {
   
-  final Logger log = new Logger('PageOne');
+  static final String NAME = "PageHome" ;
+  final Logger log = new Logger(NAME);
   
   Color mainColor = ConnectingDartisansApplication.DART_BLUE_ORANGE.lightColorAsColor;
   
@@ -32,7 +33,7 @@ class PageHome extends Page with Showable {
      dartLogo = $["dartLogo"] as ImageElement ;
      
      LayoutModel layoutModel = new LayoutModel();
-     PageModel model = new PageModel( layoutModel:layoutModel);
+     PageModel model = new PageModel(name:NAME, layoutModel:layoutModel);
      this.init(model) ;
   }
   

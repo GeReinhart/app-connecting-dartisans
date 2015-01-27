@@ -12,7 +12,8 @@ import '../application.dart' ;
 @CustomTag('page-map')
 class PageMap extends Page with Showable {
   
-  final Logger log = new Logger('PageMap');
+  static final String NAME = "PageMap" ;
+  final Logger log = new Logger(NAME);
   
   Color mainColor = ConnectingDartisansApplication.DART_BLUE_ORANGE.lightColorAsColor;
   
@@ -30,7 +31,7 @@ class PageMap extends Page with Showable {
      layout = $["layout"] as Layout ;
      
      LayoutModel layoutModel = new LayoutModel(color: mainColor);
-     PageModel model = new PageModel( layoutModel:layoutModel);
+     PageModel model = new PageModel( name:NAME, layoutModel:layoutModel);
      this.init(model) ;
   }
        

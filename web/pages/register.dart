@@ -12,6 +12,7 @@ import '../application.dart' ;
 @CustomTag('page-register')
 class PageRegister extends Page with Showable  {
   
+  static final String NAME = "PageRegister" ;
   final Logger log = new Logger('PageRegister');
   
   Color mainColor = ConnectingDartisansApplication.DART_BLUE_ORANGE.lightColorAsColor;
@@ -36,7 +37,7 @@ class PageRegister extends Page with Showable  {
        ToolbarModel toolbarModel = new ToolbarModel(buttons:buttonModels, color: mainColor,colorUsage: ColorUsage.ALTERNATE_WITH_LIGHT , orientation: Orientation.est);  
 
        LayoutModel layoutModel = new LayoutModel(toolbarModel: toolbarModel,color: mainColor);
-       PageModel model = new PageModel(layoutModel:layoutModel );
+       PageModel model = new PageModel(name:NAME, layoutModel:layoutModel );
        this.init(model) ;
        
      }
