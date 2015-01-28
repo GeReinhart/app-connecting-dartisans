@@ -15,7 +15,7 @@ class PageRegister extends Page with Showable  {
   static final String NAME = "PageRegister" ;
   final Logger log = new Logger('PageRegister');
   
-  Color mainColor = ConnectingDartisansApplication.DART_BLUE_ORANGE.lightColorAsColor;
+  Color mainColor = ConnectingDartisansApplication.DART_LIGHT_BLUE_ORANGE.inverseLightColorAsColor;
     
     Layout layout ;
     

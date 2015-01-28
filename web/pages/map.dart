@@ -15,7 +15,7 @@ class PageMap extends Page with Showable {
   static final String NAME = "PageMap" ;
   final Logger log = new Logger(NAME);
   
-  Color mainColor = ConnectingDartisansApplication.DART_BLUE_ORANGE.lightColorAsColor;
+  Color mainColor = ConnectingDartisansApplication.DART_LIGHT_BLUE_ORANGE.lightColorAsColor;
   
   Layout layout ;
   
