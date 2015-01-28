@@ -15,7 +15,7 @@ class PageLogin extends Page with Showable  {
   static final String NAME = "PageLogin" ;  
   final Logger log = new Logger(NAME);
   
-  Color mainColor = ConnectingDartisansApplication.DART_LIGHT_BLUE_ORANGE.inverseLightColorAsColor;
+   Color mainColor = ConnectingDartisansApplication.GREY_BLUE_GREEN;
     
     Layout layout ;
     
