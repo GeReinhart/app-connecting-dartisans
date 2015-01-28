@@ -24,6 +24,9 @@ class ConnectingDartisansApplication  extends Application{
   static final Color DART_LIGHT_BLUE_ORANGE = new Color("#005B8C","#0082C8","#59ACD9","#99C6DE","#B6CEDB",      
                                              "#FF7415","#FFAB15","#FFC866","#FFDEA3", "#FFEDCC");
   
+  static final Color GREY_BLUE_GREEN = new Color("#64737A","#7F8D94","#ABB3B8","#C3C7C9","#E3E3E3",
+                                             "#7D8A67","#939E82","#ACB89A","#CBD1C0","#DEE0DA" ) ;
+
   final Logger log = new Logger('ConnectingDartisansApplication');
   
   Color mainColor = DART_BLUE_ORANGE ;
