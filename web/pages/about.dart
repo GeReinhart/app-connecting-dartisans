@@ -16,9 +16,9 @@ class PageAbout extends Page with Showable  {
   static final String NAME = "PageAbout" ;
   
   final Logger log = new Logger(NAME);
-  
-  Color mainColor = ConnectingDartisansApplication.DART_LIGHT_BLUE_ORANGE.inverseLightColorAsColor;
-    
+
+  Color mainColor = ConnectingDartisansApplication.GREY_BLUE_GREEN;  
+
     Layout layout ;
     
     PageAbout.created() : super.created() ;
