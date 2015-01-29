@@ -16,6 +16,8 @@ dependencies:
   route_hierarchical: '>=0.4.21 <0.6.0'
   di: '>=2.0.1 <4.0.0'
   code_transformers: '>=0.2.3 <0.3.0' 
+dependency_overrides:
+  paper_elements: '>=0.6.0 <0.7.0'
 dev_dependencies:
   unittest: ">=0.11.4 <0.12.0" 
   mockito: ">=0.8.1 <0.9.0"  
@@ -26,5 +28,3 @@ transformers:
 - $dart2js:
     commandLineOptions:
       - --enable-enum
-      
-      
