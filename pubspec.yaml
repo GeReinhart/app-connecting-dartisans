@@ -12,15 +12,6 @@ dependencies:
     git: git://github.com/GeReinhart/dart-gex-common-ui-elements.git  
   shelf: '>=0.5.6 <0.6.0'
   shelf_static: '>=0.2.1 <0.3.0'
-  bwu_polymer_routing: '>=0.0.1 <0.1.0'
-  route_hierarchical: '>=0.4.21 <0.6.0'
-  di: '>=2.0.1 <4.0.0'
-  code_transformers: '>=0.2.3 <0.3.0' 
-dependency_overrides:
-  paper_elements: '>=0.6.0 <0.7.0'
-  polymer: '>=0.15.0 <0.16.0'
-  code_transformers: '>=0.2.3 <0.3.0' 
-  paper_elements: '>=0.5.0 <0.6.0'
 dev_dependencies:
   unittest: ">=0.11.4 <0.12.0" 
   mockito: ">=0.8.1 <0.9.0"  
