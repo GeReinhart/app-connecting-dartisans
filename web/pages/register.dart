@@ -12,7 +12,7 @@ import '../application.dart' ;
 @CustomTag('page-register')
 class PageRegister extends Page with Showable  {
   
-  static final String NAME = "PageRegister" ;
+  static final String NAME = "register" ;
   final Logger log = new Logger('PageRegister');
   
     Color mainColor = ConnectingDartisansApplication.GREY_BLUE_GREEN;  

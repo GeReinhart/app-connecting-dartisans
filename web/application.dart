@@ -38,8 +38,6 @@ class ConnectingDartisansApplication  extends Application{
     super.ready();
     
     _setAttributes();
-    this.setApplicationEventBus(new ApplicationEventBus() );
-    fireApplicationEvent(new PageCallEvent( sender: this,  pageName:'PageHome' )  );
   }
   
   void _setAttributes() {

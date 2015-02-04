@@ -12,7 +12,7 @@ import '../application.dart' ;
 @CustomTag('page-list')
 class PageList extends Page with Showable  {
   
-  static final String NAME = "PageList" ;
+  static final String NAME = "list" ;
   final Logger log = new Logger(NAME);
   
   Color mainColor = ConnectingDartisansApplication.DART_LIGHT_BLUE_ORANGE.lightColorAsColor;

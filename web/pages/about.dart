@@ -13,7 +13,7 @@ import '../application.dart' ;
 @CustomTag('page-about')
 class PageAbout extends Page with Showable  {
   
-  static final String NAME = "PageAbout" ;
+  static final String NAME = "about" ;
   
   final Logger log = new Logger(NAME);
 

@@ -12,7 +12,7 @@ import '../application.dart' ;
 @CustomTag('page-map')
 class PageMap extends Page with Showable {
   
-  static final String NAME = "PageMap" ;
+  static final String NAME = "map" ;
   final Logger log = new Logger(NAME);
   
   Color mainColor = ConnectingDartisansApplication.DART_LIGHT_BLUE_ORANGE.lightColorAsColor;

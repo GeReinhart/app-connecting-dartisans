@@ -12,7 +12,7 @@ import '../application.dart' ;
 @CustomTag('page-search')
 class PageSearch extends Page with Showable {
   
-  static final String NAME = "PageSearch" ;  
+  static final String NAME = "search" ;  
   final Logger log = new Logger(NAME);
   
   Color mainColor = ConnectingDartisansApplication.DART_LIGHT_BLUE_ORANGE.lightColorAsColor;

@@ -12,7 +12,7 @@ import '../application.dart' ;
 @CustomTag('page-login')
 class PageLogin extends Page with Showable  {
   
-  static final String NAME = "PageLogin" ;  
+  static final String NAME = "login" ;  
   final Logger log = new Logger(NAME);
   
       Color mainColor = ConnectingDartisansApplication.GREY_BLUE_GREEN.inverse(); 
