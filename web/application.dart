@@ -51,17 +51,17 @@ class ConnectingDartisansApplication  extends Application{
     addPage( new Element.tag('page-details') ) ;
     
     List<ButtonModel> topToolbar = new List<ButtonModel>();
-    topToolbar.add( new ButtonModel(label: "Home", image: new Image(mainImageUrl:  "images/button/back57.png"),type: ButtonType.PAGE_LAUNCHER , targetPageKey: new PageKey(name: "PageHome")   )  );
-    topToolbar.add( new ButtonModel(label: "Search", image:new Image(mainImageUrl:  "images/button/search54.png"),type: ButtonType.PAGE_LAUNCHER , targetPageKey: new PageKey(name: "PageSearch") )  );
-    topToolbar.add( new ButtonModel(label: "Map", image:new Image(mainImageUrl:  "images/button/map32.png"),type: ButtonType.PAGE_LAUNCHER , targetPageKey: new PageKey(name: "PageMap") )  );
-    topToolbar.add( new ButtonModel(label: "List", image: new Image(mainImageUrl: "images/button/list23.png"),type: ButtonType.PAGE_LAUNCHER , targetPageKey: new PageKey(name: "PageList") )  );
+    topToolbar.add( new ButtonModel(label: "Home", image: new Image(mainImageUrl:  "images/button/back57.png"),type: ButtonType.PAGE_LAUNCHER , targetPageKey: new PageKey(name: PageHome.NAME)   )  );
+    topToolbar.add( new ButtonModel(label: "Search", image:new Image(mainImageUrl:  "images/button/search54.png"),type: ButtonType.PAGE_LAUNCHER , targetPageKey: new PageKey(name: PageSearch.NAME) )  );
+    topToolbar.add( new ButtonModel(label: "Map", image:new Image(mainImageUrl:  "images/button/map32.png"),type: ButtonType.PAGE_LAUNCHER , targetPageKey: new PageKey(name: PageMap.NAME) )  );
+    topToolbar.add( new ButtonModel(label: "List", image: new Image(mainImageUrl: "images/button/list23.png"),type: ButtonType.PAGE_LAUNCHER , targetPageKey: new PageKey(name: PageList.NAME) )  );
     ToolbarModel topToolbarModel = new ToolbarModel(buttons:topToolbar, color: mainColor, colorUsage: ColorUsage.ALTERNATE_WITH_LIGHT );
     addToolbar(topToolbarModel);
     
     List<ButtonModel> bottomToolbar = new List<ButtonModel>();
-    bottomToolbar.add( new ButtonModel(label: "Login", image:new Image(mainImageUrl:  "images/button/login.png"),type: ButtonType.PAGE_LAUNCHER , targetPageKey: new PageKey(name: "PageLogin") )  );
-    bottomToolbar.add( new ButtonModel(label: "Register", image: new Image(mainImageUrl: "images/button/create1.png"),type: ButtonType.PAGE_LAUNCHER , targetPageKey: new PageKey(name: "PageRegister") )  );
-    bottomToolbar.add( new ButtonModel(label: "About", image: new Image(mainImageUrl: "images/button/info24.png"),type: ButtonType.PAGE_LAUNCHER , targetPageKey: new PageKey(name: "PageAbout") )  );
+    bottomToolbar.add( new ButtonModel(label: "Login", image:new Image(mainImageUrl:  "images/button/login.png"),type: ButtonType.PAGE_LAUNCHER , targetPageKey: new PageKey(name: PageLogin.NAME) )  );
+    bottomToolbar.add( new ButtonModel(label: "Register", image: new Image(mainImageUrl: "images/button/create1.png"),type: ButtonType.PAGE_LAUNCHER , targetPageKey: new PageKey(name: PageRegister.NAME) )  );
+    bottomToolbar.add( new ButtonModel(label: "About", image: new Image(mainImageUrl: "images/button/info24.png"),type: ButtonType.PAGE_LAUNCHER , targetPageKey: new PageKey(name: PageAbout.NAME) )  );
     ToolbarModel bottomToolbarModel = new ToolbarModel(buttons:bottomToolbar, color: mainColor, colorUsage: ColorUsage.ALTERNATE_WITH_LIGHT );
     addToolbar(bottomToolbarModel);    
     
