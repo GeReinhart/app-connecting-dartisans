@@ -8,6 +8,9 @@ import 'package:gex_common_ui_elements/elements/layout.dart' ;
 import 'package:gex_common_ui_elements/elements/page.dart' ;
 
 import '../application.dart' ;
+import 'list.dart' ;
+import 'map.dart' ;
+import 'search.dart' ;
 
 @CustomTag('page-login')
 class PageLogin extends Page with Showable  {
@@ -44,11 +47,11 @@ class PageLogin extends Page with Showable  {
     
     loginAndSearch(Parameters params){
       // TODO Login
-      fireApplicationEvent(new PageCallEvent( sender: this,  pageName:'PageSearch' )  );
+      fireApplicationEvent(new PageCallEvent( sender: this,  pageName:PageSearch.NAME )  );
     }
     loginAndMap(Parameters params){
       // TODO Login
-      fireApplicationEvent(new PageCallEvent( sender: this,  pageName:'PageMap' )  );
+      fireApplicationEvent(new PageCallEvent( sender: this,  pageName:PageMap.NAME )  );
     }
     cancel(Parameters params){
       layout.style.backgroundColor =mainColor.lightColor ;

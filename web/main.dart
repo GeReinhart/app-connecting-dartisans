@@ -19,7 +19,7 @@ void main() {
       router.setApplicationEventBus(applicationEventBus) ;
       application.setApplicationEventBus(applicationEventBus);
       
-      applicationEventBus.fireApplicationEvent(new PageCallEvent( sender: applicationEventBus,  pageName:PageHome.NAME )  );
+      router.init();
     });
     
     

@@ -8,6 +8,9 @@ import 'package:gex_common_ui_elements/elements/layout.dart' ;
 import 'package:gex_common_ui_elements/elements/page.dart' ;
 
 import '../application.dart' ;
+import 'list.dart' ;
+import 'map.dart' ;
+import 'search.dart' ;
 
 @CustomTag('page-search')
 class PageSearch extends Page with Showable {
@@ -43,10 +46,10 @@ class PageSearch extends Page with Showable {
    }
 
   resultOnMap(Parameters params){
-    fireApplicationEvent(new PageCallEvent( sender: this,  pageName:'PageMap' )  );
+    fireApplicationEvent(new PageCallEvent( sender: this,  pageName:PageMap.NAME )  );
   }
   resultOnList(Parameters params){
-    fireApplicationEvent(new PageCallEvent( sender: this,  pageName:'PageList' )  );
+    fireApplicationEvent(new PageCallEvent( sender: this,  pageName:PageList.NAME )  );
   }
   cancel(Parameters params){
     layout.style.backgroundColor =mainColor.lightColor ;

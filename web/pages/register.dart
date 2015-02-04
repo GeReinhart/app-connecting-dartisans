@@ -8,6 +8,9 @@ import 'package:gex_common_ui_elements/elements/layout.dart' ;
 import 'package:gex_common_ui_elements/elements/page.dart' ;
 
 import '../application.dart' ;
+import 'list.dart' ;
+import 'map.dart' ;
+import 'search.dart' ;
 
 @CustomTag('page-register')
 class PageRegister extends Page with Showable  {
@@ -44,7 +47,7 @@ class PageRegister extends Page with Showable  {
     
     saveAndMap(Parameters params){
       save(params);
-      fireApplicationEvent(new PageCallEvent( sender: this,  pageName:'PageMap' )  );
+      fireApplicationEvent(new PageCallEvent( sender: this,  pageName:PageMap.NAME )  );
     }
     save(Parameters params){
       layout.style.backgroundColor =mainColor.mainColor ;
