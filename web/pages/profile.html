@@ -1,0 +1,18 @@
+<!-- import polymer-element's definition -->
+<link rel="import" href="../../../packages/polymer/polymer.html">
+<link rel="import" href="../../../packages/gex_webapp_kit_client/elements/layout.html">
+
+<polymer-element name="page-profile"  >
+  <template>
+    <gex-layout id="layout">
+               <h1>My profile</h1>
+               
+         <ul>
+           <li><span>Name: </span><span>{{user.displayName}}</span></li>
+           <li><span>Email: </span><span>{{user.email}}</span></li>
+           <li><span>Avatar: </span><span><img src="{{user.avatarUrl}}"  /></span></li>
+         </ul> 
+    </gex-layout>
+  </template>
+  <script type="application/dart" src="profile.dart"></script>
+</polymer-element>

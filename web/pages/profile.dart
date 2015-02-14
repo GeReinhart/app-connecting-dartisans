@@ -1,4 +1,4 @@
-library connecting_dartisans.pages.search;
+library connecting_dartisans.pages.login;
 
 import "dart:html";
 import 'package:logging/logging.dart';
@@ -12,16 +12,17 @@ import 'list.dart';
 import 'map.dart';
 import 'search.dart';
 
-@CustomTag('page-search')
-class PageSearch extends Page with Showable {
-  static final String NAME = "search";
+@CustomTag('page-profile')
+class PageProfile extends Page with Showable {
+  static final String NAME = "profile";
   final Logger log = new Logger(NAME);
 
-  Color mainColor = ConnectingDartisansApplication.DART_LIGHT_BLUE_ORANGE.lightColorAsColor;
+  Color mainColor = ConnectingDartisansApplication.GREY_BLUE_GREEN.inverse();
 
+  @observable User user;
   Layout layout;
 
-  PageSearch.created() : super.created();
+  PageProfile.created() : super.created();
 
   ready() {
     super.ready();
@@ -33,29 +34,41 @@ class PageSearch extends Page with Showable {
 
     List<ButtonModel> buttonModels = new List<ButtonModel>();
     buttonModels.add(new ButtonModel(
-        label: "Result on map", action: resultOnMap, image: new Image(mainImageUrl: "/images/button/map32.png")));
+        label: "Save & Map",
+        action: saveAndMap,
+        image: new Image(mainImageUrl: "/images/button/save29.png", mainImageUrl2: "/images/button/map32.png")));
     buttonModels.add(new ButtonModel(
-        label: "Result as list", action: resultOnList, image: new Image(mainImageUrl: "/images/button/list23.png")));
+        label: "Save & Stay", action: save, image: new Image(mainImageUrl: "/images/button/save29.png")));
     buttonModels.add(
         new ButtonModel(label: "Cancel", action: cancel, image: new Image(mainImageUrl: "/images/button/back57.png")));
     ToolbarModel toolbarModel = new ToolbarModel(
         buttons: buttonModels,
         color: mainColor,
-        colorUsage: ColorUsage.ALTERNATE_WITH_LIGHT,
-        orientation: Orientation.est);
+        orientation: Orientation.est,
+        colorUsage: ColorUsage.ALTERNATE_WITH_LIGHT);
 
     LayoutModel layoutModel = new LayoutModel(toolbarModel: toolbarModel, color: mainColor);
     PageModel model = new PageModel(name: NAME, layoutModel: layoutModel);
     this.init(model);
   }
 
-  resultOnMap(Parameters params) {
+  @override
+  void recieveApplicationEvent(ApplicationEvent event) {
+    super.recieveApplicationEvent(event);
+    if (event is UserAuthEvent) {
+      user = event.user;
+    }
+  }
+
+  save(Parameters params) {
+    // TODO Save
+  }
+  saveAndMap(Parameters params) {
+    // TODO Login
     fireApplicationEvent(new PageCallEvent(sender: this, pageName: PageMap.NAME));
   }
-  resultOnList(Parameters params) {
-    fireApplicationEvent(new PageCallEvent(sender: this, pageName: PageList.NAME));
-  }
   cancel(Parameters params) {
+    // TODO Cancel
     layout.style.backgroundColor = mainColor.lightColor;
   }
 }
