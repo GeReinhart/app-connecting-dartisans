@@ -40,7 +40,7 @@ class PageProfile extends Page with Showable {
     buttonModels.add(new ButtonModel(
         label: "Save & Stay", action: save, image: new Image(mainImageUrl: "/images/button/save29.png")));
     buttonModels.add(
-        new ButtonModel(label: "Cancel", action: cancel, image: new Image(mainImageUrl: "/images/button/back57.png")));
+        new ButtonModel(label: "Logout", action: logout, image: new Image(mainImageUrl: "/images/button/logout.png")));
     ToolbarModel toolbarModel = new ToolbarModel(
         buttons: buttonModels,
         color: mainColor,
@@ -64,11 +64,12 @@ class PageProfile extends Page with Showable {
     // TODO Save
   }
   saveAndMap(Parameters params) {
-    // TODO Login
+    save(params);
     fireApplicationEvent(new PageCallEvent(sender: this, pageName: PageMap.NAME));
   }
-  cancel(Parameters params) {
-    // TODO Cancel
-    layout.style.backgroundColor = mainColor.lightColor;
+  logout(Parameters params) {
+    user = null;
+    fireApplicationEvent(new LogoutUserEvent(this, user));
+    fireApplicationEvent(new PageIndexCallEvent(this));
   }
 }
