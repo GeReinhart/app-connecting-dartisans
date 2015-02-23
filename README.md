@@ -25,13 +25,9 @@ This stack will produce resuable code :
 ### app-connecting-dartisans: 
 The current application
 - Client: polymer.dart
-  - using [gex-common-ui-elements][4]
-- Server: force on mongodb 
-  - using ms-gex-auth
-
-### ms-gex-auth: 
-A micro service application to handle authentification: will store users and authorizations 
-- Server: force on mongodb 
+  - using [gex-webapp-kit][4]
+- Server: redstone on mongodb 
+  - using [gex-webapp-kit][4]
 
 
 ## Development guide lines
@@ -47,4 +43,4 @@ Should be [dartvoid][2]
 [1]: https://drone.io/github.com/GeReinhart/dapp-connecting-dartisans/latest
 [2]: http://www.dartvoid.com
 [3]: https://trello.com/b/5y2Qyd8P/connecting-dartisans
-[4]: https://github.com/GeReinhart/dart-gex-common-ui-elements 
+[4]: https://github.com/GeReinhart/dart-gex-webapp-kit-client 
