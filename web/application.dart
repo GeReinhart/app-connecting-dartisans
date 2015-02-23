@@ -29,8 +29,8 @@ void main() {
       Router router = new Router(pageKeyUrlConverter);
       ApplicationEventLogger applicationEventLogger = new ApplicationEventLogger();
 
-      Authenticator authenticator = new GoogleAuthenticator(clientId());
-      LoginFlow loginFlow = new LoginFlow(authenticator, new UserChecker());
+      GoogleAuthenticator authenticator = new GoogleAuthenticator();
+      GoogleLoginFlow loginFlow = new GoogleLoginFlow(authenticator);
 
       loginFlow.setApplicationEventBus(applicationEventBus);
       authenticator.setApplicationEventBus(applicationEventBus);

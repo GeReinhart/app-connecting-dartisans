@@ -4,8 +4,10 @@ import "dart:html";
 import 'package:logging/logging.dart';
 import 'package:polymer/polymer.dart';
 import 'package:gex_webapp_kit_client/webapp_kit_client.dart';
+import 'package:gex_webapp_kit_client/webapp_kit_common.dart';
 import 'package:gex_webapp_kit_client/elements/layout.dart';
 import 'package:gex_webapp_kit_client/elements/page.dart';
+import 'package:gex_webapp_kit_client/elements/user_edit.dart';
 
 import '../application.dart';
 import 'list.dart';
@@ -17,10 +19,10 @@ class PageProfile extends Page with Showable {
   static final String NAME = "profile";
   final Logger log = new Logger(NAME);
 
-  Color mainColor = ConnectingDartisansApplication.GREY_BLUE_GREEN.inverse();
+  Color mainColor = Color.WHITE;
 
-  @observable User user;
   Layout layout;
+  UserEdit userEdit;
 
   PageProfile.created() : super.created();
 
@@ -31,6 +33,7 @@ class PageProfile extends Page with Showable {
 
   void _setAttributes() {
     layout = $["layout"] as Layout;
+    userEdit = $["userEdit"] as UserEdit;
 
     List<ButtonModel> buttonModels = new List<ButtonModel>();
     buttonModels.add(new ButtonModel(
@@ -43,7 +46,7 @@ class PageProfile extends Page with Showable {
         new ButtonModel(label: "Logout", action: logout, image: new Image(mainImageUrl: "/images/button/logout.png")));
     ToolbarModel toolbarModel = new ToolbarModel(
         buttons: buttonModels,
-        color: mainColor,
+        color: Color.GREY_858585.lightColorAsColor,
         orientation: Orientation.est,
         colorUsage: ColorUsage.ALTERNATE_WITH_LIGHT);
 
@@ -55,21 +58,24 @@ class PageProfile extends Page with Showable {
   @override
   void recieveApplicationEvent(ApplicationEvent event) {
     super.recieveApplicationEvent(event);
-    if (event is UserAuthEvent) {
-      user = event.user;
+    if (event.isUserAuthSuccess || event.isLoginSuccess || event.isRegisterSuccess) {
+      userEdit.user = event.user;
+    }
+    if (event.isLogoutSuccess) {
+      userEdit.user = new User();
     }
   }
 
   save(Parameters params) {
-    // TODO Save
+    fireApplicationEvent(new ApplicationEvent.callSaveUser(this, userEdit.user));
   }
   saveAndMap(Parameters params) {
     save(params);
-    fireApplicationEvent(new PageCallEvent(sender: this, pageName: PageMap.NAME));
+    fireApplicationEvent(new ApplicationEvent.callPage(this, PageMap.NAME));
   }
   logout(Parameters params) {
-    user = null;
-    fireApplicationEvent(new LogoutUserEvent(this, user));
-    fireApplicationEvent(new PageIndexCallEvent(this));
+    // TODO Should call logout first...
+    fireApplicationEvent(new ApplicationEvent.logoutSuccess(this, userEdit.user));
+    userEdit.user = new User();
   }
 }
