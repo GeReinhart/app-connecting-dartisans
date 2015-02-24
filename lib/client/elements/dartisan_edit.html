@@ -1,0 +1,70 @@
+<!-- import polymer-element's definition -->
+<link rel="import" href="../../../packages/polymer/polymer.html">
+<link rel="import" href="../../../packages/gex_webapp_kit_client/elements/layout.html">
+<link rel="import" href="../../../packages/paper_elements/paper_input.html">
+<link rel="import" href="../../../packages/paper_elements/paper_autogrow_textarea.html">
+<link rel="import" href="../../../packages/paper_elements/paper_input_decorator.html">
+
+
+<polymer-element name="gex-user-edit"  >
+  <template>
+    <style shim-shadowdom>
+    body {
+      font-family: RobotoDraft, 'Helvetica Neue', Helvetica, Arial;
+      margin: 0;
+      padding: 24px;
+      -webkit-tap-highlight-color: rgba(0,0,0,0);
+      -webkit-touch-callout: none;
+    }
+    paper-input {
+      width: 80%;
+    }
+    paper-input-decorator {
+      max-width: 80%;
+    }
+    paper-input.narrow {
+      width: 150px;
+    }
+    ul {
+      list-style-type: none;
+    }
+    .inputs {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .inputs > * {
+      display: inline-block;
+    }
+    .inputs > div {
+      display: block;
+    }
+    </style>   
+          <ul>
+           <li><img _src="{{avatarUrl}}"  /></li>
+           <li><span>OpenId: </span><span  >{{openId}}</span></li>
+           <li><span>Email: </span><span>{{email}}</span></li>
+           <li>
+               <paper-input-decorator label="Given name" floatingLabel>
+                   <input is="core-input" value="{{givenName}}" maxlength="100" >
+               </paper-input-decorator>           
+           &nbsp;
+               <paper-input-decorator label="Family name" floatingLabel>
+                   <input is="core-input" value="{{familyName}}" maxlength="100" >
+               </paper-input-decorator>
+           </li>                
+           <li>
+               <paper-input-decorator label="Display name" floatingLabel>
+                   <input is="core-input" value="{{displayName}}" maxlength="100"  >
+               </paper-input-decorator>     
+           </li>
+           <li>           
+                <paper-input-decorator   label="Bio" floatingLabel>
+                    <textarea id="bioTextArea">{{bio}}</textarea>
+                </paper-input-decorator>
+          </li>             
+         </ul> 
+         
+  </template>
+  <script type="application/dart" src="user_edit.dart"></script>
+</polymer-element>
