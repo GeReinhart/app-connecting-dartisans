@@ -4,7 +4,9 @@ import 'package:redstone/server.dart' as app;
 import 'package:shelf_static/shelf_static.dart';
 import "package:redstone_mapper/plugin.dart";
 import "package:redstone_mapper_mongo/manager.dart";
-import 'package:gex_webapp_kit_client/webapp_kit_server.dart';
+import 'package:gex_webapp_kit_client/webapp_kit_server.dart' ;
+import 'package:connecting_dartisans/connecting_dartisans_server.dart';
+
 
 main() {
   app.addPlugin(AuthorizationPlugin);

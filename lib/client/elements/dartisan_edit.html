@@ -1,12 +1,17 @@
 <!-- import polymer-element's definition -->
-<link rel="import" href="../../../packages/polymer/polymer.html">
-<link rel="import" href="../../../packages/gex_webapp_kit_client/elements/layout.html">
-<link rel="import" href="../../../packages/paper_elements/paper_input.html">
-<link rel="import" href="../../../packages/paper_elements/paper_autogrow_textarea.html">
-<link rel="import" href="../../../packages/paper_elements/paper_input_decorator.html">
+<link rel="import" href="../../../../packages/polymer/polymer.html">
+<link rel="import" href="../../../../packages/gex_webapp_kit_client/elements/layout.html">
+<link rel="import" href="../../../../packages/paper_elements/paper_input.html">
+<link rel="import" href="../../../../packages/paper_elements/paper_autogrow_textarea.html">
+<link rel="import" href="../../../../packages/paper_elements/paper_input_decorator.html">
+<link rel="import" href="../../../../packages/paper_elements/paper_checkbox.html">
+<link rel="import" href="../../../../packages/paper_elements/roboto.html">
+<link rel="import" href="../../../../packages/core_elements/core_label.html">
+
+<link rel="import" href="../../../../packages/gex_webapp_kit_client/elements/user_edit.html">
 
 
-<polymer-element name="gex-user-edit"  >
+<polymer-element name="dartisan-edit"  >
   <template>
     <style shim-shadowdom>
     body {
@@ -28,6 +33,9 @@
     ul {
       list-style-type: none;
     }
+    li {
+      margin-bottom: 10px;
+    }
     .inputs {
       display: flex;
       flex-direction: column;
@@ -39,32 +47,53 @@
     .inputs > div {
       display: block;
     }
+    
+    .checkMain{
+      margin-left: 20px;
+    }
+    .checkDetails{
+      margin-left: 40px;
+      font-style: italic;
+      font-size: small;
+    }    
+    
     </style>   
+          <gex-user-edit id="userEdit" ></gex-user-edit>   
           <ul>
-           <li><img _src="{{avatarUrl}}"  /></li>
-           <li><span>OpenId: </span><span  >{{openId}}</span></li>
-           <li><span>Email: </span><span>{{email}}</span></li>
            <li>
-               <paper-input-decorator label="Given name" floatingLabel>
-                   <input is="core-input" value="{{givenName}}" maxlength="100" >
-               </paper-input-decorator>           
-           &nbsp;
-               <paper-input-decorator label="Family name" floatingLabel>
-                   <input is="core-input" value="{{familyName}}" maxlength="100" >
-               </paper-input-decorator>
-           </li>                
+              <paper-input-decorator   label="Bio as a dartisan" floatingLabel>
+                 <textarea id="bioTextArea">{{dartisanBio}}</textarea>
+             </paper-input-decorator>
+          </li>
            <li>
-               <paper-input-decorator label="Display name" floatingLabel>
-                   <input is="core-input" value="{{displayName}}" maxlength="100"  >
-               </paper-input-decorator>     
-           </li>
-           <li>           
-                <paper-input-decorator   label="Bio" floatingLabel>
-                    <textarea id="bioTextArea">{{bio}}</textarea>
-                </paper-input-decorator>
-          </li>             
-         </ul> 
-         
+              <core-label horizontal layout>
+                <paper-checkbox id="readyForTraining" for></paper-checkbox>
+                <div vertical layout>
+                  <div class="checkMain">Ready for training</div>
+                  <div class="checkDetails">Be able to animate a training in Dart</div>
+                </div>
+              </core-label> 
+          </li>      
+           <li>
+              <core-label horizontal layout>
+                <paper-checkbox id="readyForTalks" for></paper-checkbox>
+                <div vertical layout>
+                  <div class="checkMain">Ready for talks</div>
+                  <div class="checkDetails">Be able to do a Dart presentation in a conference</div>
+                </div>
+              </core-label> 
+          </li>
+           <li>
+              <core-label horizontal layout>
+                <paper-checkbox id="readyToBeHired" for></paper-checkbox>
+                <div vertical layout>
+                  <div class="checkMain">Ready to be hired</div>
+                  <div class="checkDetails">Would consider a job proposition with Dart as the main dev stack</div>
+                </div>
+              </core-label> 
+          </li>            
+          </ul>
+
   </template>
-  <script type="application/dart" src="user_edit.dart"></script>
+  <script type="application/dart" src="dartisan_edit.dart"></script>
 </polymer-element>

@@ -6,18 +6,22 @@ class Dartisan extends User{
   
   @Field() num level;
   @Field() bool readyForTraining;
-  @Field() bool readyForHire;
+  @Field() bool readyToBeHired;
   @Field() bool readyForTalks;
-  @Field() String dartisansBio;
+  @Field() String dartisanBio;
 
   Dartisan([String id, String openId, String email, String displayName, String givenName, String familyName, String avatarUrl,
             String bio]): super(id, openId, email, displayName, givenName, familyName, avatarUrl, bio) ;
   
   Dartisan.fromFields({String id, String openId, String email, String displayName, String givenName, String familyName, String avatarUrl,
-      String bio, num this.level,bool this.readyForTraining,bool this.readyForHire,bool this.readyForTalks,String this.dartisansBio}) : super.fromFields(id:id,openId:openId, email:email,  displayName:displayName,  givenName:givenName,  familyName:familyName,  avatarUrl:avatarUrl,
+      String bio, num this.level,bool this.readyForTraining,bool this.readyToBeHired,bool this.readyForTalks,String this.dartisanBio}) : super.fromFields(id:id,openId:openId, email:email,  displayName:displayName,  givenName:givenName,  familyName:familyName,  avatarUrl:avatarUrl,
            bio:bio ) {
   }
 
+  Dartisan.fromUser(User user, { num this.level,bool this.readyForTraining,bool this.readyToBeHired,bool this.readyForTalks,String this.dartisanBio}) : super.fromFields(id:user.id,openId:user.openId, email:user.email,  displayName:user.displayName,  givenName:user.givenName,  familyName:user.familyName,  avatarUrl:user.avatarUrl,
+           bio:user.bio ) {
+  }
+  
   Dartisan.loadJSON(Map json) {
     fromJSON(json);
   }
@@ -27,7 +31,7 @@ class Dartisan extends User{
   String toString() =>
       "Dartisan: openId:${openId}, email:${email}, displayName:${displayName}, givenName:${givenName}, familyName:${familyName}, imageUrl:${avatarUrl}, level:${level}";
 
-  User clone() {
+  Dartisan clone() {
     return new Dartisan.fromFields(
         id:id,
         openId: openId,
@@ -38,10 +42,10 @@ class Dartisan extends User{
         avatarUrl: avatarUrl,
         bio: bio,
         level: level,
-        readyForHire: readyForHire,
+        readyToBeHired: readyToBeHired,
         readyForTalks: readyForTalks,
         readyForTraining: readyForTraining,
-        dartisansBio: dartisansBio
+        dartisanBio: dartisanBio
     );
   }
 
@@ -57,10 +61,10 @@ class Dartisan extends User{
       "avatarUrl": avatarUrl,
       "bio": bio,
       "level": level,
-      "readyForHire": readyForHire,
+      "readyToBeHired": readyToBeHired,
       "readyForTalks": readyForTalks,
       "readyForTraining": readyForTraining,
-      "dartisansBio": dartisansBio      
+      "dartisanBio": dartisanBio      
     };
   }
 
@@ -75,10 +79,10 @@ class Dartisan extends User{
     avatarUrl = json["avatarUrl"];
     bio = json["bio"];
     level = json["level"];
-    readyForHire = json["readyForHire"];
+    readyToBeHired = json["readyToBeHired"];
     readyForTalks = json["readyForTalks"];
     readyForTraining = json["readyForTraining"];
-    dartisansBio = json["dartisansBio"];     
+    dartisanBio = json["dartisanBio"];     
   }
   
 }

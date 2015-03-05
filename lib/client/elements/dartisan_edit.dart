@@ -10,13 +10,15 @@ import 'package:gex_webapp_kit_client/webapp_kit_client.dart';
 import 'package:gex_webapp_kit_client/webapp_kit_common.dart';
 import 'package:gex_webapp_kit_client/elements/user_edit.dart';
 import 'package:polymer/polymer.dart';
+import 'package:connecting_dartisans/connecting_dartisans_common.dart';
+import 'package:paper_elements/paper_checkbox.dart';
 
-@CustomTag('gex-dartisan-edit')
+@CustomTag('dartisan-edit')
 class DartisanEdit extends Positionable with Showable, ApplicationEventPassenger {
   final Logger log = new Logger('DartisanEdit');
 
   @observable String dartisanBio;
-
+  
   DartisanEdit.created() : super.created();
 
   @override
@@ -25,23 +27,29 @@ class DartisanEdit extends Positionable with Showable, ApplicationEventPassenger
     bioTextArea.maxLength = 5000;
   }
 
-  set user(User user) {
-    openId = user.openId;
-    email = user.email;
-    displayName = user.displayName;
-    familyName = user.familyName;
-    givenName = user.givenName;
-    avatarUrl = user.avatarUrl;
-    bio = user.bio;
+  set dartisan(Dartisan dartisan) {
+    userEdit.user = dartisan ;
+    dartisanBio = dartisan.dartisanBio;
+    readyForTrainingCheckBox.checked = dartisan.readyForTraining;
   }
-  User get user => new User.fromFields(
-      openId: openId,
-      email: email,
-      displayName: displayName,
-      familyName: familyName,
-      givenName: givenName,
-      avatarUrl: avatarUrl,
-      bio: bioTextArea.value);
+
+  set user(User user) {
+    userEdit.user = user ;
+  }
+  
+  Dartisan get dartisan => new Dartisan.fromUser(
+      userEdit.user,
+      dartisanBio:bioTextArea.value,
+      readyForTraining: readyForTrainingCheckBox.checked ,
+      readyForTalks: readyForTalksCheckBox.checked ,
+      readyToBeHired: readyToBeHiredCheckBox.checked );
 
   TextAreaElement get bioTextArea => $["bioTextArea"] as TextAreaElement;
+  UserEdit get userEdit => $["userEdit"] as UserEdit;
+  PaperCheckbox get readyForTrainingCheckBox => $["readyForTraining"] as PaperCheckbox;
+  PaperCheckbox get readyForTalksCheckBox => $["readyForTalks"] as PaperCheckbox;
+  PaperCheckbox get readyToBeHiredCheckBox => $["readyToBeHired"] as PaperCheckbox;
+
+  
+
 }

@@ -7,7 +7,8 @@ import 'package:gex_webapp_kit_client/webapp_kit_client.dart';
 import 'package:gex_webapp_kit_client/webapp_kit_common.dart';
 import 'package:gex_webapp_kit_client/elements/layout.dart';
 import 'package:gex_webapp_kit_client/elements/page.dart';
-import 'package:gex_webapp_kit_client/elements/user_edit.dart';
+import 'package:connecting_dartisans/client/elements/dartisan_edit.dart';
+import 'package:connecting_dartisans/connecting_dartisans_common.dart';
 
 import '../application.dart';
 import 'list.dart';
@@ -22,7 +23,7 @@ class PageProfile extends Page with Showable {
   Color mainColor = Color.WHITE;
 
   Layout layout;
-  UserEdit userEdit;
+  DartisanEdit dartisanEdit;
 
   PageProfile.created() : super.created();
 
@@ -33,7 +34,7 @@ class PageProfile extends Page with Showable {
 
   void _setAttributes() {
     layout = $["layout"] as Layout;
-    userEdit = $["userEdit"] as UserEdit;
+    dartisanEdit = $["dartisanEdit"] as DartisanEdit;
 
     List<ButtonModel> buttonModels = new List<ButtonModel>();
     buttonModels.add(new ButtonModel(
@@ -58,16 +59,19 @@ class PageProfile extends Page with Showable {
   @override
   void recieveApplicationEvent(ApplicationEvent event) {
     super.recieveApplicationEvent(event);
-    if (event.isUserAuthSuccess || event.isLoginSuccess || event.isRegisterSuccess) {
-      userEdit.user = event.user;
+    if ( event.isLoginSuccess || event.isRegisterSuccess) {
+      dartisanEdit.user = event.user ;
+    }
+    if ( event.isUserDetailsSuccess) {
+      dartisanEdit.dartisan = event.user as Dartisan ;
     }
     if (event.isLogoutSuccess) {
-      userEdit.user = new User();
+      dartisanEdit.dartisan = new Dartisan();
     }
   }
 
   save(Parameters params) {
-    fireApplicationEvent(new ApplicationEvent.callSaveUser(this, userEdit.user));
+    fireApplicationEvent(new ApplicationEvent.callSaveUser(this, dartisanEdit.dartisan));
   }
   saveAndMap(Parameters params) {
     save(params);
@@ -75,7 +79,7 @@ class PageProfile extends Page with Showable {
   }
   logout(Parameters params) {
     // TODO Should call logout first...
-    fireApplicationEvent(new ApplicationEvent.logoutSuccess(this, userEdit.user));
-    userEdit.user = new User();
+    fireApplicationEvent(new ApplicationEvent.logoutSuccess(this, dartisanEdit.dartisan));
+    dartisanEdit.dartisan = new Dartisan();
   }
 }

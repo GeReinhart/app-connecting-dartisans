@@ -3,8 +3,11 @@ library connecting_dartisans.app;
 import 'dart:html';
 import 'package:logging/logging.dart';
 import 'package:polymer/polymer.dart';
+import 'package:gex_webapp_kit_client/webapp_kit_common.dart';
 import 'package:gex_webapp_kit_client/webapp_kit_client.dart';
 import 'package:gex_webapp_kit_client/elements/application.dart';
+import 'package:connecting_dartisans/connecting_dartisans_common.dart';
+import 'package:connecting_dartisans/connecting_dartisans_client.dart';
 import 'pages/about.dart';
 import 'pages/details.dart';
 import 'pages/home.dart';
@@ -30,10 +33,13 @@ void main() {
       ApplicationEventLogger applicationEventLogger = new ApplicationEventLogger();
 
       GoogleAuthenticator authenticator = new GoogleAuthenticator();
-      GoogleLoginFlow loginFlow = new GoogleLoginFlow(authenticator);
-
+      GoogleLoginFlow loginFlow = new GoogleLoginFlow(authenticator, userDetailsService: "/services/dartisan", buildUser: (Map json)=> new Dartisan.loadJSON(json) );
+      Controller controller = new Controller();
+      
+      
       loginFlow.setApplicationEventBus(applicationEventBus);
       authenticator.setApplicationEventBus(applicationEventBus);
+      controller.setApplicationEventBus(applicationEventBus);
       router.setApplicationEventBus(applicationEventBus);
       application.setApplicationEventBus(applicationEventBus);
       applicationEventLogger.setApplicationEventBus(applicationEventBus);
