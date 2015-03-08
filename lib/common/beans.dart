@@ -2,30 +2,44 @@
 // is governed by a BSD-style license that can be found in the LICENSE file.
 part of connecting_dartisans_common;
 
-class Dartisan extends User{
-  
+class Dartisan extends User {
   @Field() num level;
   @Field() bool readyForTraining;
   @Field() bool readyToBeHired;
   @Field() bool readyForTalks;
+  @Field() String bio;
   @Field() String dartisanBio;
 
-  Dartisan([String id, String openId, String email, String displayName, String givenName, String familyName, String avatarUrl,
-            String bio]): super(id, openId, email, displayName, givenName, familyName, avatarUrl, bio) ;
-  
-  Dartisan.fromFields({String id, String openId, String email, String displayName, String givenName, String familyName, String avatarUrl,
-      String bio, num this.level,bool this.readyForTraining,bool this.readyToBeHired,bool this.readyForTalks,String this.dartisanBio}) : super.fromFields(id:id,openId:openId, email:email,  displayName:displayName,  givenName:givenName,  familyName:familyName,  avatarUrl:avatarUrl,
-           bio:bio ) {
-  }
+  Dartisan([String id, String openId, String email, String displayName, String givenName, String familyName,
+      String avatarUrl, String bio])
+      : super(id, openId, email, displayName, givenName, familyName, avatarUrl);
 
-  Dartisan.fromUser(User user, { num this.level,bool this.readyForTraining,bool this.readyToBeHired,bool this.readyForTalks,String this.dartisanBio}) : super.fromFields(id:user.id,openId:user.openId, email:user.email,  displayName:user.displayName,  givenName:user.givenName,  familyName:user.familyName,  avatarUrl:user.avatarUrl,
-           bio:user.bio ) {
-  }
-  
+  Dartisan.fromFields({String id, String openId, String email, String displayName, String givenName, String familyName,
+      String avatarUrl, String bio, num this.level, bool this.readyForTraining, bool this.readyToBeHired,
+      bool this.readyForTalks, String this.dartisanBio})
+      : super.fromFields(
+          id: id,
+          openId: openId,
+          email: email,
+          displayName: displayName,
+          givenName: givenName,
+          familyName: familyName,
+          avatarUrl: avatarUrl) {}
+
+  Dartisan.fromUser(User user, {String this.bio, num this.level, bool this.readyForTraining, bool this.readyToBeHired,
+      bool this.readyForTalks, String this.dartisanBio})
+      : super.fromFields(
+          id: user.id,
+          openId: user.openId,
+          email: user.email,
+          displayName: user.displayName,
+          givenName: user.givenName,
+          familyName: user.familyName,
+          avatarUrl: user.avatarUrl) {}
+
   Dartisan.loadJSON(Map json) {
     fromJSON(json);
   }
-
 
   @override
   String toString() =>
@@ -33,7 +47,7 @@ class Dartisan extends User{
 
   Dartisan clone() {
     return new Dartisan.fromFields(
-        id:id,
+        id: id,
         openId: openId,
         email: email,
         displayName: displayName,
@@ -45,8 +59,7 @@ class Dartisan extends User{
         readyToBeHired: readyToBeHired,
         readyForTalks: readyForTalks,
         readyForTraining: readyForTraining,
-        dartisanBio: dartisanBio
-    );
+        dartisanBio: dartisanBio);
   }
 
   @override
@@ -64,7 +77,7 @@ class Dartisan extends User{
       "readyToBeHired": readyToBeHired,
       "readyForTalks": readyForTalks,
       "readyForTraining": readyForTraining,
-      "dartisanBio": dartisanBio      
+      "dartisanBio": dartisanBio
     };
   }
 
@@ -82,7 +95,6 @@ class Dartisan extends User{
     readyToBeHired = json["readyToBeHired"];
     readyForTalks = json["readyForTalks"];
     readyForTraining = json["readyForTraining"];
-    dartisanBio = json["dartisanBio"];     
+    dartisanBio = json["dartisanBio"];
   }
-  
 }

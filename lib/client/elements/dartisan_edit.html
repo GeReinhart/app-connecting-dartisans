@@ -2,6 +2,7 @@
 <link rel="import" href="../../../../packages/polymer/polymer.html">
 <link rel="import" href="../../../../packages/gex_webapp_kit_client/elements/layout.html">
 <link rel="import" href="../../../../packages/paper_elements/paper_input.html">
+<link rel="import" href="../../../../packages/paper_elements/paper_slider.html">
 <link rel="import" href="../../../../packages/paper_elements/paper_autogrow_textarea.html">
 <link rel="import" href="../../../../packages/paper_elements/paper_input_decorator.html">
 <link rel="import" href="../../../../packages/paper_elements/paper_checkbox.html">
@@ -10,6 +11,8 @@
 
 <link rel="import" href="../../../../packages/gex_webapp_kit_client/elements/user_edit.html">
 
+<link rel="import" href="dartisan_level.html">
+<link rel="import" href="dartisan_checkbox.html">
 
 <polymer-element name="dartisan-edit"  >
   <template>
@@ -34,7 +37,7 @@
       list-style-type: none;
     }
     li {
-      margin-bottom: 10px;
+      margin-bottom: 20px;
     }
     .inputs {
       display: flex;
@@ -47,52 +50,34 @@
     .inputs > div {
       display: block;
     }
-    
-    .checkMain{
-      margin-left: 20px;
-    }
-    .checkDetails{
-      margin-left: 40px;
-      font-style: italic;
-      font-size: small;
-    }    
-    
     </style>   
           <gex-user-edit id="userEdit" ></gex-user-edit>   
           <ul>
-           <li>
-              <paper-input-decorator   label="Bio as a dartisan" floatingLabel>
-                 <textarea id="bioTextArea">{{dartisanBio}}</textarea>
-             </paper-input-decorator>
-          </li>
-           <li>
-              <core-label horizontal layout>
-                <paper-checkbox id="readyForTraining" for></paper-checkbox>
-                <div vertical layout>
-                  <div class="checkMain">Ready for training</div>
-                  <div class="checkDetails">Be able to animate a training in Dart</div>
-                </div>
-              </core-label> 
-          </li>      
-           <li>
-              <core-label horizontal layout>
-                <paper-checkbox id="readyForTalks" for></paper-checkbox>
-                <div vertical layout>
-                  <div class="checkMain">Ready for talks</div>
-                  <div class="checkDetails">Be able to do a Dart presentation in a conference</div>
-                </div>
-              </core-label> 
-          </li>
-           <li>
-              <core-label horizontal layout>
-                <paper-checkbox id="readyToBeHired" for></paper-checkbox>
-                <div vertical layout>
-                  <div class="checkMain">Ready to be hired</div>
-                  <div class="checkDetails">Would consider a job proposition with Dart as the main dev stack</div>
-                </div>
-              </core-label> 
-          </li>            
+             <li>
+                <paper-input-decorator   label="Bio" floatingLabel>
+                   <textarea id="bioTextArea">{{bio}}</textarea>
+               </paper-input-decorator>
+            </li>
+             <li>
+                <paper-input-decorator   label="Bio as a dartisan" floatingLabel>
+                   <textarea id="dartisanBioTextArea">{{dartisanBio}}</textarea>
+               </paper-input-decorator>
+            </li>
+            <li>
+                <dartisan-level id="level" mainLabel="Level" ></dartisan-level>
+            </li>             
+             <li>
+                <dartisan-checkbox id="readyForTraining" checkMain="Ready for training" checkDetails="Be able to animate a training in Dart" ></dartisan-checkbox>
+            </li>      
+             <li>
+                <dartisan-checkbox id="readyForTalks" checkMain="Ready for talks" checkDetails="Be able to do a Dart presentation in a conference" ></dartisan-checkbox>
+            </li>
+             <li>
+                <dartisan-checkbox id="readyToBeHired" checkMain="Ready to be hired" checkDetails="Would consider a job proposition with Dart as the main dev stack" ></dartisan-checkbox>
+            </li>            
           </ul>
+          
+          
 
   </template>
   <script type="application/dart" src="dartisan_edit.dart"></script>

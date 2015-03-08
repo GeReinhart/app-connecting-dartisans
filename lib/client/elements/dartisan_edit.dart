@@ -12,44 +12,53 @@ import 'package:gex_webapp_kit_client/elements/user_edit.dart';
 import 'package:polymer/polymer.dart';
 import 'package:connecting_dartisans/connecting_dartisans_common.dart';
 import 'package:paper_elements/paper_checkbox.dart';
+import 'package:connecting_dartisans/client/elements/dartisan_checkbox.dart';
+import 'package:connecting_dartisans/client/elements/dartisan_level.dart';
 
 @CustomTag('dartisan-edit')
 class DartisanEdit extends Positionable with Showable, ApplicationEventPassenger {
   final Logger log = new Logger('DartisanEdit');
 
+  @observable String bio;
   @observable String dartisanBio;
-  
+
   DartisanEdit.created() : super.created();
 
   @override
   void ready() {
     bioTextArea.rows = 10;
     bioTextArea.maxLength = 5000;
+    dartisanBioTextArea.rows = 10;
+    dartisanBioTextArea.maxLength = 5000;
   }
 
   set dartisan(Dartisan dartisan) {
-    userEdit.user = dartisan ;
+    userEdit.user = dartisan;
+    bio = dartisan.bio;
     dartisanBio = dartisan.dartisanBio;
+    levelSlider.level = dartisan.level;
     readyForTrainingCheckBox.checked = dartisan.readyForTraining;
+    readyForTalksCheckBox.checked = dartisan.readyForTalks;
+    readyToBeHiredCheckBox.checked = dartisan.readyToBeHired;
   }
 
   set user(User user) {
-    userEdit.user = user ;
+    userEdit.user = user;
   }
-  
-  Dartisan get dartisan => new Dartisan.fromUser(
-      userEdit.user,
-      dartisanBio:bioTextArea.value,
-      readyForTraining: readyForTrainingCheckBox.checked ,
-      readyForTalks: readyForTalksCheckBox.checked ,
-      readyToBeHired: readyToBeHiredCheckBox.checked );
 
-  TextAreaElement get bioTextArea => $["bioTextArea"] as TextAreaElement;
+  Dartisan get dartisan => new Dartisan.fromUser(userEdit.user,
+      bio: bioTextArea.value,
+      dartisanBio: dartisanBioTextArea.value,
+      level: levelSlider.level,
+      readyForTraining: readyForTrainingCheckBox.checked,
+      readyForTalks: readyForTalksCheckBox.checked,
+      readyToBeHired: readyToBeHiredCheckBox.checked);
+
   UserEdit get userEdit => $["userEdit"] as UserEdit;
-  PaperCheckbox get readyForTrainingCheckBox => $["readyForTraining"] as PaperCheckbox;
-  PaperCheckbox get readyForTalksCheckBox => $["readyForTalks"] as PaperCheckbox;
-  PaperCheckbox get readyToBeHiredCheckBox => $["readyToBeHired"] as PaperCheckbox;
-
-  
-
+  TextAreaElement get bioTextArea => $["bioTextArea"] as TextAreaElement;
+  TextAreaElement get dartisanBioTextArea => $["dartisanBioTextArea"] as TextAreaElement;
+  DartisanLevel get levelSlider => $["level"] as DartisanLevel;
+  DartisanCheckBox get readyForTrainingCheckBox => $["readyForTraining"] as DartisanCheckBox;
+  DartisanCheckBox get readyForTalksCheckBox => $["readyForTalks"] as DartisanCheckBox;
+  DartisanCheckBox get readyToBeHiredCheckBox => $["readyToBeHired"] as DartisanCheckBox;
 }

@@ -33,10 +33,10 @@ void main() {
       ApplicationEventLogger applicationEventLogger = new ApplicationEventLogger();
 
       GoogleAuthenticator authenticator = new GoogleAuthenticator();
-      GoogleLoginFlow loginFlow = new GoogleLoginFlow(authenticator, userDetailsService: "/services/dartisan", buildUser: (Map json)=> new Dartisan.loadJSON(json) );
+      GoogleLoginFlow loginFlow = new GoogleLoginFlow(authenticator,
+          userDetailsService: "/services/dartisan", buildUser: (Map json) => new Dartisan.loadJSON(json));
       Controller controller = new Controller();
-      
-      
+
       loginFlow.setApplicationEventBus(applicationEventBus);
       authenticator.setApplicationEventBus(applicationEventBus);
       controller.setApplicationEventBus(applicationEventBus);

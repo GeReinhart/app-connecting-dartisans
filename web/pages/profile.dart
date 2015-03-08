@@ -59,11 +59,11 @@ class PageProfile extends Page with Showable {
   @override
   void recieveApplicationEvent(ApplicationEvent event) {
     super.recieveApplicationEvent(event);
-    if ( event.isLoginSuccess || event.isRegisterSuccess) {
-      dartisanEdit.user = event.user ;
+    if (event.isLoginSuccess || event.isRegisterSuccess) {
+      dartisanEdit.user = event.user;
     }
-    if ( event.isUserDetailsSuccess) {
-      dartisanEdit.dartisan = event.user as Dartisan ;
+    if (event.isUserDetailsSuccess) {
+      dartisanEdit.dartisan = event.user as Dartisan;
     }
     if (event.isLogoutSuccess) {
       dartisanEdit.dartisan = new Dartisan();
