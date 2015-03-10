@@ -3,20 +3,20 @@
 part of connecting_dartisans_common;
 
 class Dartisan extends User {
+  @Field() String bio;
+  @Field() String dartisanBio;
   @Field() num level;
   @Field() bool readyForTraining;
   @Field() bool readyToBeHired;
   @Field() bool readyForTalks;
-  @Field() String bio;
-  @Field() String dartisanBio;
 
   Dartisan([String id, String openId, String email, String displayName, String givenName, String familyName,
-      String avatarUrl, String bio])
-      : super(id, openId, email, displayName, givenName, familyName, avatarUrl);
+      String avatarUrl, num locationLat, num locationLng])
+      : super(id, openId, email, displayName, givenName, familyName, avatarUrl, locationLat, locationLng);
 
   Dartisan.fromFields({String id, String openId, String email, String displayName, String givenName, String familyName,
-      String avatarUrl, String bio, num this.level, bool this.readyForTraining, bool this.readyToBeHired,
-      bool this.readyForTalks, String this.dartisanBio})
+      String avatarUrl, num locationLat, num locationLng, String this.bio, String this.dartisanBio, num this.level,
+      bool this.readyForTraining, bool this.readyToBeHired, bool this.readyForTalks})
       : super.fromFields(
           id: id,
           openId: openId,
@@ -24,10 +24,12 @@ class Dartisan extends User {
           displayName: displayName,
           givenName: givenName,
           familyName: familyName,
-          avatarUrl: avatarUrl) {}
+          avatarUrl: avatarUrl,
+          locationLat: locationLat,
+          locationLng: locationLng) {}
 
-  Dartisan.fromUser(User user, {String this.bio, num this.level, bool this.readyForTraining, bool this.readyToBeHired,
-      bool this.readyForTalks, String this.dartisanBio})
+  Dartisan.fromUser(User user, {String this.bio, String this.dartisanBio, num this.level, bool this.readyForTraining,
+      bool this.readyToBeHired, bool this.readyForTalks})
       : super.fromFields(
           id: user.id,
           openId: user.openId,
@@ -35,7 +37,9 @@ class Dartisan extends User {
           displayName: user.displayName,
           givenName: user.givenName,
           familyName: user.familyName,
-          avatarUrl: user.avatarUrl) {}
+          avatarUrl: user.avatarUrl,
+          locationLat: user.locationLat,
+          locationLng: user.locationLng) {}
 
   Dartisan.loadJSON(Map json) {
     fromJSON(json);
@@ -54,12 +58,14 @@ class Dartisan extends User {
         familyName: familyName,
         givenName: givenName,
         avatarUrl: avatarUrl,
+        locationLat: locationLat,
+        locationLng: locationLng,
         bio: bio,
         level: level,
+        dartisanBio: dartisanBio,
         readyToBeHired: readyToBeHired,
         readyForTalks: readyForTalks,
-        readyForTraining: readyForTraining,
-        dartisanBio: dartisanBio);
+        readyForTraining: readyForTraining);
   }
 
   @override
@@ -72,12 +78,14 @@ class Dartisan extends User {
       "givenName": givenName,
       "familyName": familyName,
       "avatarUrl": avatarUrl,
+      "locationLat": locationLat,
+      "locationLng": locationLng,
       "bio": bio,
+      "dartisanBio": dartisanBio,
       "level": level,
       "readyToBeHired": readyToBeHired,
       "readyForTalks": readyForTalks,
       "readyForTraining": readyForTraining,
-      "dartisanBio": dartisanBio
     };
   }
 
@@ -90,11 +98,13 @@ class Dartisan extends User {
     givenName = json["givenName"];
     familyName = json["familyName"];
     avatarUrl = json["avatarUrl"];
+    locationLat = json["locationLat"];
+    locationLng = json["locationLng"];
     bio = json["bio"];
+    dartisanBio = json["dartisanBio"];
     level = json["level"];
     readyToBeHired = json["readyToBeHired"];
     readyForTalks = json["readyForTalks"];
     readyForTraining = json["readyForTraining"];
-    dartisanBio = json["dartisanBio"];
   }
 }
