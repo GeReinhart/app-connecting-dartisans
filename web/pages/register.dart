@@ -32,6 +32,18 @@ class PageRegister extends Page with Showable {
     super.ready();
     _setAttributes();
   }
+  
+  @override
+  void show() {
+    super.show();
+    userEdit.show();
+  }
+
+  @override
+  void hide() {
+    super.hide();
+    userEdit.hide();
+  }
 
   void _setAttributes() {
     layout = $["layout"] as Layout;
@@ -59,6 +71,7 @@ class PageRegister extends Page with Showable {
     super.recieveApplicationEvent(event);
     if (event.isUserAuthSuccess) {
       userEdit.user = event.user;
+      userEdit.map.geoLocation();
     }
   }
 

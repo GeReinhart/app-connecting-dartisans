@@ -32,6 +32,18 @@ class PageProfile extends Page with Showable {
     _setAttributes();
   }
 
+  @override
+  void show() {
+    super.show();
+    dartisanEdit.show();
+  }
+
+  @override
+  void hide() {
+    super.hide();
+    dartisanEdit.hide();
+  }
+  
   void _setAttributes() {
     layout = $["layout"] as Layout;
     dartisanEdit = $["dartisanEdit"] as DartisanEdit;

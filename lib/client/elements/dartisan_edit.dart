@@ -32,6 +32,18 @@ class DartisanEdit extends Positionable with Showable, ApplicationEventPassenger
     dartisanBioTextArea.maxLength = 5000;
   }
 
+  @override
+  void show() {
+    super.show();
+    userEdit.show();
+  }
+
+  @override
+  void hide() {
+    super.hide();
+    userEdit.hide();
+  }
+  
   set dartisan(Dartisan dartisan) {
     userEdit.user = dartisan;
     bio = dartisan.bio;
