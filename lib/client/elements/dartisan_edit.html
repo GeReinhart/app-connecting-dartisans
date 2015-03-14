@@ -74,7 +74,17 @@
             </li>
              <li>
                 <dartisan-checkbox id="readyToBeHired" checkMain="Ready to be hired" checkDetails="Would consider a job proposition with Dart as the main dev stack" ></dartisan-checkbox>
-            </li>            
+            </li>  
+            <li>
+               <paper-input-decorator label="GitHub account" floatingLabel>
+                   <input is="core-input" value="{{gitHubAccount}}" maxlength="100" >
+               </paper-input-decorator>    
+            </li>  
+            <li>
+               <paper-input-decorator label="Twitter account" floatingLabel>
+                   <input is="core-input" value="{{twitterAccount}}" maxlength="100" >
+               </paper-input-decorator>    
+            </li>                      
           </ul>
           
           

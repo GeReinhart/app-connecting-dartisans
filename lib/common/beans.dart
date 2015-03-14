@@ -9,6 +9,8 @@ class Dartisan extends User {
   @Field() bool readyForTraining;
   @Field() bool readyToBeHired;
   @Field() bool readyForTalks;
+  @Field() String gitHubAccount;
+  @Field() String twitterAccount;
 
   Dartisan([String id, String openId, String email, String displayName, String givenName, String familyName,
       String avatarUrl, num locationLat, num locationLng])
@@ -16,7 +18,7 @@ class Dartisan extends User {
 
   Dartisan.fromFields({String id, String openId, String email, String displayName, String givenName, String familyName,
       String avatarUrl, num locationLat, num locationLng, String this.bio, String this.dartisanBio, num this.level,
-      bool this.readyForTraining, bool this.readyToBeHired, bool this.readyForTalks})
+      bool this.readyForTraining, bool this.readyToBeHired, bool this.readyForTalks, String this.gitHubAccount, String this.twitterAccount})
       : super.fromFields(
           id: id,
           openId: openId,
@@ -29,7 +31,7 @@ class Dartisan extends User {
           locationLng: locationLng) {}
 
   Dartisan.fromUser(User user, {String this.bio, String this.dartisanBio, num this.level, bool this.readyForTraining,
-      bool this.readyToBeHired, bool this.readyForTalks})
+      bool this.readyToBeHired, bool this.readyForTalks, String this.gitHubAccount,String this.twitterAccount})
       : super.fromFields(
           id: user.id,
           openId: user.openId,
@@ -65,7 +67,9 @@ class Dartisan extends User {
         dartisanBio: dartisanBio,
         readyToBeHired: readyToBeHired,
         readyForTalks: readyForTalks,
-        readyForTraining: readyForTraining);
+        readyForTraining: readyForTraining,
+        gitHubAccount: gitHubAccount,
+        twitterAccount:twitterAccount);
   }
 
   @override
@@ -86,6 +90,8 @@ class Dartisan extends User {
       "readyToBeHired": readyToBeHired,
       "readyForTalks": readyForTalks,
       "readyForTraining": readyForTraining,
+      "gitHubAccount": gitHubAccount,
+      "twitterAccount": twitterAccount
     };
   }
 
@@ -106,5 +112,7 @@ class Dartisan extends User {
     readyToBeHired = json["readyToBeHired"];
     readyForTalks = json["readyForTalks"];
     readyForTraining = json["readyForTraining"];
+    gitHubAccount= json["gitHubAccount"];
+    twitterAccount = json["twitterAccount"];
   }
 }

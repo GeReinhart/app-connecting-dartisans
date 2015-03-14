@@ -21,6 +21,9 @@ class DartisanEdit extends Positionable with Showable, ApplicationEventPassenger
 
   @observable String bio;
   @observable String dartisanBio;
+  @observable String gitHubAccount;
+  @observable String twitterAccount;
+  
 
   DartisanEdit.created() : super.created();
 
@@ -51,7 +54,9 @@ class DartisanEdit extends Positionable with Showable, ApplicationEventPassenger
     levelSlider.level = dartisan.level;
     readyForTrainingCheckBox.checked = dartisan.readyForTraining;
     readyForTalksCheckBox.checked = dartisan.readyForTalks;
-    readyToBeHiredCheckBox.checked = dartisan.readyToBeHired;
+    readyToBeHiredCheckBox.checked = dartisan.readyToBeHired ;
+    gitHubAccount = dartisan.gitHubAccount ;
+    twitterAccount = dartisan.twitterAccount ;
   }
 
   set user(User user) {
@@ -64,7 +69,9 @@ class DartisanEdit extends Positionable with Showable, ApplicationEventPassenger
       level: levelSlider.level,
       readyForTraining: readyForTrainingCheckBox.checked,
       readyForTalks: readyForTalksCheckBox.checked,
-      readyToBeHired: readyToBeHiredCheckBox.checked);
+      readyToBeHired: readyToBeHiredCheckBox.checked,
+      gitHubAccount: gitHubAccount,
+      twitterAccount: twitterAccount);
 
   UserEdit get userEdit => $["userEdit"] as UserEdit;
   TextAreaElement get bioTextArea => $["bioTextArea"] as TextAreaElement;
