@@ -14,9 +14,26 @@
     body {
       font-family: RobotoDraft, 'Helvetica Neue', Helvetica, Arial;
     }
+    .container {
+      display: table;
+    }
+    .column {
+      display: table-cell;
+      padding: 10px;
+    }    
     </style>
-        <img _src="{{dartisan.avatarUrl}}"  /> 
-        <div>{{dartisan.displayName}}</div>
+       <div class="container">
+          <div class="column"  style="width: 170px">
+                  <img _src="{{model.dartisan.avatarUrl}}"  /> 
+                  <div>{{model.dartisan.displayName}}</div>
+          </div>
+          <div class="column">
+                  <div style="font-weight: bolder;" >{{model.dartisan.levelLabel}}</div>
+                  <div  >{{model.bioSummary}}</div>
+          </div>
+      </div>
+    
+
   </template>
   <script type="application/dart" src="dartisan_summary.dart"></script>
 </polymer-element>

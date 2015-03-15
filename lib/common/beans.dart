@@ -48,6 +48,23 @@ class Dartisan extends User {
     fromJson(json);
   }
 
+  String get levelLabel {
+    switch (level.toInt()) {
+      case 1:
+        return "Beginner";
+      case 2:
+        return "Intermediate";
+      case 3:
+        return "Experienced";
+      case 4:
+        return "Advanced";
+      case 5:
+        return "Expert";
+      default:
+        return "";
+    }
+  }
+
   @override
   String toString() =>
       "Dartisan: openId:${openId}, email:${email}, displayName:${displayName}, givenName:${givenName}, familyName:${familyName}, imageUrl:${avatarUrl}, level:${level}";

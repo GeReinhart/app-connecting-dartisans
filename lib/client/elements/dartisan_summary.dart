@@ -15,15 +15,41 @@ import 'package:paper_elements/paper_checkbox.dart';
 import 'package:connecting_dartisans/client/elements/dartisan_checkbox.dart';
 import 'package:connecting_dartisans/client/elements/dartisan_level.dart';
 
+class DartisanSummaryModel {
+  Dartisan dartisan;
+
+  @observable String get bioSummary {
+    if (dartisan == null) {
+      return "";
+    }
+
+    String bioSummary = "";
+    if (dartisan.dartisanBio != null) {
+      bioSummary += dartisan.dartisanBio;
+    }
+    if (dartisan.bio != null) {
+      bioSummary += " " + dartisan.bio;
+    }
+    if (bioSummary.length > 500) {
+      bioSummary = bioSummary.substring(0, 497) + "...";
+    }
+    return bioSummary;
+  }
+}
+
 @CustomTag('dartisan-summary')
 class DartisanSummary extends Positionable with Showable, ApplicationEventPassenger {
   final Logger log = new Logger('DartisanSummary');
 
-  @observable Dartisan dartisan;
+  @observable DartisanSummaryModel model;
 
   DartisanSummary.created() : super.created();
 
   factory DartisanSummary.newElement(Dartisan dartisan) {
     return (new Element.tag('dartisan-summary') as DartisanSummary)..dartisan = dartisan;
+  }
+
+  set dartisan(Dartisan value) {
+    model = new DartisanSummaryModel()..dartisan = value;
   }
 }

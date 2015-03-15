@@ -71,7 +71,7 @@ class PageList extends Page with Showable {
     listElement.children.removeWhere((_) => true);
     UListElement ul = new UListElement();
     listElement.append(ul);
-    dartisans.dartisans.forEach((dartisan) {
+    dartisans.dartisans.reversed.forEach((dartisan) {
       LIElement li = new LIElement();
       ul.append(li);
       DartisanSummary dartisanSummary = new DartisanSummary.newElement(dartisan);
