@@ -38,7 +38,7 @@ class DartisanSummaryModel {
 }
 
 @CustomTag('dartisan-summary')
-class DartisanSummary extends Positionable with Showable, ApplicationEventPassenger {
+class DartisanSummary extends Positionable with Showable {
   final Logger log = new Logger('DartisanSummary');
 
   @observable DartisanSummaryModel model;

@@ -75,6 +75,12 @@ class PageList extends Page with Showable {
       LIElement li = new LIElement();
       ul.append(li);
       DartisanSummary dartisanSummary = new DartisanSummary.newElement(dartisan);
+
+      dartisanSummary.style.cursor = "pointer";
+      dartisanSummary.onClick.listen((event) {
+        fireApplicationEvent(new DartisansApplicationEvent.callDetails(this, dartisan.openId));
+      });
+
       li.append(dartisanSummary);
     });
   }

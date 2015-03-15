@@ -5,7 +5,8 @@
 <link rel="import" href="../../../../packages/paper_elements/paper_checkbox.html">
 <link rel="import" href="../../../../packages/paper_elements/roboto.html">
 <link rel="import" href="../../../../packages/core_elements/core_label.html">
-
+<link rel="import" href="../../../../packages/paper_elements/paper_shadow.html">
+<link rel="stylesheet" href="../../../../packages/paper_elements/src/paper-shadow/paper-shadow.css">
 
 
 <polymer-element name="dartisan-summary" >
@@ -19,11 +20,13 @@
     }
     .column {
       display: table-cell;
+      vertical-align: middle;
       padding: 10px;
     }    
     </style>
+    <paper-shadow id="shadow" class="card" z="2" animated="true" >     
        <div class="container">
-          <div class="column"  style="width: 170px">
+          <div class="column"  style="width: 170px ; text-align: center;">
                   <img _src="{{model.dartisan.avatarUrl}}"  /> 
                   <div>{{model.dartisan.displayName}}</div>
           </div>
@@ -32,7 +35,7 @@
                   <div  >{{model.bioSummary}}</div>
           </div>
       </div>
-    
+    </paper-shadow>
 
   </template>
   <script type="application/dart" src="dartisan_summary.dart"></script>

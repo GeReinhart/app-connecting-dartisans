@@ -13,6 +13,12 @@ class Controller extends Object with ApplicationEventPassenger {
             "/services/dartisans", (Map output) => callSearchSuccess(output), (status) => callSearchFailure(status));
         request.send();
       }
+
+      if (event.isCallDetails) {
+        GetJsonRequest request = new GetJsonRequest("/services/dartisan/${event.openId}",
+            (Map output) => callDetailsSuccess(new Dartisan.loadJSON(output)), (status) => callDetailsFailure(status));
+        request.send();
+      }
     }
 
     if (event.isCallSaveUser) {
@@ -38,6 +44,15 @@ class Controller extends Object with ApplicationEventPassenger {
   }
 
   void callSearchFailure(num status) {
+    // TODO Send failure event
+  }
+
+  void callDetailsSuccess(Dartisan dartisan) {
+    // TODO Send sucess event
+
+  }
+
+  void callDetailsFailure(num status) {
     // TODO Send failure event
   }
 }
