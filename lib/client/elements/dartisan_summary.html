@@ -1,0 +1,22 @@
+<!-- import polymer-element's definition -->
+<link rel="import" href="../../../../packages/polymer/polymer.html">
+<link rel="import" href="../../../../packages/paper_elements/paper_slider.html">
+<link rel="import" href="../../../../packages/paper_elements/paper_input_decorator.html">
+<link rel="import" href="../../../../packages/paper_elements/paper_checkbox.html">
+<link rel="import" href="../../../../packages/paper_elements/roboto.html">
+<link rel="import" href="../../../../packages/core_elements/core_label.html">
+
+
+
+<polymer-element name="dartisan-summary" >
+  <template>
+    <style shim-shadowdom>
+    body {
+      font-family: RobotoDraft, 'Helvetica Neue', Helvetica, Arial;
+    }
+    </style>
+        <img _src="{{dartisan.avatarUrl}}"  /> 
+        <div>{{dartisan.displayName}}</div>
+  </template>
+  <script type="application/dart" src="dartisan_summary.dart"></script>
+</polymer-element>

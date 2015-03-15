@@ -15,3 +15,4 @@ import 'package:gex_webapp_kit_client/webapp_kit_client.dart';
 import 'package:connecting_dartisans/connecting_dartisans_common.dart';
 
 part 'client/controller.dart';
+part 'client/events.dart';

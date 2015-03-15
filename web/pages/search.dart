@@ -4,8 +4,11 @@ import "dart:html";
 import 'package:logging/logging.dart';
 import 'package:polymer/polymer.dart';
 import 'package:gex_webapp_kit_client/webapp_kit_client.dart';
+import 'package:gex_webapp_kit_client/webapp_kit_common.dart';
 import 'package:gex_webapp_kit_client/elements/layout.dart';
 import 'package:gex_webapp_kit_client/elements/page.dart';
+import 'package:connecting_dartisans/connecting_dartisans_client.dart';
+import 'package:connecting_dartisans/connecting_dartisans_common.dart';
 
 import '../application.dart';
 import 'list.dart';
@@ -50,10 +53,11 @@ class PageSearch extends Page with Showable {
   }
 
   resultOnMap(Parameters params) {
-    fireApplicationEvent(new PageCallEvent(sender: this, pageName: PageMap.NAME));
+    fireApplicationEvent(new ApplicationEvent.callPage(this, PageMap.NAME));
   }
   resultOnList(Parameters params) {
-    fireApplicationEvent(new PageCallEvent(sender: this, pageName: PageList.NAME));
+    fireApplicationEvent(new ApplicationEvent.callPage(this, PageList.NAME));
+    fireApplicationEvent(new DartisansApplicationEvent.callSearch(this));
   }
   cancel(Parameters params) {
     layout.style.backgroundColor = mainColor.lightColor;

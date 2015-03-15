@@ -32,7 +32,7 @@ class PageRegister extends Page with Showable {
     super.ready();
     _setAttributes();
   }
-  
+
   @override
   void show() {
     super.show();

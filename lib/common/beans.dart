@@ -18,7 +18,8 @@ class Dartisan extends User {
 
   Dartisan.fromFields({String id, String openId, String email, String displayName, String givenName, String familyName,
       String avatarUrl, num locationLat, num locationLng, String this.bio, String this.dartisanBio, num this.level,
-      bool this.readyForTraining, bool this.readyToBeHired, bool this.readyForTalks, String this.gitHubAccount, String this.twitterAccount})
+      bool this.readyForTraining, bool this.readyToBeHired, bool this.readyForTalks, String this.gitHubAccount,
+      String this.twitterAccount})
       : super.fromFields(
           id: id,
           openId: openId,
@@ -31,7 +32,7 @@ class Dartisan extends User {
           locationLng: locationLng) {}
 
   Dartisan.fromUser(User user, {String this.bio, String this.dartisanBio, num this.level, bool this.readyForTraining,
-      bool this.readyToBeHired, bool this.readyForTalks, String this.gitHubAccount,String this.twitterAccount})
+      bool this.readyToBeHired, bool this.readyForTalks, String this.gitHubAccount, String this.twitterAccount})
       : super.fromFields(
           id: user.id,
           openId: user.openId,
@@ -44,7 +45,7 @@ class Dartisan extends User {
           locationLng: user.locationLng) {}
 
   Dartisan.loadJSON(Map json) {
-    fromJSON(json);
+    fromJson(json);
   }
 
   @override
@@ -69,11 +70,11 @@ class Dartisan extends User {
         readyForTalks: readyForTalks,
         readyForTraining: readyForTraining,
         gitHubAccount: gitHubAccount,
-        twitterAccount:twitterAccount);
+        twitterAccount: twitterAccount);
   }
 
   @override
-  Map toJSON() {
+  Map toJson() {
     return {
       "id": id,
       "openId": openId,
@@ -96,7 +97,7 @@ class Dartisan extends User {
   }
 
   @override
-  void fromJSON(Map json) {
+  void fromJson(Map json) {
     id = json["id"];
     openId = json["openId"];
     email = json["email"];
@@ -112,7 +113,37 @@ class Dartisan extends User {
     readyToBeHired = json["readyToBeHired"];
     readyForTalks = json["readyForTalks"];
     readyForTraining = json["readyForTraining"];
-    gitHubAccount= json["gitHubAccount"];
+    gitHubAccount = json["gitHubAccount"];
     twitterAccount = json["twitterAccount"];
+  }
+}
+
+class Dartisans implements Bean {
+  @Field() List<Dartisan> dartisans;
+
+  Dartisans(this.dartisans) {
+    if (dartisans == null) {
+      dartisans = new List<Dartisan>();
+    }
+  }
+
+  Dartisans.loadJSON(Map json) {
+    fromJson(json);
+  }
+
+  @override
+  void fromJson(Map json) {
+    List<Map> dartisansAsMap = json['dartisans'];
+    dartisans = new List<Dartisan>();
+    if (dartisansAsMap != null) {
+      dartisansAsMap.forEach((d) {
+        dartisans.add(new Dartisan()..fromJson(d));
+      });
+    }
+  }
+
+  @override
+  Map toJson() {
+    return {'dartisans': JSON.encode(dartisans)};
   }
 }

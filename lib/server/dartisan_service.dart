@@ -19,7 +19,9 @@ class DartisanService extends MongoDbService<Dartisan> {
   }
 
   @app.Route("/dartisans", methods: const [app.GET])
-  Future<List<Dartisan>> load() => find();
+  Future<Dartisans> load() {
+    return find().then((dartisans) => new Dartisans(dartisans));
+  }
 
   @app.Route("/dartisan/:openId", methods: const [app.POST])
   Future<Dartisan> addOrUpdate(@Decode() Dartisan inputDartisan) {

@@ -7,6 +7,14 @@ class Controller extends Object with ApplicationEventPassenger {
 
   @override
   void recieveApplicationEvent(ApplicationEvent event) {
+    if (event is DartisansApplicationEvent) {
+      if (event.isCallSearch) {
+        GetJsonRequest request = new GetJsonRequest(
+            "/services/dartisans", (Map output) => callSearchSuccess(output), (status) => callSearchFailure(status));
+        request.send();
+      }
+    }
+
     if (event.isCallSaveUser) {
       PostJsonRequest request = new PostJsonRequest("/services/dartisan/${event.user.openId}",
           (Map output) => saveDartisanSuccess(new Dartisan.loadJSON(output)), (status) => saveDartisanFailure(status));
@@ -21,6 +29,15 @@ class Controller extends Object with ApplicationEventPassenger {
   }
 
   void saveDartisanFailure(num status) {
+    // TODO Send failure event
+  }
+
+  void callSearchSuccess(Map output) {
+    Dartisans dartisans = new Dartisans.loadJSON(output);
+    fireApplicationEvent(new DartisansApplicationEvent.searchSuccess(this, dartisans));
+  }
+
+  void callSearchFailure(num status) {
     // TODO Send failure event
   }
 }

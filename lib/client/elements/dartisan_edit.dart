@@ -23,7 +23,6 @@ class DartisanEdit extends Positionable with Showable, ApplicationEventPassenger
   @observable String dartisanBio;
   @observable String gitHubAccount;
   @observable String twitterAccount;
-  
 
   DartisanEdit.created() : super.created();
 
@@ -46,7 +45,7 @@ class DartisanEdit extends Positionable with Showable, ApplicationEventPassenger
     super.hide();
     userEdit.hide();
   }
-  
+
   set dartisan(Dartisan dartisan) {
     userEdit.user = dartisan;
     bio = dartisan.bio;
@@ -54,9 +53,9 @@ class DartisanEdit extends Positionable with Showable, ApplicationEventPassenger
     levelSlider.level = dartisan.level;
     readyForTrainingCheckBox.checked = dartisan.readyForTraining;
     readyForTalksCheckBox.checked = dartisan.readyForTalks;
-    readyToBeHiredCheckBox.checked = dartisan.readyToBeHired ;
-    gitHubAccount = dartisan.gitHubAccount ;
-    twitterAccount = dartisan.twitterAccount ;
+    readyToBeHiredCheckBox.checked = dartisan.readyToBeHired;
+    gitHubAccount = dartisan.gitHubAccount;
+    twitterAccount = dartisan.twitterAccount;
   }
 
   set user(User user) {
