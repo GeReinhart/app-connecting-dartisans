@@ -37,6 +37,18 @@ class PageDetails extends Page with Showable {
   }
 
   @override
+  void show() {
+    super.show();
+    details.show();
+  }
+
+  @override
+  void hide() {
+    super.hide();
+    details.hide();
+  }
+
+  @override
   void recieveApplicationEvent(ApplicationEvent event) {
     super.recieveApplicationEvent(event);
     if (event is DartisansApplicationEvent) {

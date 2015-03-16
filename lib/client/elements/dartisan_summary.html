@@ -27,18 +27,17 @@
     }    
     </style>
     <paper-shadow  class="card" z="2" animated="true" >     
-       <div class="container"  >
+       <div class="container" id="main" >
           <div class="column"  style="width: 170px ; text-align: center;">
                   <img _src="{{model.dartisan.avatarUrl}}"  /> 
+                  <div>{{model.dartisan.displayName}}</div>
           </div>
           <div class="column">
-                  <h1>{{model.dartisan.displayName}}</h1>
                   <div style="font-weight: bolder;" >{{model.dartisan.levelLabel}}</div>
                   <div  >{{model.bioSummary}}</div>
           </div>
       </div>
-    </paper-shadow>
-
+    </paper-shadow>    
   </template>
   <script type="application/dart" src="dartisan_summary.dart"></script>
 </polymer-element>

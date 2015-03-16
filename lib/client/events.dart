@@ -69,18 +69,22 @@ class DartisansApplicationEvent extends ApplicationEvent {
       openId != null;
 
   factory DartisansApplicationEvent.detailsSuccess(Object sender, Dartisan dartisan) {
-    
-    PageKey pageKey
+    List<Parameter> parameters = new List<Parameter>();
+    parameters.add(new Parameter("id", dartisan.openId));
+    Parameters resources = new Parameters(parameters);
+    PageKey pageKey = new PageKey(name: "details", resources: resources);
     return new DartisansApplicationEvent(sender,
         dartisansPageType: DartisansEventType.DETAILS,
         dartisan: dartisan,
         status: EventStatus.SUCCESS,
         type: EventType.PAGE,
-        pageType: EventPageType.CUSTOM);
+        pageType: EventPageType.CUSTOM,
+        pageKey: pageKey);
   }
   bool get isDetailsSuccess => statusIs(EventStatus.SUCCESS) &&
       eventTypeIs(EventType.PAGE) &&
       pageTypeIs(EventPageType.CUSTOM) &&
       dartisansPageTypeIs(DartisansEventType.DETAILS) &&
-      dartisan != null;
+      dartisan != null &&
+      pageKey != null;
 }
