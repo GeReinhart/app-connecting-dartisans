@@ -134,4 +134,16 @@ class ConnectingDartisansApplication extends Application {
         new ToolbarModel(buttons: bottomToolbar, color: mainColor, colorUsage: ColorUsage.ALTERNATE_WITH_LIGHT);
     addToolbar(bottomToolbarModel);
   }
+
+  @override
+  void recieveApplicationEvent(ApplicationEvent event) {
+    if (event is DartisansApplicationEvent) {
+      if (event.isDetailsSuccess) {
+        showPage(pageName: event.pageKey.name, params: event.pageKey.params);
+        fireApplicationEvent(
+            new ApplicationEvent.pageDisplayed(this, event.pageKey.name, params: event.pageKey.params));
+        return;
+      }
+    }
+  }
 }

@@ -1,6 +1,6 @@
 // Copyright (c) 2015, Gérald Reinhart. All rights reserved. Use of this source code
 // is governed by a BSD-style license that can be found in the LICENSE file.
-library connecting_dartisans.elements.dartisan_summary;
+library connecting_dartisans.elements.dartisan_details;
 
 import "dart:html";
 import 'dart:js' as js;
@@ -15,7 +15,7 @@ import 'package:paper_elements/paper_checkbox.dart';
 import 'package:connecting_dartisans/client/elements/dartisan_checkbox.dart';
 import 'package:connecting_dartisans/client/elements/dartisan_level.dart';
 
-class DartisanSummaryModel {
+class DartisanDetailsModel {
   Dartisan dartisan;
 
   @observable String get bioSummary {
@@ -37,27 +37,20 @@ class DartisanSummaryModel {
   }
 }
 
-@CustomTag('dartisan-summary')
-class DartisanSummary extends Positionable with Showable {
-  final Logger log = new Logger('DartisanSummary');
+@CustomTag('dartisan-details')
+class DartisanDetails extends Positionable with Showable {
+  final Logger log = new Logger('DartisanDetails');
 
-  @observable DartisanSummaryModel model;
-  @observable Color color = Color.BLUE_0082C8.lightColorAsColor;
+  @observable DartisanDetailsModel model;
 
-  DartisanSummary.created() : super.created();
+  DartisanDetails.created() : super.created();
 
-  factory DartisanSummary.newElement(Dartisan dartisan) {
-    return (new Element.tag('dartisan-summary') as DartisanSummary)..dartisan = dartisan;
-  }
-
-  @override
-  void ready() {
-    mainElement.onMouseEnter.listen((e) => mainElement.style.backgroundColor = Color.WHITE.mainColor);
-    mainElement.onMouseLeave.listen((e) => mainElement.style.backgroundColor = color.lightColor);
+  factory DartisanDetails.newElement(Dartisan dartisan) {
+    return (new Element.tag('dartisan-details') as DartisanDetails)..dartisan = dartisan;
   }
 
   set dartisan(Dartisan value) {
-    model = new DartisanSummaryModel()..dartisan = value;
+    model = new DartisanDetailsModel()..dartisan = value;
   }
 
   HtmlElement get mainElement => $["main"] as HtmlElement;

@@ -6,6 +6,9 @@ import 'package:polymer/polymer.dart';
 import 'package:gex_webapp_kit_client/webapp_kit_client.dart';
 import 'package:gex_webapp_kit_client/elements/layout.dart';
 import 'package:gex_webapp_kit_client/elements/page.dart';
+import 'package:connecting_dartisans/connecting_dartisans_client.dart';
+import 'package:connecting_dartisans/connecting_dartisans_common.dart';
+import 'package:connecting_dartisans/client/elements/dartisan_details.dart';
 
 import '../application.dart';
 
@@ -32,4 +35,16 @@ class PageDetails extends Page with Showable {
     PageModel model = new PageModel(name: NAME, layoutModel: layoutModel);
     this.init(model);
   }
+
+  @override
+  void recieveApplicationEvent(ApplicationEvent event) {
+    super.recieveApplicationEvent(event);
+    if (event is DartisansApplicationEvent) {
+      if (event.isDetailsSuccess) {
+        details.dartisan = event.dartisan;
+      }
+    }
+  }
+
+  DartisanDetails get details => $["details"] as DartisanDetails;
 }

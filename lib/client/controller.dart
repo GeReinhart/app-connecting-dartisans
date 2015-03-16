@@ -48,8 +48,7 @@ class Controller extends Object with ApplicationEventPassenger {
   }
 
   void callDetailsSuccess(Dartisan dartisan) {
-    // TODO Send sucess event
-
+    fireApplicationEvent(new DartisansApplicationEvent.detailsSuccess(this, dartisan));
   }
 
   void callDetailsFailure(num status) {

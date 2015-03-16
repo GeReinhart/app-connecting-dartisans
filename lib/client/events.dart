@@ -69,6 +69,8 @@ class DartisansApplicationEvent extends ApplicationEvent {
       openId != null;
 
   factory DartisansApplicationEvent.detailsSuccess(Object sender, Dartisan dartisan) {
+    
+    PageKey pageKey
     return new DartisansApplicationEvent(sender,
         dartisansPageType: DartisansEventType.DETAILS,
         dartisan: dartisan,
