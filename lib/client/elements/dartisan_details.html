@@ -24,19 +24,67 @@
       vertical-align: middle;
       padding: 10px;
     }    
+    ul {
+      list-style-type: none;
+    }
+    li {
+      margin-bottom: 7px;
+    }    
     </style>
     <paper-shadow  class="card" z="2" animated="true" >     
-       <div class="container" id="main" >
+       <div class="container" id="header" >
           <div class="column"  style="width: 170px ; text-align: center;">
                   <img _src="{{model.dartisan.avatarUrl}}"  /> 
           </div>
           <div class="column">
                   <h1>{{model.dartisan.displayName}}</h1>
                   <div style="font-weight: bolder;" >{{model.dartisan.levelLabel}}</div>
-                  <div  >{{model.bioSummary}}</div>
           </div>
       </div>
     </paper-shadow>
+    <paper-shadow  class="card" z="2" animated="true" >     
+       <div class="container" id="bios" >
+          <div class="column"  style="width: 50% ; text-align: left: ;">
+                  <h3>Bio</h3>
+                  <div  >{{model.dartisan.bio}}</div> 
+          </div>
+          <div class="column"  style="width: 50% ; text-align: left: ;">
+                  <h3>Bio as a dartisan</h3>
+                  <div  >{{model.dartisan.dartisanBio}}</div> 
+          </div>          
+      </div>
+    </paper-shadow>
+    <paper-shadow  class="card" z="2" animated="true"  hidden?="{{!model.readyForSomeThing}}" >     
+       <div class="container" id="readys" >
+          <div class="column"  style="width: 20% ; text-align: left: ;">
+                  <h3>Ready</h3>
+          </div>
+          <div class="column"  style="width: 80% ; text-align: left: ;">
+            <ul>
+              <li hidden?="{{!model.dartisan.readyForTraining}}" >
+                  <div vertical layout>
+                    <div style="margin-left: 20px;" >Ready for training</div>
+                    <div style="margin-left: 40px; font-style: italic; font-size: small;">Be able to animate a training in Dart</div>
+                  </div>                  
+              </li>
+              <li hidden?="{{!model.dartisan.readyForTalks}}" >
+                  <div vertical layout>
+                    <div style="margin-left: 20px;" >Ready for talks</div>
+                    <div style="margin-left: 40px; font-style: italic; font-size: small;">Be able to do a Dart presentation in a conference</div>
+                  </div>                  
+              </li>
+              <li hidden?="{{!model.dartisan.readyToBeHired}}" >
+                  <div vertical layout>
+                    <div style="margin-left: 20px;" >Ready to be hired</div>
+                    <div style="margin-left: 40px; font-style: italic; font-size: small;">Would consider a job proposition with Dart as the main dev stack</div>
+                  </div>                  
+              </li>                            
+            </ul>
+          </div>          
+      </div>
+    </paper-shadow>
+
+
 
   </template>
   <script type="application/dart" src="dartisan_details.dart"></script>

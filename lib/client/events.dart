@@ -72,7 +72,7 @@ class DartisansApplicationEvent extends ApplicationEvent {
     List<Parameter> parameters = new List<Parameter>();
     parameters.add(new Parameter("id", dartisan.openId));
     Parameters resources = new Parameters(parameters);
-    PageKey pageKey = new PageKey(name: "details", resources: resources);
+    PageKey pageKey = new PageKey(name: "dartisan", resources: resources);
     return new DartisansApplicationEvent(sender,
         dartisansPageType: DartisansEventType.DETAILS,
         dartisan: dartisan,

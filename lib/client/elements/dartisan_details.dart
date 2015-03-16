@@ -18,23 +18,7 @@ import 'package:connecting_dartisans/client/elements/dartisan_level.dart';
 class DartisanDetailsModel {
   Dartisan dartisan;
 
-  @observable String get bioSummary {
-    if (dartisan == null) {
-      return "";
-    }
-
-    String bioSummary = "";
-    if (dartisan.dartisanBio != null) {
-      bioSummary += dartisan.dartisanBio;
-    }
-    if (dartisan.bio != null) {
-      bioSummary += " " + dartisan.bio;
-    }
-    if (bioSummary.length > 500) {
-      bioSummary = bioSummary.substring(0, 497) + "...";
-    }
-    return bioSummary;
-  }
+  bool get readyForSomeThing => dartisan.readyForTalks || dartisan.readyForTraining || dartisan.readyToBeHired;
 }
 
 @CustomTag('dartisan-details')
