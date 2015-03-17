@@ -20,7 +20,7 @@ class PageSearch extends Page with Showable {
   static final String NAME = "search";
   final Logger log = new Logger(NAME);
 
-  Color mainColor = ConnectingDartisansApplication.DART_LIGHT_BLUE_ORANGE.lightColorAsColor;
+  Color mainColor = Color.WHITE;
 
   Layout layout;
 
@@ -43,11 +43,11 @@ class PageSearch extends Page with Showable {
         new ButtonModel(label: "Cancel", action: cancel, image: new Image(mainImageUrl: "/images/button/back57.png")));
     ToolbarModel toolbarModel = new ToolbarModel(
         buttons: buttonModels,
-        color: mainColor,
+        color: Color.GREY_858585.lightColorAsColor,
         colorUsage: ColorUsage.ALTERNATE_WITH_LIGHT,
         orientation: Orientation.est);
 
-    LayoutModel layoutModel = new LayoutModel(toolbarModel: toolbarModel, color: mainColor);
+    LayoutModel layoutModel = new LayoutModel(toolbarModel: toolbarModel, color: Color.WHITE);
     PageModel model = new PageModel(name: NAME, layoutModel: layoutModel);
     this.init(model);
   }
@@ -60,6 +60,6 @@ class PageSearch extends Page with Showable {
     fireApplicationEvent(new DartisansApplicationEvent.callSearch(this));
   }
   cancel(Parameters params) {
-    layout.style.backgroundColor = mainColor.lightColor;
+    layout.style.backgroundColor = Color.WHITE.mainColor;
   }
 }

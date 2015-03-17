@@ -19,6 +19,7 @@ class DartisanDetailsModel {
   Dartisan dartisan;
 
   bool get readyForSomeThing => dartisan.readyForTalks || dartisan.readyForTraining || dartisan.readyToBeHired;
+  bool get hasBio => dartisan.bio != null || dartisan.dartisanBio != null;
 }
 
 @CustomTag('dartisan-details')

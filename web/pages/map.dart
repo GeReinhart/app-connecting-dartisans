@@ -14,7 +14,7 @@ class PageMap extends Page with Showable {
   static final String NAME = "map";
   final Logger log = new Logger(NAME);
 
-  Color mainColor = ConnectingDartisansApplication.DART_LIGHT_BLUE_ORANGE.lightColorAsColor;
+  Color mainColor = Color.WHITE;
 
   Layout layout;
 
@@ -28,7 +28,7 @@ class PageMap extends Page with Showable {
   void _setAttributes() {
     layout = $["layout"] as Layout;
 
-    LayoutModel layoutModel = new LayoutModel(color: mainColor);
+    LayoutModel layoutModel = new LayoutModel(color: Color.WHITE);
     PageModel model = new PageModel(name: NAME, layoutModel: layoutModel);
     this.init(model);
   }

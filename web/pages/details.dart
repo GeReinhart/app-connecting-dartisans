@@ -17,7 +17,7 @@ class PageDetails extends Page with Showable {
   static final String NAME = "dartisan";
   final Logger log = new Logger('NAME');
 
-  Color mainColor = ConnectingDartisansApplication.DART_LIGHT_BLUE_ORANGE.lightColorAsColor;
+  Color mainColor = Color.WHITE;
 
   Layout layout;
 

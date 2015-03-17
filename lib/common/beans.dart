@@ -13,11 +13,11 @@ class Dartisan extends User {
   @Field() String twitterAccount;
 
   Dartisan([String id, String openId, String email, String displayName, String givenName, String familyName,
-      String avatarUrl, num locationLat, num locationLng])
-      : super(id, openId, email, displayName, givenName, familyName, avatarUrl, locationLat, locationLng);
+      String avatarUrl, num locationLat, num locationLng, String locationAddress])
+      : super(id, openId, email, displayName,  avatarUrl, locationLat, locationLng,locationAddress);
 
-  Dartisan.fromFields({String id, String openId, String email, String displayName, String givenName, String familyName,
-      String avatarUrl, num locationLat, num locationLng, String this.bio, String this.dartisanBio, num this.level,
+  Dartisan.fromFields({String id, String openId, String email, String displayName, 
+      String avatarUrl, num locationLat, num locationLng, String locationAddress ,String this.bio, String this.dartisanBio, num this.level,
       bool this.readyForTraining, bool this.readyToBeHired, bool this.readyForTalks, String this.gitHubAccount,
       String this.twitterAccount})
       : super.fromFields(
@@ -25,11 +25,10 @@ class Dartisan extends User {
           openId: openId,
           email: email,
           displayName: displayName,
-          givenName: givenName,
-          familyName: familyName,
           avatarUrl: avatarUrl,
           locationLat: locationLat,
-          locationLng: locationLng) {}
+          locationLng: locationLng,
+          locationAddress:locationAddress) {}
 
   Dartisan.fromUser(User user, {String this.bio, String this.dartisanBio, num this.level, bool this.readyForTraining,
       bool this.readyToBeHired, bool this.readyForTalks, String this.gitHubAccount, String this.twitterAccount})
@@ -38,11 +37,10 @@ class Dartisan extends User {
           openId: user.openId,
           email: user.email,
           displayName: user.displayName,
-          givenName: user.givenName,
-          familyName: user.familyName,
           avatarUrl: user.avatarUrl,
           locationLat: user.locationLat,
-          locationLng: user.locationLng) {}
+          locationLng: user.locationLng,
+          locationAddress:user.locationAddress) {}
 
   Dartisan.loadJSON(Map json) {
     fromJson(json);
@@ -64,10 +62,22 @@ class Dartisan extends User {
         return "";
     }
   }
+  
+  String get country {
+    if (locationAddress == null ){
+      return null;
+    }
+    int lastComma = locationAddress.lastIndexOf(",");
+    if (lastComma == -1  || lastComma == locationAddress.length-1){
+      return locationAddress;
+    }else{
+      return locationAddress.substring(lastComma+1,locationAddress.length).toString();
+    }
+  }
 
   @override
   String toString() =>
-      "Dartisan: openId:${openId}, email:${email}, displayName:${displayName}, givenName:${givenName}, familyName:${familyName}, imageUrl:${avatarUrl}, level:${level}";
+      "Dartisan: openId:${openId}, email:${email}, displayName:${displayName}, imageUrl:${avatarUrl}, locationLat:${locationLat}, locationLng:${locationLng}, locationAddress:${locationAddress}, level:${level}";
 
   Dartisan clone() {
     return new Dartisan.fromFields(
@@ -75,11 +85,10 @@ class Dartisan extends User {
         openId: openId,
         email: email,
         displayName: displayName,
-        familyName: familyName,
-        givenName: givenName,
         avatarUrl: avatarUrl,
         locationLat: locationLat,
         locationLng: locationLng,
+        locationAddress:locationAddress,
         bio: bio,
         level: level,
         dartisanBio: dartisanBio,
@@ -97,11 +106,10 @@ class Dartisan extends User {
       "openId": openId,
       "email": email,
       "displayName": displayName,
-      "givenName": givenName,
-      "familyName": familyName,
       "avatarUrl": avatarUrl,
       "locationLat": locationLat,
       "locationLng": locationLng,
+      "locationAddress" : locationAddress,
       "bio": bio,
       "dartisanBio": dartisanBio,
       "level": level,
@@ -119,11 +127,10 @@ class Dartisan extends User {
     openId = json["openId"];
     email = json["email"];
     displayName = json["displayName"];
-    givenName = json["givenName"];
-    familyName = json["familyName"];
     avatarUrl = json["avatarUrl"];
     locationLat = json["locationLat"];
     locationLng = json["locationLng"];
+    locationAddress = json["locationAddress"];
     bio = json["bio"];
     dartisanBio = json["dartisanBio"];
     level = json["level"];

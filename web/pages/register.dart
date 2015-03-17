@@ -57,7 +57,7 @@ class PageRegister extends Page with Showable {
 
     ToolbarModel toolbarModel = new ToolbarModel(
         buttons: buttonModels,
-        color: mainColor,
+        color: Color.GREY_858585.lightColorAsColor,
         colorUsage: ColorUsage.ALTERNATE_WITH_LIGHT,
         orientation: Orientation.est);
 
