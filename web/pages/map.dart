@@ -49,21 +49,21 @@ class PageMap extends Page with Showable {
   }
   
   
-  ApplicationEventBus _applicationEventBus ;
+  ApplicationEventBus _eventBus ;
   @override
   void setApplicationEventBus(ApplicationEventBus value) {
     super.setApplicationEventBus(value);
-    _applicationEventBus = value;
+    _eventBus = value;
   }
   
   @override
   void recieveApplicationEvent(ApplicationEvent event) {
     super.recieveApplicationEvent(event);
-    if ( _applicationEventBus== null ){
+    if ( _eventBus== null ){
       map.recieveApplicationEvent(event);
     }else{
-      map.setApplicationEventBus(_applicationEventBus);
-      _applicationEventBus = null;
+      map.setApplicationEventBus(_eventBus);
+      _eventBus = null;
     }
   }
 }

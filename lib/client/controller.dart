@@ -2,6 +2,7 @@
 // is governed by a BSD-style license that can be found in the LICENSE file.
 part of connecting_dartisans_client;
 
+
 class Controller extends Object with ApplicationEventPassenger {
   Controller();
 
@@ -28,7 +29,7 @@ class Controller extends Object with ApplicationEventPassenger {
       return;
     }
     
-    if (event.isCallPage && (event.pageKey.name == "list" || event.pageKey.name == "search")){
+    if (event.isCallPage && (event.pageKey.name == "list" ||  event.pageKey.name == "map")){
       fireApplicationEvent(new DartisansApplicationEvent.callSearch(this));
     }
     
