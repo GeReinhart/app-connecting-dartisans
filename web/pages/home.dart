@@ -70,6 +70,7 @@ class PageHome extends Page with Showable {
   
   map(Parameters params) {
     fireApplicationEvent(new ApplicationEvent.callPage(this, PageMap.NAME));
+    fireApplicationEvent(new DartisansApplicationEvent.callSearch(this));    
   }
   search(Parameters params) {
     fireApplicationEvent(new ApplicationEvent.callPage(this, PageSearch.NAME));

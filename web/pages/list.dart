@@ -22,8 +22,6 @@ class PageList extends Page with Showable {
   final Logger log = new Logger(NAME);
 
   Color mainColor = Color.WHITE;
-
-
   Layout layout;
   Dartisans dartisans;
 

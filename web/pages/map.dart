@@ -6,6 +6,7 @@ import 'package:polymer/polymer.dart';
 import 'package:gex_webapp_kit_client/webapp_kit_client.dart';
 import 'package:gex_webapp_kit_client/elements/layout.dart';
 import 'package:gex_webapp_kit_client/elements/page.dart';
+import 'package:connecting_dartisans/client/elements/dartisans_map.dart';
 
 import '../application.dart';
 
@@ -15,9 +16,10 @@ class PageMap extends Page with Showable {
   final Logger log = new Logger(NAME);
 
   Color mainColor = Color.WHITE;
-
+  DartisansMap map;
   Layout layout;
-
+  
+  
   PageMap.created() : super.created();
 
   ready() {
@@ -27,9 +29,41 @@ class PageMap extends Page with Showable {
 
   void _setAttributes() {
     layout = $["layout"] as Layout;
-
+    map =new  DartisansMap( $["map"] );
+    
     LayoutModel layoutModel = new LayoutModel(color: Color.WHITE);
     PageModel model = new PageModel(name: NAME, layoutModel: layoutModel);
     this.init(model);
+  }
+  
+  @override
+  void show() {
+    super.show();
+    map.show();
+  }
+
+  @override
+  void hide() {
+    super.hide();
+    map.hide();
+  }
+  
+  
+  ApplicationEventBus _applicationEventBus ;
+  @override
+  void setApplicationEventBus(ApplicationEventBus value) {
+    super.setApplicationEventBus(value);
+    _applicationEventBus = value;
+  }
+  
+  @override
+  void recieveApplicationEvent(ApplicationEvent event) {
+    super.recieveApplicationEvent(event);
+    if ( _applicationEventBus== null ){
+      map.recieveApplicationEvent(event);
+    }else{
+      map.setApplicationEventBus(_applicationEventBus);
+      _applicationEventBus = null;
+    }
   }
 }

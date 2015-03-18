@@ -27,6 +27,11 @@ class Controller extends Object with ApplicationEventPassenger {
       request.send(event.user as Dartisan);
       return;
     }
+    
+    if (event.isCallPage && (event.pageKey.name == "list" || event.pageKey.name == "search")){
+      fireApplicationEvent(new DartisansApplicationEvent.callSearch(this));
+    }
+    
   }
 
   void saveDartisanSuccess(User user) {

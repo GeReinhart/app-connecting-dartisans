@@ -57,7 +57,6 @@ class PageSearch extends Page with Showable {
   }
   resultOnList(Parameters params) {
     fireApplicationEvent(new ApplicationEvent.callPage(this, PageList.NAME));
-    fireApplicationEvent(new DartisansApplicationEvent.callSearch(this));
   }
   cancel(Parameters params) {
     layout.style.backgroundColor = Color.WHITE.mainColor;
