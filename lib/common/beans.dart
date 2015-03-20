@@ -171,3 +171,35 @@ class Dartisans implements Bean {
     return {'dartisans': JSON.encode(dartisans)};
   }
 }
+
+class DartisansSearchForm implements Bean{
+  
+  @Field() String fullTextSearch;
+  @Field() bool readyForTraining ;
+  @Field() bool readyForTalks;
+  @Field() bool readyToBeHired;
+  
+  DartisansSearchForm([String fullTextSearch, String readyForTraining, String readyForTalks, String readyToBeHired]);
+  
+  DartisansSearchForm.fromFields({String this.fullTextSearch, bool this.readyForTraining, bool this.readyForTalks, bool this.readyToBeHired});
+  
+  @override
+  Map toJson() {
+    return {
+      "fullTextSearch": fullTextSearch,
+      "readyForTraining": readyForTraining,
+      "readyForTalks": readyForTalks,
+      "readyToBeHired": readyToBeHired
+    };
+  }
+
+  @override
+  void fromJson(Map json) {
+    fullTextSearch = json["fullTextSearch"];
+    readyForTraining = json["readyForTraining"];
+    readyForTalks = json["readyForTalks"];
+    readyToBeHired = json["readyToBeHired"];
+  }
+  
+}
+

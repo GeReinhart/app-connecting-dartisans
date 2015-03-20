@@ -1,0 +1,56 @@
+<!-- import polymer-element's definition -->
+<link rel="import" href="../../../../packages/polymer/polymer.html">
+<link rel="import" href="../../../../packages/paper_elements/paper_slider.html">
+<link rel="import" href="../../../../packages/paper_elements/paper_input_decorator.html">
+<link rel="import" href="../../../../packages/paper_elements/paper_checkbox.html">
+<link rel="import" href="../../../../packages/paper_elements/roboto.html">
+<link rel="import" href="../../../../packages/core_elements/core_label.html">
+<link rel="import" href="../../../../packages/paper_elements/paper_shadow.html">
+<link rel="stylesheet" href="../../../../packages/paper_elements/src/paper-shadow/paper-shadow.css">
+<link rel="import" href="../../../../packages/gex_webapp_kit_client/elements/ternary_options.html">
+
+
+<polymer-element name="dartisans-search-form" >
+  <template>
+    <style shim-shadowdom>
+    body {
+      font-family: RobotoDraft, 'Helvetica Neue', Helvetica, Arial;
+    }
+    .container {
+      display: table;
+      background-color: {{color.lightColor}};
+      width: 100% ;
+    }
+    .column {
+      display: table-cell;
+      vertical-align: middle;
+      padding: 10px;
+    }    
+    </style>
+        <paper-shadow  class="card" z="2" animated="true" >     
+           <div class="container"  >
+              <div class="column"  style="width: 15px ;">&nbsp;</div>
+              <div class="column">
+                   <paper-input-decorator label="Full text search" floatingLabel>
+                       <input is="core-input" value="{{_model.fullTextSearch}}" maxlength="100"  >
+                   </paper-input-decorator>
+              </div>
+          </div>    
+        </paper-shadow> 
+        <paper-shadow  class="card" z="2" animated="true" >     
+           <div class="container"  >
+              <div class="column"  style="width: 15px ;">&nbsp;</div>
+              <div class="column">
+                   <div style="margin-top: 10px"  >&nbsp;</div>
+                   <gex-ternary-options style="margin-top : 10px" id="optionsReadyForTraining" ></gex-ternary-options>
+                   <gex-ternary-options style="margin-top : 10px" id="optionsReadyForTalks" ></gex-ternary-options>
+                   <gex-ternary-options style="margin-top : 10px" id="optionsReadyToBeHired" ></gex-ternary-options>
+              </div>
+          </div>    
+        </paper-shadow>    
+    
+  </template>
+  <script type="application/dart" src="dartisans_search_form.dart"></script>
+</polymer-element>
+
+

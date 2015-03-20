@@ -6,6 +6,7 @@ import 'package:polymer/polymer.dart';
 import 'package:gex_webapp_kit_client/webapp_kit_client.dart';
 import 'package:gex_webapp_kit_client/webapp_kit_common.dart';
 import 'package:gex_webapp_kit_client/elements/layout.dart';
+import 'package:gex_webapp_kit_client/elements/ternary_options.dart';
 import 'package:gex_webapp_kit_client/elements/page.dart';
 import 'package:connecting_dartisans/connecting_dartisans_client.dart';
 import 'package:connecting_dartisans/connecting_dartisans_common.dart';
@@ -34,6 +35,8 @@ class PageSearch extends Page with Showable {
   void _setAttributes() {
     layout = $["layout"] as Layout;
 
+
+    
     List<ButtonModel> buttonModels = new List<ButtonModel>();
     buttonModels.add(new ButtonModel(
         label: "Result on map", action: resultOnMap, image: new Image(mainImageUrl: "/images/button/map32.png")));
