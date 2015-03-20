@@ -42,8 +42,6 @@ class PageSearch extends Page with Showable {
         label: "Result on map", action: resultOnMap, image: new Image(mainImageUrl: "/images/button/map32.png")));
     buttonModels.add(new ButtonModel(
         label: "Result as list", action: resultOnList, image: new Image(mainImageUrl: "/images/button/list23.png")));
-    buttonModels.add(
-        new ButtonModel(label: "Cancel", action: cancel, image: new Image(mainImageUrl: "/images/button/back57.png")));
     ToolbarModel toolbarModel = new ToolbarModel(
         buttons: buttonModels,
         color: Color.GREY_858585.lightColorAsColor,
