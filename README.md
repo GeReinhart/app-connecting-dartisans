@@ -3,6 +3,8 @@
 
 [![Build Status](https://drone.io/github.com/GeReinhart/app-connecting-dartisans/status.png)](https://drone.io/github.com/GeReinhart/app-connecting-dartisans/latest)[ ![App in QA](https://raw.githubusercontent.com/GeReinhart/app-connecting-dartisans/master/doc/images/appQa.png)](https://qa-connecting-dartisans.herokuapp.com/)
 
+Will be available soon on production at http://connecting.dartisans.net
+
 ## Aim
 
 Use cases :

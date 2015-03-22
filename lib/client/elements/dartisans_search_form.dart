@@ -16,7 +16,7 @@ import 'package:gex_webapp_kit_client/elements/ternary_options.dart';
 class DartisansSearchFormElement extends Positionable with Showable {
   final Logger log = new Logger('DartisansSearchForm');
 
-  @observable DartisansSearchForm _model;
+  @observable DartisansSearchForm model;
 
   DartisansSearchFormElement.created() : super.created();
 
@@ -27,8 +27,8 @@ class DartisansSearchFormElement extends Positionable with Showable {
     optionsReadyForTalks.init(new TernaryOptionsModel("Ready for talks"));    
   }
   
-  DartisansSearchForm get model => _model; 
-  set model(DartisansSearchForm value) { 
+  DartisansSearchForm get dartisansSearchForm => model; 
+  set dartisansSearchForm(DartisansSearchForm value) { 
     _model = value;
     optionsReadyForTraining.option = _model.readyForTraining ;
     optionsReadyForTalks.option = _model.readyForTalks ;
