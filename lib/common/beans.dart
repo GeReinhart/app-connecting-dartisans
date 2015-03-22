@@ -75,6 +75,49 @@ class Dartisan extends User {
     }
   }
 
+  bool accept(DartisansSearchForm search){
+    bool accepted = false ;
+    if (search == null){
+      return true;
+    }
+    if (search.fullTextSearch != null && search.fullTextSearch.isNotEmpty){
+      accepted =  _fullSearch (this.bio,search.fullTextSearch) || 
+          _fullSearch (this.dartisanBio,search.fullTextSearch) ||
+          _fullSearch (this.displayName,search.fullTextSearch) ||
+          _fullSearch (this.gitHubAccount,search.fullTextSearch) ||
+          _fullSearch (this.twitterAccount,search.fullTextSearch) ||
+          _fullSearch (this.locationAddress,search.fullTextSearch) ;
+      if ( ! accepted){
+        return false;
+      }
+    }
+    if (search.readyForTalks != null ){
+      accepted = search.readyForTalks == this.readyForTalks ;
+      if ( ! accepted){
+        return false;
+      }
+    }
+    if (search.readyForTraining != null ){
+      accepted = search.readyForTraining == this.readyForTraining ;
+      if ( ! accepted){
+        return false;
+      }
+    }    
+    if (search.readyToBeHired != null ){
+      accepted = search.readyToBeHired == this.readyToBeHired ;
+      if ( ! accepted){
+        return false;
+      }
+    }     
+    
+    
+    return true;
+  }
+  
+  bool _fullSearch(String text, String searched){
+    return text != null && text.contains(searched);
+  }
+  
   @override
   String toString() =>
       "Dartisan: openId:${openId}, email:${email}, displayName:${displayName}, imageUrl:${avatarUrl}, locationLat:${locationLat}, locationLng:${locationLng}, locationAddress:${locationAddress}, level:${level}";
@@ -143,25 +186,47 @@ class Dartisan extends User {
 }
 
 class Dartisans implements Bean {
-  @Field() List<Dartisan> dartisans;
+  
+  
+  @Field() Map<String,Dartisan> dartisans;
 
   Dartisans(this.dartisans) {
     if (dartisans == null) {
-      dartisans = new List<Dartisan>();
+      dartisans = new Map<String,Dartisan>();
     }
   }
 
+  List<Dartisan> get dartisanList => new List<Dartisan>()..addAll(dartisans.values); 
+  
+  List<Dartisan> filteredDartisans(DartisansSearchForm search) {
+    return new List<Dartisan>()..addAll(dartisans.values.where( (d)=> d.accept(search)  )   ) ;
+  } 
+  
+  Dartisans.empty() {
+     this.dartisans = new Map<String,Dartisan>();
+  }
+  
+  Dartisans.fromList(List<Dartisan> dartisans) {
+     this.dartisans = new Map<String,Dartisan>();
+     dartisans.forEach((d)=>put(d));
+  }
+  
   Dartisans.loadJSON(Map json) {
     fromJson(json);
   }
 
+  void put(Dartisan dartisan){
+    dartisans[dartisan.openId] = dartisan ;
+  }
+  
   @override
   void fromJson(Map json) {
-    List<Map> dartisansAsMap = json['dartisans'];
-    dartisans = new List<Dartisan>();
+    Map<String,Map> dartisansAsMap = json['dartisans'];
+    dartisans = new Map<String,Dartisan>();
     if (dartisansAsMap != null) {
-      dartisansAsMap.forEach((d) {
-        dartisans.add(new Dartisan()..fromJson(d));
+      dartisansAsMap.forEach((o,d) {
+        Dartisan dartisan = new Dartisan()..fromJson(d);
+        dartisans[o]= dartisan;
       });
     }
   }

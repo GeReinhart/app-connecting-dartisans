@@ -6,13 +6,20 @@ part of connecting_dartisans_client;
 class Controller extends Object with ApplicationEventPassenger {
   Controller();
 
+  Dartisans dartisans = new Dartisans.empty();
+  DateTime lastDartisansRefresh = new DateTime(2000);   
+  
   @override
   void recieveApplicationEvent(ApplicationEvent event) {
     if (event is DartisansApplicationEvent) {
       if (event.isCallSearch) {
-        GetJsonRequest request = new GetJsonRequest(
-            "/services/dartisans", (Map output) => callSearchSuccess(output), (status) => callSearchFailure(status));
-        request.send();
+        if (lastDartisansRefresh.isBefore(  new DateTime.now().subtract( new Duration(minutes: 2)) )) {
+          GetJsonRequest request = new GetJsonRequest(
+              "/services/dartisans", (Map output) => callSearchSuccess(output), (status) => callSearchFailure(status));
+          request.send();
+        }else{
+          fireApplicationEvent(new DartisansApplicationEvent.searchSuccess(this, dartisans));
+        }
       }
 
       if (event.isCallDetails) {
@@ -35,7 +42,8 @@ class Controller extends Object with ApplicationEventPassenger {
     
   }
 
-  void saveDartisanSuccess(User user) {
+  void saveDartisanSuccess(Dartisan dartisan) {
+    dartisans.put(dartisan);
     // TODO Send sucess event
 
   }
@@ -46,6 +54,8 @@ class Controller extends Object with ApplicationEventPassenger {
 
   void callSearchSuccess(Map output) {
     Dartisans dartisans = new Dartisans.loadJSON(output);
+    this.dartisans = dartisans;
+    this.lastDartisansRefresh = new DateTime.now();
     fireApplicationEvent(new DartisansApplicationEvent.searchSuccess(this, dartisans));
   }
 
@@ -54,6 +64,7 @@ class Controller extends Object with ApplicationEventPassenger {
   }
 
   void callDetailsSuccess(Dartisan dartisan) {
+    dartisans.put(dartisan);
     fireApplicationEvent(new DartisansApplicationEvent.detailsSuccess(this, dartisan));
   }
 

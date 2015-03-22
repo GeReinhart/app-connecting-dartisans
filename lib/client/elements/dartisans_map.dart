@@ -65,7 +65,7 @@ class DartisansMap extends Object with Showable,  ApplicationEventPassenger{
     _markers.forEach((m)=> m.map = null) ;
     _markers.clear();
     
-    _dartisans.dartisans.forEach((dartisan){
+    _dartisans.dartisanList.forEach((dartisan){
       
       LatLng position = new LatLng(dartisan.locationLat, dartisan.locationLng) ;
       

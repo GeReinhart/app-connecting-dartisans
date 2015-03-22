@@ -20,7 +20,7 @@ class DartisanService extends MongoDbService<Dartisan> {
 
   @app.Route("/dartisans", methods: const [app.GET])
   Future<Dartisans> load() {
-    return find().then((dartisans) => new Dartisans(dartisans));
+    return find().then((dartisans) => new Dartisans.fromList(dartisans));
   }
 
   @app.Route("/dartisan/:openId", methods: const [app.POST])
