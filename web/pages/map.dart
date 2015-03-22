@@ -18,8 +18,7 @@ class PageMap extends Page with Showable {
   Color mainColor = Color.WHITE;
   DartisansMap map;
   Layout layout;
-  
-  
+
   PageMap.created() : super.created();
 
   ready() {
@@ -29,13 +28,13 @@ class PageMap extends Page with Showable {
 
   void _setAttributes() {
     layout = $["layout"] as Layout;
-    map =new  DartisansMap( $["map"] );
-    
+    map = new DartisansMap($["map"]);
+
     LayoutModel layoutModel = new LayoutModel(color: Color.WHITE);
     PageModel model = new PageModel(name: NAME, layoutModel: layoutModel);
     this.init(model);
   }
-  
+
   @override
   void show() {
     super.show();
@@ -47,21 +46,20 @@ class PageMap extends Page with Showable {
     super.hide();
     map.hide();
   }
-  
-  
-  ApplicationEventBus _eventBus ;
+
+  ApplicationEventBus _eventBus;
   @override
   void setApplicationEventBus(ApplicationEventBus value) {
     super.setApplicationEventBus(value);
     _eventBus = value;
   }
-  
+
   @override
   void recieveApplicationEvent(ApplicationEvent event) {
     super.recieveApplicationEvent(event);
-    if ( _eventBus== null ){
+    if (_eventBus == null) {
       map.recieveApplicationEvent(event);
-    }else{
+    } else {
       map.setApplicationEventBus(_eventBus);
       _eventBus = null;
     }

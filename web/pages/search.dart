@@ -10,6 +10,7 @@ import 'package:gex_webapp_kit_client/elements/ternary_options.dart';
 import 'package:gex_webapp_kit_client/elements/page.dart';
 import 'package:connecting_dartisans/connecting_dartisans_client.dart';
 import 'package:connecting_dartisans/connecting_dartisans_common.dart';
+import 'package:connecting_dartisans/client/elements/dartisans_search_form.dart';
 
 import '../application.dart';
 import 'list.dart';
@@ -24,6 +25,7 @@ class PageSearch extends Page with Showable {
   Color mainColor = Color.WHITE;
 
   Layout layout;
+  DartisansSearchFormElement form;
 
   PageSearch.created() : super.created();
 
@@ -34,9 +36,9 @@ class PageSearch extends Page with Showable {
 
   void _setAttributes() {
     layout = $["layout"] as Layout;
+    form = $["form"] as DartisansSearchFormElement;
+    form.setApplicationEventBus(this.applicationEventBus);
 
-
-    
     List<ButtonModel> buttonModels = new List<ButtonModel>();
     buttonModels.add(new ButtonModel(
         label: "Result on map", action: resultOnMap, image: new Image(mainImageUrl: "/images/button/map32.png")));
@@ -51,6 +53,13 @@ class PageSearch extends Page with Showable {
     LayoutModel layoutModel = new LayoutModel(toolbarModel: toolbarModel, color: Color.WHITE);
     PageModel model = new PageModel(name: NAME, layoutModel: layoutModel);
     this.init(model);
+  }
+
+  @override
+  void recieveApplicationEvent(ApplicationEvent event) {
+    super.recieveApplicationEvent(event);
+    // TODO Find another way to do this
+    form.setApplicationEventBus(this.applicationEventBus);
   }
 
   resultOnMap(Parameters params) {

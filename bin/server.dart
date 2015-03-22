@@ -52,10 +52,10 @@ String googleOAuthSecret() {
 }
 
 String dbUri() {
-  if ( Platform.environment['CONNECTING_DARTISANS_DB_URI'] != null ){
-     return Platform.environment['CONNECTING_DARTISANS_DB_URI'];
-  }else{
-    return Platform.environment['MONGODB_URI'] ;
+  if (Platform.environment['CONNECTING_DARTISANS_DB_URI'] != null) {
+    return Platform.environment['CONNECTING_DARTISANS_DB_URI'];
+  } else {
+    return Platform.environment['MONGODB_URI'];
   }
   ;
 }

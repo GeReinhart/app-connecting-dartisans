@@ -50,17 +50,6 @@ void main() {
   });
 }
 
-String clientId() {
-  if (window.location.hostname == "localhost") {
-    return "765376678220-21161f3h7quqp1l57mh96sopdjndhntl.apps.googleusercontent.com";
-  }
-  if (window.location.hostname == "qa-connecting-dartisans.herokuapp.com") {
-    return "765376678220-650s0gq93ap8db8uk0rkg19l8265npcq.apps.googleusercontent.com";
-  }
-
-  return "";
-}
-
 @CustomTag('connecting-dartisans')
 class ConnectingDartisansApplication extends Application {
   static final Color DART_BLUE_ORANGE = new Color(

@@ -2,23 +2,32 @@
 // is governed by a BSD-style license that can be found in the LICENSE file.
 part of connecting_dartisans_client;
 
-
 class Controller extends Object with ApplicationEventPassenger {
-  Controller();
+  Controller() {
+    _loadDartisans(new DartisansSearchForm());
+  }
 
   Dartisans dartisans = new Dartisans.empty();
-  DateTime lastDartisansRefresh = new DateTime(2000);   
-  
+  DateTime lastDartisansRefresh = new DateTime(2000);
+  bool waitingForDartisans = false;
+
+  void _loadDartisans(DartisansSearchForm search) {
+    GetJsonRequest request = new GetJsonRequest("/services/dartisans",
+        (Map output) => callSearchSuccess(output, search), (status) => callSearchFailure(status));
+    waitingForDartisans = true;
+    request.send();
+  }
+
   @override
   void recieveApplicationEvent(ApplicationEvent event) {
     if (event is DartisansApplicationEvent) {
       if (event.isCallSearch) {
-        if (lastDartisansRefresh.isBefore(  new DateTime.now().subtract( new Duration(minutes: 2)) )) {
-          GetJsonRequest request = new GetJsonRequest(
-              "/services/dartisans", (Map output) => callSearchSuccess(output), (status) => callSearchFailure(status));
-          request.send();
-        }else{
-          fireApplicationEvent(new DartisansApplicationEvent.searchSuccess(this, dartisans));
+        if (!waitingForDartisans &&
+            lastDartisansRefresh.isBefore(new DateTime.now().subtract(new Duration(minutes: 2)))) {
+          _loadDartisans(event.search);
+        } else {
+          fireApplicationEvent(
+              new DartisansApplicationEvent.searchSuccess(this, dartisans.newFilteredDartisans(event.search)));
         }
       }
 
@@ -35,11 +44,6 @@ class Controller extends Object with ApplicationEventPassenger {
       request.send(event.user as Dartisan);
       return;
     }
-    
-    if (event.isCallPage && (event.pageKey.name == "list" ||  event.pageKey.name == "map")){
-      fireApplicationEvent(new DartisansApplicationEvent.callSearch(this));
-    }
-    
   }
 
   void saveDartisanSuccess(Dartisan dartisan) {
@@ -52,14 +56,16 @@ class Controller extends Object with ApplicationEventPassenger {
     // TODO Send failure event
   }
 
-  void callSearchSuccess(Map output) {
+  void callSearchSuccess(Map output, DartisansSearchForm search) {
     Dartisans dartisans = new Dartisans.loadJSON(output);
     this.dartisans = dartisans;
     this.lastDartisansRefresh = new DateTime.now();
-    fireApplicationEvent(new DartisansApplicationEvent.searchSuccess(this, dartisans));
+    waitingForDartisans = false;
+    fireApplicationEvent(new DartisansApplicationEvent.searchSuccess(this, dartisans.newFilteredDartisans(search)));
   }
 
   void callSearchFailure(num status) {
+    waitingForDartisans = false;
     // TODO Send failure event
   }
 

@@ -18,7 +18,6 @@
     }
     .container {
       display: table;
-      background-color: {{color.lightColor}};
       width: 100% ;
     }
     .column {
@@ -32,7 +31,7 @@
               <div class="column"  style="width: 15px ;">&nbsp;</div>
               <div class="column">
                    <paper-input-decorator label="Full text search" floatingLabel>
-                       <input is="core-input" value="{{model.fullTextSearch}}" maxlength="100"  >
+                       <input id="fullTextSearch" is="core-input"  maxlength="100"  >
                    </paper-input-decorator>
               </div>
           </div>    

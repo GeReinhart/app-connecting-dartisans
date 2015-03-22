@@ -11,13 +11,14 @@ class DartisansApplicationEvent extends ApplicationEvent {
   DartisansEventType dartisansPageType;
   Dartisans dartisans;
   Dartisan dartisan;
+  DartisansSearchForm search;
   String openId;
 
   bool dartisansPageTypeIs(DartisansEventType param) => (dartisansPageType != null && dartisansPageType == param);
 
-  DartisansApplicationEvent(Object sender, {this.dartisansPageType, this.dartisans, this.dartisan, this.openId,
-      EventStatus status, EventType type, EventError error, User user, String errorDetails, EventPageType pageType,
-      PageKey pageKey, ViewPortModel viewPortModel})
+  DartisansApplicationEvent(Object sender, {this.dartisansPageType, this.dartisans, this.search, this.dartisan,
+      this.openId, EventStatus status, EventType type, EventError error, User user, String errorDetails,
+      EventPageType pageType, PageKey pageKey, ViewPortModel viewPortModel})
       : super(sender,
           status: status,
           type: type,
@@ -28,28 +29,30 @@ class DartisansApplicationEvent extends ApplicationEvent {
           pageKey: pageKey,
           viewPortModel: viewPortModel);
 
-  factory DartisansApplicationEvent.callSearch(Object sender) {
+  factory DartisansApplicationEvent.callSearch(Object sender, DartisansSearchForm search) {
     return new DartisansApplicationEvent(sender,
         dartisansPageType: DartisansEventType.SEARCH,
         status: EventStatus.CALL,
-        type: EventType.PAGE,
-        pageType: EventPageType.CUSTOM);
+        type: EventType.SERVICE,
+        pageType: EventPageType.CUSTOM,
+        search: search);
   }
   bool get isCallSearch => statusIs(EventStatus.CALL) &&
-      eventTypeIs(EventType.PAGE) &&
+      eventTypeIs(EventType.SERVICE) &&
       pageTypeIs(EventPageType.CUSTOM) &&
-      dartisansPageTypeIs(DartisansEventType.SEARCH);
+      dartisansPageTypeIs(DartisansEventType.SEARCH) &&
+      search != null;
 
   factory DartisansApplicationEvent.searchSuccess(Object sender, Dartisans dartisans) {
     return new DartisansApplicationEvent(sender,
         dartisansPageType: DartisansEventType.SEARCH,
         dartisans: dartisans,
         status: EventStatus.SUCCESS,
-        type: EventType.PAGE,
+        type: EventType.SERVICE,
         pageType: EventPageType.CUSTOM);
   }
   bool get isSearchSuccess => statusIs(EventStatus.SUCCESS) &&
-      eventTypeIs(EventType.PAGE) &&
+      eventTypeIs(EventType.SERVICE) &&
       pageTypeIs(EventPageType.CUSTOM) &&
       dartisansPageTypeIs(DartisansEventType.SEARCH) &&
       dartisans != null;

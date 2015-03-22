@@ -26,7 +26,7 @@ class PageHome extends Page with Showable {
   Layout layout;
   ImageElement dartLogo;
   ApplicationEventBus _applicationEventBus;
-  
+
   PageHome.created() : super.created();
 
   ready() {
@@ -39,8 +39,8 @@ class PageHome extends Page with Showable {
     dartLogo = $["dartLogo"] as ImageElement;
 
     List<ButtonModel> buttonModels = new List<ButtonModel>();
-    buttonModels.add(new ButtonModel(
-        label: "Map", action: map, image: new Image(mainImageUrl: "/images/button/map32.png")));
+    buttonModels
+        .add(new ButtonModel(label: "Map", action: map, image: new Image(mainImageUrl: "/images/button/map32.png")));
     buttonModels.add(new ButtonModel(
         label: "Search", action: search, image: new Image(mainImageUrl: "/images/button/search54.png")));
     ToolbarModel toolbarModel = new ToolbarModel(
@@ -48,8 +48,7 @@ class PageHome extends Page with Showable {
         color: Color.GREY_858585.lightColorAsColor,
         colorUsage: ColorUsage.ALTERNATE_WITH_LIGHT,
         orientation: Orientation.est);
-    
-    
+
     LayoutModel layoutModel = new LayoutModel(toolbarModel: toolbarModel);
     PageModel model = new PageModel(name: NAME, layoutModel: layoutModel);
     this.init(model);
@@ -61,16 +60,15 @@ class PageHome extends Page with Showable {
     num dartLogoWidth = position.width / 3 > 400 ? 400 : position.width / 3;
     dartLogo.style.width = "${dartLogoWidth}px";
   }
-  
+
   @override
   void setApplicationEventBus(ApplicationEventBus value) {
     super.setApplicationEventBus(value);
-    
   }
-  
+
   map(Parameters params) {
     fireApplicationEvent(new ApplicationEvent.callPage(this, PageMap.NAME));
-    fireApplicationEvent(new DartisansApplicationEvent.callSearch(this));    
+    fireApplicationEvent(new DartisansApplicationEvent.callSearch(this));
   }
   search(Parameters params) {
     fireApplicationEvent(new ApplicationEvent.callPage(this, PageSearch.NAME));
