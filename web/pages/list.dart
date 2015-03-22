@@ -41,8 +41,6 @@ class PageList extends Page with Showable {
         label: "Result on map", action: resultOnMap, image: new Image(mainImageUrl: "/images/button/map32.png")));
     buttonModels.add(new ButtonModel(
         label: "Search", action: search, image: new Image(mainImageUrl: "/images/button/search54.png")));
-    buttonModels.add(
-        new ButtonModel(label: "Cancel", action: cancel, image: new Image(mainImageUrl: "/images/button/back57.png")));
     ToolbarModel toolbarModel = new ToolbarModel(
         buttons: buttonModels,
         color: Color.GREY_858585.lightColorAsColor,
@@ -59,9 +57,6 @@ class PageList extends Page with Showable {
   }
   search(Parameters params) {
     fireApplicationEvent(new ApplicationEvent.callPage(this, PageSearch.NAME));
-  }
-  cancel(Parameters params) {
-    fireApplicationEvent(new ApplicationEvent.callIndexPage(this));
   }
 
   DivElement get listElement => $["list"] as DivElement;
