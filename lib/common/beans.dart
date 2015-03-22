@@ -114,7 +114,7 @@ class Dartisan extends User {
   }
 
   bool _fullSearch(String text, String searched) {
-    return text != null && text.contains(searched);
+    return text != null && text.toLowerCase().contains(searched.toLowerCase());
   }
 
   @override
