@@ -1,13 +1,89 @@
 <!-- import polymer-element's definition -->
 <link rel="import" href="../../../packages/polymer/polymer.html">
 <link rel="import" href="../../../packages/gex_webapp_kit_client/elements/layout.html">
+<link rel="import" href="../../../packages/connecting_dartisans/client/elements/dartisan_summary.html">
 
 <polymer-element name="page-about"  >
   <template>
+   <style shim-shadowdom>
+    body {
+      font-family: RobotoDraft, 'Helvetica Neue', Helvetica, Arial;
+    }
+    .container {
+      display: table;
+      width: 100% ;
+    }
+    .column {
+      display: table-cell;
+      vertical-align: middle;
+      padding: 10px;
+    }    
+    ul {
+      list-style-type: none;
+    }
+    li {
+      margin-top: 7px;
+      margin-bottom: 7px;
+    }    
+    </style>
+
     <gex-layout id="layout">
-               <h1>About</h1>
+               <h1>About connecting dartisans</h1>
+
+               <ul>
+                 <li>
+                 
+                   <h2>Root</h2>
+                    <paper-shadow  class="card" z="2" animated="true" >     
+                      <div style="padding: 10px">Just wanted to build something useful for the dartisans community !</div>     
+                     </paper-shadow>                                    
+                 </li>
+                 <li>
+                   <h2>Author</h2>
+                      <dartisan-summary id="author" ></dartisan-summary>                
+                 </li>
+                 <li>
+                   <h2>Stack</h2>
+                      <paper-shadow  class="card" z="2" animated="true" >     
+                         <div class="container" >
+                            <div class="column"  style="width: 170px ; text-align: center;">
+                                   Client in dart
+                            </div>
+                            <div class="column">
+                                    <ul>
+                                      <li><a href="https://www.dartlang.org/polymer/" target="_blank">Polymer.dart</a></li>
+                                      <li><a href="https://github.com/GeReinhart/app-connecting-dartisans">See details on github</a></li>
+                                    </ul>                            
+                            </div>
+                        </div>
+                         <div class="container" >
+                            <div class="column"  style="width: 170px ; text-align: center;">
+                                   Server in dart
+                            </div>
+                            <div class="column">
+                                    <ul>
+                                      <li><a href="http://redstonedart.org/" target="_blank">Redstone.dart</a> on MongoDB</li>
+                                      <li><a href="https://github.com/GeReinhart/app-connecting-dartisans">See details on github</a></li>
+                                    </ul>
+                            </div>
+                        </div>
+                        <div class="container" >
+                            <div class="column"  style="width: 170px ; text-align: center;">
+                                   Continuous Integration
+                            </div>
+                            <div class="column">
+                                    <ul>
+                                      <li><a href="https://drone.io/"  target="_blank">drone.io</a></li>
+                                    </ul>                            
+                                    
+                            </div>
+                        </div>                        
+                      </paper-shadow>                 
+                 
+                 </li>               
+               </ul>
                
-               <p>Development on going.... see details at <a href="https://github.com/GeReinhart/app-connecting-dartisans" target="_blank" >https://github.com/GeReinhart/app-connecting-dartisans</a></p>
+               
     </gex-layout>
   </template>
   <script type="application/dart" src="about.dart"></script>

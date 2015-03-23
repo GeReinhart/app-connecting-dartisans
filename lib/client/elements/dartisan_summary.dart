@@ -59,6 +59,8 @@ class DartisanSummary extends Positionable with Showable {
   set dartisan(Dartisan value) {
     model = new DartisanSummaryModel()..dartisan = value;
   }
+  
+  Dartisan get dartisan => model.dartisan;
 
   HtmlElement get mainElement => $["main"] as HtmlElement;
 }
