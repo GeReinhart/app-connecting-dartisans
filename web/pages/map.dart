@@ -7,6 +7,8 @@ import 'package:gex_webapp_kit_client/webapp_kit_client.dart';
 import 'package:gex_webapp_kit_client/elements/layout.dart';
 import 'package:gex_webapp_kit_client/elements/page.dart';
 import 'package:connecting_dartisans/client/elements/dartisans_map.dart';
+import 'package:connecting_dartisans/connecting_dartisans_client.dart';
+import 'package:connecting_dartisans/connecting_dartisans_common.dart';
 
 import '../application.dart';
 
@@ -62,6 +64,12 @@ class PageMap extends Page with Showable {
     } else {
       map.setApplicationEventBus(_eventBus);
       _eventBus = null;
+    }
+
+    if (event is DartisansApplicationEvent) {
+      if (event.isSaveDartisanSuccess) {
+        toastMessage("Profile saved", color: Color.BLUE_0082C8);
+      }
     }
   }
 }

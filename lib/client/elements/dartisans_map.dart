@@ -11,7 +11,7 @@ import 'package:connecting_dartisans/connecting_dartisans_client.dart';
 import 'package:connecting_dartisans/connecting_dartisans_common.dart';
 
 class DartisansMap extends Object with Showable, ApplicationEventPassenger {
-  final LatLng defaultPosition = new LatLng(45.148609248398735, 5.729827880859428); // Grenoble, France
+  final LatLng defaultPosition = new LatLng(64.8377778, -147.71638889999997);
   final LatLngBounds defaultBounds = new LatLngBounds(
       new LatLng(-41.2864603, 174.77623600000004), // Wellington, New Zealand
       new LatLng(49.2827291, -123.12073750000002)); // Vancouver, BC, Canada

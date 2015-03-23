@@ -8,6 +8,7 @@ import 'package:gex_webapp_kit_client/webapp_kit_common.dart';
 import 'package:gex_webapp_kit_client/elements/layout.dart';
 import 'package:gex_webapp_kit_client/elements/page.dart';
 import 'package:connecting_dartisans/client/elements/dartisan_edit.dart';
+import 'package:connecting_dartisans/connecting_dartisans_client.dart';
 import 'package:connecting_dartisans/connecting_dartisans_common.dart';
 
 import '../application.dart';
@@ -71,6 +72,7 @@ class PageProfile extends Page with Showable {
   @override
   void recieveApplicationEvent(ApplicationEvent event) {
     super.recieveApplicationEvent(event);
+
     if (event.isLoginSuccess || event.isRegisterSuccess) {
       dartisanEdit.user = event.user;
     }
@@ -79,6 +81,11 @@ class PageProfile extends Page with Showable {
     }
     if (event.isLogoutSuccess) {
       dartisanEdit.dartisan = new Dartisan();
+    }
+    if (event is DartisansApplicationEvent) {
+      if (this.isShowed() && event.isSaveDartisanSuccess) {
+        toastMessage("Profile saved", color: Color.BLUE_0082C8);
+      }
     }
   }
 

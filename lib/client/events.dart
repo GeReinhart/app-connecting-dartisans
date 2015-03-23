@@ -4,7 +4,8 @@ part of connecting_dartisans_client;
 
 enum DartisansEventType {
   SEARCH,
-  DETAILS
+  DETAILS,
+  SAVE_DARTISAN
 }
 
 class DartisansApplicationEvent extends ApplicationEvent {
@@ -90,4 +91,18 @@ class DartisansApplicationEvent extends ApplicationEvent {
       dartisansPageTypeIs(DartisansEventType.DETAILS) &&
       dartisan != null &&
       pageKey != null;
+
+  factory DartisansApplicationEvent.saveDartisanSuccess(Object sender, Dartisan dartisan) {
+    return new DartisansApplicationEvent(sender,
+        dartisansPageType: DartisansEventType.SAVE_DARTISAN,
+        dartisan: dartisan,
+        status: EventStatus.SUCCESS,
+        type: EventType.SERVICE,
+        pageType: EventPageType.CUSTOM);
+  }
+  bool get isSaveDartisanSuccess => statusIs(EventStatus.SUCCESS) &&
+      eventTypeIs(EventType.SERVICE) &&
+      pageTypeIs(EventPageType.CUSTOM) &&
+      dartisansPageTypeIs(DartisansEventType.SAVE_DARTISAN) &&
+      dartisan != null;
 }

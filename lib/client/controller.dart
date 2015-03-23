@@ -48,8 +48,7 @@ class Controller extends Object with ApplicationEventPassenger {
 
   void saveDartisanSuccess(Dartisan dartisan) {
     dartisans.put(dartisan);
-    // TODO Send sucess event
-
+    fireApplicationEvent(new DartisansApplicationEvent.saveDartisanSuccess(this, dartisan));
   }
 
   void saveDartisanFailure(num status) {

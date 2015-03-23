@@ -10,6 +10,8 @@ import 'package:gex_webapp_kit_client/webapp_kit_common.dart';
 import 'package:gex_webapp_kit_client/elements/layout.dart';
 import 'package:gex_webapp_kit_client/elements/user_edit.dart';
 import 'package:gex_webapp_kit_client/elements/page.dart';
+import 'package:connecting_dartisans/connecting_dartisans_client.dart';
+import 'package:connecting_dartisans/connecting_dartisans_common.dart';
 
 import '../application.dart';
 import 'list.dart';
@@ -72,6 +74,11 @@ class PageRegister extends Page with Showable {
     if (event.isUserAuthSuccess) {
       userEdit.user = event.user;
       userEdit.map.geoLocation();
+    }
+    if (event is DartisansApplicationEvent) {
+      if (this.isShowed() && event.isSaveDartisanSuccess) {
+        toastMessage("Profile saved", color: Color.BLUE_0082C8);
+      }
     }
   }
 
