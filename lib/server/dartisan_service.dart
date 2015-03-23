@@ -27,8 +27,10 @@ class DartisanService extends MongoDbService<Dartisan> {
   Future<Dartisan> addOrUpdate(@Decode() Dartisan inputDartisan) {
     return findOne({"openId": inputDartisan.openId}).then((existingDartisan) {
       if (existingDartisan == null) {
+        inputDartisan.creation();
         return insert(inputDartisan).then((_) => inputDartisan);
       } else {
+        inputDartisan.update();
         return update({"openId": existingDartisan.openId}, inputDartisan).then((_) => inputDartisan);
       }
     });

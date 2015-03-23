@@ -11,6 +11,8 @@ class Dartisan extends User {
   @Field() bool readyForTalks;
   @Field() String gitHubAccount;
   @Field() String twitterAccount;
+  
+
 
   Dartisan([String id, String openId, String email, String displayName, String givenName, String familyName,
       String avatarUrl, num locationLat, num locationLng, String locationAddress])
