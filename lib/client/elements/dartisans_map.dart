@@ -49,6 +49,10 @@ class DartisansMap extends Object with Showable, ApplicationEventPassenger {
         this._dartisans = event.dartisans;
         _updateMarkers();
       }
+      if (event.isSaveDartisanSuccess) {
+        this._dartisans.put(event.dartisan);
+        _updateMarkers();
+      }
     }
   }
 
