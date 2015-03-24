@@ -11,8 +11,6 @@ class Dartisan extends User {
   @Field() bool readyForTalks;
   @Field() String gitHubAccount;
   @Field() String twitterAccount;
-  
-
 
   Dartisan([String id, String openId, String email, String displayName, String givenName, String familyName,
       String avatarUrl, num locationLat, num locationLng, String locationAddress])
@@ -77,37 +75,45 @@ class Dartisan extends User {
     }
   }
 
-  bool accept(DartisansSearchForm search) {
+  bool accept(DartisansSearchForm search, Bounds bounds) {
     bool accepted = false;
-    if (search == null) {
+    if (search == null && bounds == null) {
       return true;
     }
-    if (search.fullTextSearch != null && search.fullTextSearch.isNotEmpty) {
-      accepted = _fullSearch(this.bio, search.fullTextSearch) ||
-          _fullSearch(this.dartisanBio, search.fullTextSearch) ||
-          _fullSearch(this.displayName, search.fullTextSearch) ||
-          _fullSearch(this.gitHubAccount, search.fullTextSearch) ||
-          _fullSearch(this.twitterAccount, search.fullTextSearch) ||
-          _fullSearch(this.locationAddress, search.fullTextSearch);
-      if (!accepted) {
-        return false;
+    if (search != null) {
+      if (search.fullTextSearch != null && search.fullTextSearch.isNotEmpty) {
+        accepted = _fullSearch(this.bio, search.fullTextSearch) ||
+            _fullSearch(this.dartisanBio, search.fullTextSearch) ||
+            _fullSearch(this.displayName, search.fullTextSearch) ||
+            _fullSearch(this.gitHubAccount, search.fullTextSearch) ||
+            _fullSearch(this.twitterAccount, search.fullTextSearch) ||
+            _fullSearch(this.locationAddress, search.fullTextSearch);
+        if (!accepted) {
+          return false;
+        }
+      }
+      if (search.readyForTalks != null) {
+        if (search.readyForTalks != this.readyForTalks) {
+          return false;
+        }
+      }
+      if (search.readyForTraining != null) {
+        if (search.readyForTraining != this.readyForTraining) {
+          return false;
+        }
+      }
+      if (search.readyToBeHired != null) {
+        if (search.readyToBeHired != this.readyToBeHired) {
+          return false;
+        }
       }
     }
-    if (search.readyForTalks != null) {
-      accepted = search.readyForTalks == this.readyForTalks;
-      if (!accepted) {
-        return false;
-      }
-    }
-    if (search.readyForTraining != null) {
-      accepted = search.readyForTraining == this.readyForTraining;
-      if (!accepted) {
-        return false;
-      }
-    }
-    if (search.readyToBeHired != null) {
-      accepted = search.readyToBeHired == this.readyToBeHired;
-      if (!accepted) {
+
+    if (bounds != null) {
+      if (!(this.locationLat <= bounds.neLat &&
+          this.locationLng <= bounds.neLng &&
+          this.locationLat >= bounds.swLat &&
+          this.locationLng >= bounds.swLng)) {
         return false;
       }
     }
@@ -197,8 +203,9 @@ class Dartisans implements Bean {
 
   List<Dartisan> get dartisanList => new List<Dartisan>()..addAll(dartisans.values);
 
-  Dartisans newFilteredDartisans(DartisansSearchForm search) {
-    return new Dartisans.fromList(new List<Dartisan>()..addAll(dartisans.values.where((d) => d.accept(search))));
+  Dartisans newFilteredDartisans(DartisansSearchForm search, Bounds bounds) {
+    return new Dartisans.fromList(
+        new List<Dartisan>()..addAll(dartisans.values.where((d) => d.accept(search, bounds))));
   }
 
   Dartisans.empty() {
@@ -290,4 +297,13 @@ class DartisansSearchForm implements Bean {
         s.readyForTalks == readyForTalks &&
         s.readyToBeHired == readyToBeHired);
   }
+}
+
+class Bounds {
+  num neLat;
+  num neLng;
+  num swLat;
+  num swLng;
+
+  Bounds(this.neLat, this.neLng, this.swLat, this.swLng);
 }

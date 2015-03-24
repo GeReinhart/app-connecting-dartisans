@@ -10,6 +10,8 @@ class Controller extends Object with ApplicationEventPassenger {
   Dartisans dartisans = new Dartisans.empty();
   DateTime lastDartisansRefresh = new DateTime(2000);
   bool waitingForDartisans = false;
+  Bounds bounds;
+  DartisansSearchForm search;
 
   void _loadDartisans(DartisansSearchForm search) {
     GetJsonRequest request = new GetJsonRequest("/services/dartisans",
@@ -22,13 +24,19 @@ class Controller extends Object with ApplicationEventPassenger {
   void recieveApplicationEvent(ApplicationEvent event) {
     if (event is DartisansApplicationEvent) {
       if (event.isCallSearch) {
+        search = event.search;
         if (!waitingForDartisans &&
             lastDartisansRefresh.isBefore(new DateTime.now().subtract(new Duration(minutes: 2)))) {
-          _loadDartisans(event.search);
+          _loadDartisans(search);
         } else {
           fireApplicationEvent(
-              new DartisansApplicationEvent.searchSuccess(this, dartisans.newFilteredDartisans(event.search)));
+              new DartisansApplicationEvent.searchSuccess(this, dartisans.newFilteredDartisans(search, bounds)));
         }
+      }
+      if (event.isMapChange) {
+        bounds = event.bounds;
+        fireApplicationEvent(
+            new DartisansApplicationEvent.mapChangeDartisans(this, dartisans.newFilteredDartisans(search, bounds)));
       }
 
       if (event.isCallDetails) {
@@ -60,7 +68,8 @@ class Controller extends Object with ApplicationEventPassenger {
     this.dartisans = dartisans;
     this.lastDartisansRefresh = new DateTime.now();
     waitingForDartisans = false;
-    fireApplicationEvent(new DartisansApplicationEvent.searchSuccess(this, dartisans.newFilteredDartisans(search)));
+    fireApplicationEvent(
+        new DartisansApplicationEvent.searchSuccess(this, dartisans.newFilteredDartisans(search, bounds)));
   }
 
   void callSearchFailure(num status) {

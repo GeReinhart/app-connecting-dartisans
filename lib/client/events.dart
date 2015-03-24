@@ -5,7 +5,8 @@ part of connecting_dartisans_client;
 enum DartisansEventType {
   SEARCH,
   DETAILS,
-  SAVE_DARTISAN
+  SAVE_DARTISAN,
+  MAP
 }
 
 class DartisansApplicationEvent extends ApplicationEvent {
@@ -13,12 +14,13 @@ class DartisansApplicationEvent extends ApplicationEvent {
   Dartisans dartisans;
   Dartisan dartisan;
   DartisansSearchForm search;
+  Bounds bounds;
   String openId;
 
   bool dartisansPageTypeIs(DartisansEventType param) => (dartisansPageType != null && dartisansPageType == param);
 
   DartisansApplicationEvent(Object sender, {this.dartisansPageType, this.dartisans, this.search, this.dartisan,
-      this.openId, EventStatus status, EventType type, EventError error, User user, String errorDetails,
+      this.openId, this.bounds, EventStatus status, EventType type, EventError error, User user, String errorDetails,
       EventPageType pageType, PageKey pageKey, ViewPortModel viewPortModel})
       : super(sender,
           status: status,
@@ -105,4 +107,32 @@ class DartisansApplicationEvent extends ApplicationEvent {
       pageTypeIs(EventPageType.CUSTOM) &&
       dartisansPageTypeIs(DartisansEventType.SAVE_DARTISAN) &&
       dartisan != null;
+
+  factory DartisansApplicationEvent.mapChange(Object sender, Bounds bounds) {
+    return new DartisansApplicationEvent(sender,
+        dartisansPageType: DartisansEventType.MAP,
+        bounds: bounds,
+        status: EventStatus.CHANGE,
+        type: EventType.CUSTOM,
+        pageType: EventPageType.CUSTOM);
+  }
+  bool get isMapChange => statusIs(EventStatus.CHANGE) &&
+      eventTypeIs(EventType.CUSTOM) &&
+      pageTypeIs(EventPageType.CUSTOM) &&
+      dartisansPageTypeIs(DartisansEventType.MAP) &&
+      bounds != null;
+
+  factory DartisansApplicationEvent.mapChangeDartisans(Object sender, Dartisans dartisans) {
+    return new DartisansApplicationEvent(sender,
+        dartisansPageType: DartisansEventType.MAP,
+        dartisans: dartisans,
+        status: EventStatus.CHANGE,
+        type: EventType.CUSTOM,
+        pageType: EventPageType.CUSTOM);
+  }
+  bool get isMapChangeDartisans => statusIs(EventStatus.CHANGE) &&
+      eventTypeIs(EventType.CUSTOM) &&
+      pageTypeIs(EventPageType.CUSTOM) &&
+      dartisansPageTypeIs(DartisansEventType.MAP) &&
+      dartisans != null;
 }

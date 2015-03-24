@@ -82,7 +82,7 @@ class PageList extends Page with Showable {
   @override
   void recieveApplicationEvent(ApplicationEvent event) {
     if (event is DartisansApplicationEvent) {
-      if (event.isSearchSuccess) {
+      if (event.isSearchSuccess || event.isMapChangeDartisans) {
         this.dartisans = event.dartisans;
         updateList();
       }

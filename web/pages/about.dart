@@ -17,14 +17,14 @@ class PageAbout extends Page with Showable {
   static final String NAME = "about";
 
   final String authorOpenId = "113123881058574339056";
-  
+
   final Logger log = new Logger(NAME);
 
   Color mainColor = Color.WHITE;
 
   Layout layout;
-  DartisanSummary author ;
-  
+  DartisanSummary author;
+
   PageAbout.created() : super.created();
 
   ready() {
@@ -34,25 +34,24 @@ class PageAbout extends Page with Showable {
 
   void _setAttributes() {
     layout = $["layout"] as Layout;
-    author = $["author"] as DartisanSummary ;
+    author = $["author"] as DartisanSummary;
     author.style.cursor = "pointer";
     author.onClick.listen((event) {
       fireApplicationEvent(new DartisansApplicationEvent.callDetails(this, author.dartisan.openId));
     });
-    
-    
+
     LayoutModel layoutModel = new LayoutModel(color: mainColor);
     PageModel model = new PageModel(name: NAME, layoutModel: layoutModel);
     this.init(model);
   }
-  
+
   @override
   void recieveApplicationEvent(ApplicationEvent event) {
     super.recieveApplicationEvent(event);
 
     if (event is DartisansApplicationEvent) {
       if (event.isSearchSuccess) {
-        if ( event.dartisans.dartisans.containsKey(authorOpenId)){
+        if (event.dartisans.dartisans.containsKey(authorOpenId)) {
           author.dartisan = event.dartisans.dartisans[authorOpenId];
         }
       }

@@ -34,6 +34,12 @@ class DartisansMap extends Object with Showable, ApplicationEventPassenger {
 
     _googleMap = new GMap(_map, mapOptions);
     geoLocation();
+
+    _googleMap.onBoundsChanged.listen((_) {
+      Bounds bounds = new Bounds(_googleMap.bounds.northEast.lat, _googleMap.bounds.northEast.lng,
+          _googleMap.bounds.southWest.lat, _googleMap.bounds.southWest.lng);
+      fireApplicationEvent(new DartisansApplicationEvent.mapChange(this, bounds));
+    });
   }
 
   @override
