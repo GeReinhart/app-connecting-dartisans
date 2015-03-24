@@ -27,7 +27,9 @@ class PageStats extends Page with Showable {
   @observable num pieSize = 500;
 
   Layout layout;
-
+  PieChart pieByLevelChart;
+  
+  
   PageStats.created() : super.created();
 
   ready() {
@@ -37,7 +39,7 @@ class PageStats extends Page with Showable {
 
   void _setAttributes() {
     layout = $["layout"] as Layout;
-
+    pieByLevelChart = new PieChart($["pieByLevel"]);
     LayoutModel layoutModel = new LayoutModel();
     PageModel model = new PageModel(name: NAME, layoutModel: layoutModel);
     this.init(model);
@@ -79,11 +81,10 @@ class PageStats extends Page with Showable {
     data.add(["Dartisans", "Level"]);
     dartisansByLevel.keys.forEach((level) => data.add([level, dartisansByLevel[level]]));
     var table = new DataTable(data);
-    var chart = new PieChart($["pieByLevel"]);
-    chart.draw(table, {'series': {'labels': {'enabled': true}}});
+    pieByLevelChart.draw(table, {'series': {'labels': {'enabled': true}}});
     pieSize++;
-    chart.resize();
+    pieByLevelChart.resize();
     pieSize--;
-    chart.resize();
+    pieByLevelChart.resize();
   }
 }
