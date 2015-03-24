@@ -1,0 +1,24 @@
+<!-- import polymer-element's definition -->
+<link rel="import" href="../../../packages/polymer/polymer.html">
+<link rel="import" href="../../../packages/gex_webapp_kit_client/elements/layout.html">
+
+<polymer-element name="page-stats"  >
+  <template>
+    <style>
+    .pie{
+      width: {{pieSize}}px;
+      height: {{pieSize}}px;
+      maxWidth : 100%;
+      marginBottom : 50px;
+    }
+    </style>
+    <gex-layout id="layout">
+         <h1>Statistics on dartisans</h1>
+         <div>{{dartisans.number}} in the current selection</div>
+         <div class="pie" id="pieByLevel"></div>
+         <div class="pie" id="pieByCountry"></div>
+
+    </gex-layout>
+  </template>
+  <script type="application/dart" src="stats.dart"></script>
+</polymer-element>

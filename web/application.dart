@@ -16,6 +16,7 @@ import 'pages/profile.dart';
 import 'pages/map.dart';
 import 'pages/register.dart';
 import 'pages/search.dart';
+import 'pages/stats.dart';
 
 void main() {
   initPolymer().run(() {
@@ -82,6 +83,7 @@ class ConnectingDartisansApplication extends Application {
     addPage(new Element.tag('page-register'));
     addPage(new Element.tag('page-about'));
     addPage(new Element.tag('page-details'));
+    addPage(new Element.tag('page-stats'));
 
     List<ButtonModel> topToolbar = new List<ButtonModel>();
     topToolbar.add(new ButtonModel(
@@ -104,6 +106,11 @@ class ConnectingDartisansApplication extends Application {
         image: new Image(mainImageUrl: "images/button/list23.png"),
         type: ButtonType.PAGE_LAUNCHER,
         targetPageKey: new PageKey(name: PageList.NAME)));
+    topToolbar.add(new ButtonModel(
+        label: "Stats",
+        image: new Image(mainImageUrl: "images/button/data-analytics1.png"),
+        type: ButtonType.PAGE_LAUNCHER,
+        targetPageKey: new PageKey(name: PageStats.NAME)));
     ToolbarModel topToolbarModel =
         new ToolbarModel(buttons: topToolbar, color: mainColor, colorUsage: ColorUsage.ALTERNATE_WITH_LIGHT);
     addToolbar(topToolbarModel);

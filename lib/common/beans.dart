@@ -225,6 +225,8 @@ class Dartisans implements Bean {
     dartisans[dartisan.openId] = dartisan;
   }
 
+  num get number => dartisans.keys.length;
+
   @override
   void fromJson(Map json) {
     Map<String, Map> dartisansAsMap = json['dartisans'];
