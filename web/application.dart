@@ -133,13 +133,19 @@ class ConnectingDartisansApplication extends Application {
 
   @override
   void recieveApplicationEvent(ApplicationEvent event) {
-    super.recieveApplicationEvent(event);
     if (event is DartisansApplicationEvent) {
       if (event.isDetailsSuccess) {
         showPage(pageName: event.pageKey.name, params: event.pageKey.params);
         fireApplicationEvent(new ApplicationEvent.pageDisplayed(this, event.pageKey.name,
             resources: event.pageKey.resources, params: event.pageKey.params));
         return;
+      }
+    } else {
+      if (event.isRegisterSuccess) {
+        showPage(pageName: PageProfile.NAME);
+        fireApplicationEvent(new ApplicationEvent.callPage(this, PageProfile.NAME));
+      } else {
+        super.recieveApplicationEvent(event);
       }
     }
   }

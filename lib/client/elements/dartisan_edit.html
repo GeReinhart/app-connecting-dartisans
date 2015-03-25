@@ -53,6 +53,9 @@
     </style>   
           <gex-user-edit id="userEdit" ></gex-user-edit>   
           <ul>
+            <li>
+                <dartisan-level id="level" mainLabel="Level" ></dartisan-level>
+            </li>             
              <li>
                 <paper-input-decorator   label="Bio" floatingLabel>
                    <textarea id="bioTextArea">{{bio}}</textarea>
@@ -63,9 +66,6 @@
                    <textarea id="dartisanBioTextArea">{{dartisanBio}}</textarea>
                </paper-input-decorator>
             </li>
-            <li>
-                <dartisan-level id="level" mainLabel="Level" ></dartisan-level>
-            </li>             
              <li>
                 <dartisan-checkbox id="readyForTraining" checkMain="Ready for training" checkDetails="Be able to animate a training in Dart" ></dartisan-checkbox>
             </li>      
