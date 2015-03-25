@@ -24,12 +24,12 @@ class PageStats extends Page with Showable {
 
   Color mainColor = Color.WHITE;
   @observable Dartisans dartisans;
-  @observable num pieSize = 500;
+  @observable num pieSize = 400;
 
   Layout layout;
   PieChart pieByLevelChart;
-  
-  
+  PieChart pieByCountryChart;
+
   PageStats.created() : super.created();
 
   ready() {
@@ -40,6 +40,7 @@ class PageStats extends Page with Showable {
   void _setAttributes() {
     layout = $["layout"] as Layout;
     pieByLevelChart = new PieChart($["pieByLevel"]);
+    pieByCountryChart = new PieChart($["pieByCountry"]);
     LayoutModel layoutModel = new LayoutModel();
     PageModel model = new PageModel(name: NAME, layoutModel: layoutModel);
     this.init(model);
@@ -77,14 +78,28 @@ class PageStats extends Page with Showable {
       }
     });
 
-    List<List> data = new List<List>();
-    data.add(["Dartisans", "Level"]);
-    dartisansByLevel.keys.forEach((level) => data.add([level, dartisansByLevel[level]]));
-    var table = new DataTable(data);
-    pieByLevelChart.draw(table, {'series': {'labels': {'enabled': true}}});
-    pieSize++;
-    pieByLevelChart.resize();
-    pieSize--;
-    pieByLevelChart.resize();
+    List<List> dataLevel = new List<List>();
+    dataLevel.add(["Dartisans", "Level"]);
+    dartisansByLevel.keys.forEach((level) => dataLevel.add([level, dartisansByLevel[level]]));
+    var tableLevel = new DataTable(dataLevel);
+    pieByLevelChart.draw(tableLevel, {'series': {'labels': {'enabled': true}}});
+    pieByLevelChart.update();
+
+    Map<String, num> dartisansByCountry = new Map<String, num>();
+    dartisans.dartisanList.forEach((d) {
+      num number = dartisansByCountry[d.country];
+      if (number == null) {
+        dartisansByCountry[d.country] = 1;
+      } else {
+        dartisansByCountry[d.country] = number + 1;
+      }
+    });
+
+    List<List> dataCountry = new List<List>();
+    dataCountry.add(["Dartisans", "Country"]);
+    dartisansByCountry.keys.forEach((country) => dataCountry.add([country, dartisansByCountry[country]]));
+    var tableCountry = new DataTable(dataCountry);
+    pieByCountryChart.draw(tableCountry, {'series': {'labels': {'enabled': true}}});
+    pieByCountryChart.update();
   }
 }
