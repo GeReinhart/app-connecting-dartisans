@@ -27,8 +27,8 @@ class PageStats extends Page with Showable {
   @observable num pieSize = 400;
 
   Layout layout;
-  PieChart pieByLevelChart;
-  PieChart pieByCountryChart;
+  DivElement pieByLevelContainer;
+  DivElement pieByCountryContainer;
 
   PageStats.created() : super.created();
 
@@ -39,8 +39,8 @@ class PageStats extends Page with Showable {
 
   void _setAttributes() {
     layout = $["layout"] as Layout;
-    pieByLevelChart = new PieChart($["pieByLevel"]);
-    pieByCountryChart = new PieChart($["pieByCountry"]);
+    pieByLevelContainer = $["pieByLevelContainer"];
+    pieByCountryContainer = $["pieByCountryContainer"];
     LayoutModel layoutModel = new LayoutModel();
     PageModel model = new PageModel(name: NAME, layoutModel: layoutModel);
     this.init(model);
@@ -61,7 +61,21 @@ class PageStats extends Page with Showable {
     }
   }
 
+  Element createPieDiv(Element container) {
+    if (container.children.isNotEmpty) {
+      container.children.clear();
+    }
+    var e = new DivElement()
+      ..style.height = '${pieSize}px'
+      ..style.width = '${pieSize*1.5}px'
+      ..style.maxWidth = '100%'
+      ..style.marginBottom = '50px';
+    container.append(e);
+    return e;
+  }
+
   void _updateCharts() {
+    PieChart pieByLevelChart = new PieChart(createPieDiv(pieByLevelContainer));
     Map<String, num> dartisansByLevel = new Map<String, num>();
     dartisansByLevel[new Dartisan.fromFields(level: 1).levelLabel] = 0;
     dartisansByLevel[new Dartisan.fromFields(level: 2).levelLabel] = 0;
@@ -85,6 +99,7 @@ class PageStats extends Page with Showable {
     pieByLevelChart.draw(tableLevel, {'series': {'labels': {'enabled': true}}});
     pieByLevelChart.update();
 
+    PieChart pieByCountryChart = new PieChart(createPieDiv(pieByCountryContainer));
     Map<String, num> dartisansByCountry = new Map<String, num>();
     dartisans.dartisanList.forEach((d) {
       num number = dartisansByCountry[d.country];
