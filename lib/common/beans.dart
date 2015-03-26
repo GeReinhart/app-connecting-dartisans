@@ -308,4 +308,22 @@ class Bounds {
   num swLng;
 
   Bounds(this.neLat, this.neLng, this.swLat, this.swLng);
+  
+  int get hashCode {
+    int result = 17;
+    result = 37 * result + neLat.hashCode;
+    result = 37 * result + neLng.hashCode;
+    result = 37 * result + swLat.hashCode;
+    result = 37 * result + swLng.hashCode;
+    return result;
+  }
+
+  bool operator ==(other) {
+    if (other is! Bounds) return false;
+    Bounds s = other;
+    return (s.neLat == neLat &&
+        s.neLng == neLng &&
+        s.swLat == swLat &&
+        s.swLng == swLng);
+  }
 }
