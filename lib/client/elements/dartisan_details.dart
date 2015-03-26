@@ -22,6 +22,17 @@ class DartisanDetailsModel {
   bool get hasBio => dartisan.bio != null || dartisan.dartisanBio != null;
   bool get hasGitHub => dartisan.gitHubAccount != null;
   bool get hasTwitter => dartisan.twitterAccount != null;
+  
+  String get atWorkLabel {
+    if (dartisan.atWork == null){
+      return null;
+    }
+    if (dartisan.atWork == 1){
+      return "Work on Dart only at home";
+    }else{
+      return "At my job : " + dartisan.atWorkLabel;
+    }
+  }
 }
 
 @CustomTag('dartisan-details')

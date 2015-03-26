@@ -14,6 +14,7 @@ import 'package:connecting_dartisans/connecting_dartisans_common.dart';
 import 'package:paper_elements/paper_checkbox.dart';
 import 'package:connecting_dartisans/client/elements/dartisan_checkbox.dart';
 import 'package:connecting_dartisans/client/elements/dartisan_level.dart';
+import 'package:connecting_dartisans/client/elements/dartisan_at_work.dart';
 
 @CustomTag('dartisan-edit')
 class DartisanEdit extends Positionable with Showable, ApplicationEventPassenger {
@@ -53,6 +54,7 @@ class DartisanEdit extends Positionable with Showable, ApplicationEventPassenger
     bio = dartisan.bio;
     dartisanBio = dartisan.dartisanBio;
     levelSlider.level = dartisan.level;
+    atWorkSlider.atWork = dartisan.atWork ;
     readyForTrainingCheckBox.checked = dartisan.readyForTraining;
     readyForTalksCheckBox.checked = dartisan.readyForTalks;
     readyToBeHiredCheckBox.checked = dartisan.readyToBeHired;
@@ -68,6 +70,7 @@ class DartisanEdit extends Positionable with Showable, ApplicationEventPassenger
       bio: bioTextArea.value,
       dartisanBio: dartisanBioTextArea.value,
       level: levelSlider.level,
+      atWork: atWorkSlider.atWork,
       readyForTraining: readyForTrainingCheckBox.checked,
       readyForTalks: readyForTalksCheckBox.checked,
       readyToBeHired: readyToBeHiredCheckBox.checked,
@@ -78,6 +81,7 @@ class DartisanEdit extends Positionable with Showable, ApplicationEventPassenger
   TextAreaElement get bioTextArea => $["bioTextArea"] as TextAreaElement;
   TextAreaElement get dartisanBioTextArea => $["dartisanBioTextArea"] as TextAreaElement;
   DartisanLevel get levelSlider => $["level"] as DartisanLevel;
+  DartisanAtWork get atWorkSlider => $["atWork"] as DartisanAtWork;
   DartisanCheckBox get readyForTrainingCheckBox => $["readyForTraining"] as DartisanCheckBox;
   DartisanCheckBox get readyForTalksCheckBox => $["readyForTalks"] as DartisanCheckBox;
   DartisanCheckBox get readyToBeHiredCheckBox => $["readyToBeHired"] as DartisanCheckBox;

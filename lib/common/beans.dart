@@ -6,6 +6,7 @@ class Dartisan extends User {
   @Field() String bio;
   @Field() String dartisanBio;
   @Field() num level;
+  @Field() num atWork;
   @Field() bool readyForTraining;
   @Field() bool readyToBeHired;
   @Field() bool readyForTalks;
@@ -17,7 +18,7 @@ class Dartisan extends User {
       : super(id, openId, email, displayName, avatarUrl, locationLat, locationLng, locationAddress);
 
   Dartisan.fromFields({String id, String openId, String email, String displayName, String avatarUrl, num locationLat,
-      num locationLng, String locationAddress, String this.bio, String this.dartisanBio, num this.level,
+      num locationLng, String locationAddress, String this.bio, String this.dartisanBio, num this.level,num this.atWork,
       bool this.readyForTraining, bool this.readyToBeHired, bool this.readyForTalks, String this.gitHubAccount,
       String this.twitterAccount})
       : super.fromFields(
@@ -30,7 +31,7 @@ class Dartisan extends User {
           locationLng: locationLng,
           locationAddress: locationAddress) {}
 
-  Dartisan.fromUser(User user, {String this.bio, String this.dartisanBio, num this.level, bool this.readyForTraining,
+  Dartisan.fromUser(User user, {String this.bio, String this.dartisanBio, num this.level, num this.atWork, bool this.readyForTraining,
       bool this.readyToBeHired, bool this.readyForTalks, String this.gitHubAccount, String this.twitterAccount})
       : super.fromFields(
           id: user.id,
@@ -47,6 +48,9 @@ class Dartisan extends User {
   }
 
   String get levelLabel {
+    if (level == null){
+      return "";
+    }
     switch (level.toInt()) {
       case 1:
         return "Beginner";
@@ -58,6 +62,26 @@ class Dartisan extends User {
         return "Advanced";
       case 5:
         return "Expert";
+      default:
+        return "";
+    }
+  }
+  
+  String get atWorkLabel {
+    if (atWork == null){
+      return "";
+    }    
+    switch (atWork.toInt()) {
+      case 1:
+        return "Only at home";
+      case 2:
+        return "Some experimentation only";
+      case 3:
+        return "A small part of my time";
+      case 4:
+        return "A large part of my time";
+      case 5:
+        return "Full time on Dart";
       default:
         return "";
     }
@@ -141,6 +165,7 @@ class Dartisan extends User {
         locationAddress: locationAddress,
         bio: bio,
         level: level,
+        atWork :atWork,
         dartisanBio: dartisanBio,
         readyToBeHired: readyToBeHired,
         readyForTalks: readyForTalks,
@@ -163,6 +188,7 @@ class Dartisan extends User {
       "bio": bio,
       "dartisanBio": dartisanBio,
       "level": level,
+      "atWork": atWork,
       "readyToBeHired": readyToBeHired,
       "readyForTalks": readyForTalks,
       "readyForTraining": readyForTraining,
@@ -184,6 +210,7 @@ class Dartisan extends User {
     bio = json["bio"];
     dartisanBio = json["dartisanBio"];
     level = json["level"];
+    atWork = json["atWork"];
     readyToBeHired = json["readyToBeHired"];
     readyForTalks = json["readyForTalks"];
     readyForTraining = json["readyForTraining"];

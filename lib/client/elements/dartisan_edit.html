@@ -12,6 +12,7 @@
 <link rel="import" href="../../../../packages/gex_webapp_kit_client/elements/user_edit.html">
 
 <link rel="import" href="dartisan_level.html">
+<link rel="import" href="dartisan_at_work.html">
 <link rel="import" href="dartisan_checkbox.html">
 
 <polymer-element name="dartisan-edit"  >
@@ -65,6 +66,9 @@
                 <paper-input-decorator   label="Bio as a dartisan" floatingLabel>
                    <textarea id="dartisanBioTextArea">{{dartisanBio}}</textarea>
                </paper-input-decorator>
+            </li>
+             <li>
+                <dartisan-at-work id="atWork" mainLabel="Dart in my job" ></dartisan-at-work>
             </li>
              <li>
                 <dartisan-checkbox id="readyForTraining" checkMain="Ready for training" checkDetails="Be able to animate a training in Dart. For instance, you could be a teacher in a Dart Flight School." ></dartisan-checkbox>

@@ -8,49 +8,49 @@ import 'package:gex_webapp_kit_client/webapp_kit_client.dart';
 import 'package:polymer/polymer.dart';
 import 'package:paper_elements/paper_slider.dart';
 
-@CustomTag('dartisan-level')
+@CustomTag('dartisan-at-work')
 class DartisanAtWork extends Positionable with Showable, ApplicationEventPassenger {
-  final Logger log = new Logger('DartisanLevel');
+  final Logger log = new Logger('DartisanAtWork');
 
   @published String mainLabel;
-  @observable String levelLabel;
+  @observable String atWorkLabel;
 
   DartisanAtWork.created() : super.created();
 
   @override
   void ready() {
-    levelSlider.on['core-change'].listen((_) {
+    atWorkSlider.on['core-change'].listen((_) {
       _updateLabel();
     });
   }
 
-  void set level(num value) {
-    levelSlider.value = value;
+  void set atWork(num value) {
+    atWorkSlider.value = value;
   }
 
-  num get level => levelSlider.value;
+  num get atWork => atWorkSlider.value;
 
   void _updateLabel() {
-    switch (levelSlider.value) {
+    switch (atWorkSlider.value) {
       case 1:
-        levelLabel = "Only at home";
+        atWorkLabel = "Only at home";
         break;
       case 2:
-        levelLabel = "Some experimentation only";
+        atWorkLabel = "Some experimentation only";
         break;
       case 3:
-        levelLabel = "A small part of my time";
+        atWorkLabel = "A small part of my time";
         break;
       case 4:
-        levelLabel = "A large part of my time";
+        atWorkLabel = "A large part of my time";
         break;
       case 5:
-        levelLabel = "Full time on Dart";
+        atWorkLabel = "Full time on Dart";
         break;
       default:
-        levelLabel = "";
+        atWorkLabel = "";
     }
   }
 
-  PaperSlider get levelSlider => $["levelSlider"] as PaperSlider;
+  PaperSlider get atWorkSlider => $["atWorkSlider"] as PaperSlider;
 }

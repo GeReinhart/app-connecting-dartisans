@@ -7,18 +7,24 @@
     <style>
     .pie{
       width: {{pieSize}}px;
-      height: {{pieSize}}px;
+      height: {{pieSize*3}}px;
       maxWidth : 100%;
-      marginBottom : 50px;
+      marginBottom : 5px;
     }
     </style>
     <gex-layout id="layout">
          <h1>Statistics on dartisans</h1>
-         <div>{{dartisans.number}} in the current selection</div>
+         <div style="margin-bottom: 20px">{{dartisans.number}} in the current selection</div>
+         <div >Country</div>
+         <div id="pieByCountryContainer"  style="position: relative; width: {{pieSize}}px ">
+            <div class="pie" ></div>
+         </div>
+         <div >Level</div>
          <div  id="pieByLevelContainer" style="position: relative; width: {{pieSize}}px ">
             <div class="pie" ></div>
          </div>
-         <div id="pieByCountryContainer"  style="position: relative; width: {{pieSize}}px ">
+         <div >Dart in their job</div>
+         <div id="pieAtWorkContainer"  style="position: relative; width: {{pieSize}}px ">
             <div class="pie" ></div>
          </div>
     </gex-layout>

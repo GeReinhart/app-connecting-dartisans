@@ -29,7 +29,8 @@ class PageStats extends Page with Showable {
   Layout layout;
   DivElement pieByLevelContainer;
   DivElement pieByCountryContainer;
-
+  DivElement pieAtWorkContainer;
+  
   PageStats.created() : super.created();
 
   ready() {
@@ -41,6 +42,7 @@ class PageStats extends Page with Showable {
     layout = $["layout"] as Layout;
     pieByLevelContainer = $["pieByLevelContainer"];
     pieByCountryContainer = $["pieByCountryContainer"];
+    pieAtWorkContainer    = $["pieAtWorkContainer"];
     LayoutModel layoutModel = new LayoutModel();
     PageModel model = new PageModel(name: NAME, layoutModel: layoutModel);
     this.init(model);
@@ -67,9 +69,9 @@ class PageStats extends Page with Showable {
     }
     var e = new DivElement()
       ..style.height = '${pieSize}px'
-      ..style.width = '${pieSize*1.5}px'
+      ..style.width = '${pieSize*3}px'
       ..style.maxWidth = '100%'
-      ..style.marginBottom = '50px';
+      ..style.marginBottom = '5px';
     container.append(e);
     return e;
   }
@@ -96,7 +98,7 @@ class PageStats extends Page with Showable {
     dataLevel.add(["Dartisans", "Level"]);
     dartisansByLevel.keys.forEach((level) => dataLevel.add([level, dartisansByLevel[level]]));
     var tableLevel = new DataTable(dataLevel);
-    pieByLevelChart.draw(tableLevel, {'series': {'labels': {'enabled': true}}});
+    pieByLevelChart.draw(tableLevel, {'series': {'labels': {'enabled': false}}});
     pieByLevelChart.update();
 
     PieChart pieByCountryChart = new PieChart(createPieDiv(pieByCountryContainer));
@@ -114,7 +116,26 @@ class PageStats extends Page with Showable {
     dataCountry.add(["Dartisans", "Country"]);
     dartisansByCountry.keys.forEach((country) => dataCountry.add([country, dartisansByCountry[country]]));
     var tableCountry = new DataTable(dataCountry);
-    pieByCountryChart.draw(tableCountry, {'series': {'labels': {'enabled': true}}});
+    pieByCountryChart.draw(tableCountry, {'series': {'labels': {'enabled': false}}});
     pieByCountryChart.update();
+    
+    
+    PieChart pieAtWorkChart = new PieChart(createPieDiv(pieAtWorkContainer));
+    Map<String, num> dartisansAtWork = new Map<String, num>();
+    dartisans.dartisanList.forEach((d) {
+      num number = dartisansAtWork[d.atWorkLabel];
+      if (number == null) {
+        dartisansAtWork[d.atWorkLabel] = 1;
+      } else {
+        dartisansAtWork[d.atWorkLabel] = number + 1;
+      }
+    });
+
+    List<List> dataAtWork = new List<List>();
+    dataAtWork.add(["Dartisans", "At work"]);
+    dartisansAtWork.keys.forEach((atWork) => dataAtWork.add([atWork, dartisansAtWork[atWork]]));
+    var tableAtWork = new DataTable(dataAtWork);
+    pieAtWorkChart.draw(tableAtWork);
+    pieAtWorkChart.update();
   }
 }
