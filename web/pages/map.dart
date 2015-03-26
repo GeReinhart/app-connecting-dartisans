@@ -71,5 +71,6 @@ class PageMap extends Page with Showable {
         toastMessage("Profile saved", color: Color.BLUE_0082C8);
       }
     }
+
   }
 }

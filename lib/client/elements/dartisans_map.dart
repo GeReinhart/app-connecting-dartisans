@@ -43,14 +43,20 @@ class DartisansMap extends Object with Showable, ApplicationEventPassenger {
   }
 
   @override
-  void recieveApplicationEvent(ApplicationEvent event) {
-    if (event is DartisansApplicationEvent) {
-      if (event.isSearchSuccess) {
-        this._dartisans = event.dartisans;
+  void recieveApplicationEvent(ApplicationEvent applicationEvent) {
+    
+    if(applicationEvent.isViewPortChange){
+      this._map..style.height = "${applicationEvent.viewPort.windowHeight}px"
+               ..style.width = "${applicationEvent.viewPort.windowWidth}px";
+      event.trigger(_googleMap, 'resize', []);
+    }
+    if (applicationEvent is DartisansApplicationEvent) {
+      if (applicationEvent.isSearchSuccess) {
+        this._dartisans = applicationEvent.dartisans;
         _updateMarkers();
       }
-      if (event.isSaveDartisanSuccess) {
-        this._dartisans.put(event.dartisan);
+      if (applicationEvent.isSaveDartisanSuccess) {
+        this._dartisans.put(applicationEvent.dartisan);
         _updateMarkers();
       }
     }
