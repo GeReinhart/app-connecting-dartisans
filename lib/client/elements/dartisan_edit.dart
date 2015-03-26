@@ -32,6 +32,8 @@ class DartisanEdit extends Positionable with Showable, ApplicationEventPassenger
     bioTextArea.maxLength = 5000;
     dartisanBioTextArea.rows = 10;
     dartisanBioTextArea.maxLength = 5000;
+    userEdit.map.editionMode = false;
+    userEdit.map.lock.checked = true;
   }
 
   @override

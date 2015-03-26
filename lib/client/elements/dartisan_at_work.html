@@ -1,0 +1,22 @@
+<!-- import polymer-element's definition -->
+<link rel="import" href="../../../../packages/polymer/polymer.html">
+<link rel="import" href="../../../../packages/paper_elements/paper_slider.html">
+<link rel="import" href="../../../../packages/paper_elements/paper_input_decorator.html">
+<link rel="import" href="../../../../packages/paper_elements/paper_checkbox.html">
+<link rel="import" href="../../../../packages/paper_elements/roboto.html">
+<link rel="import" href="../../../../packages/core_elements/core_label.html">
+
+
+
+<polymer-element name="dartisan-at-work"  attribute="mainLabel">
+  <template>
+              <core-label horizontal layout>
+                <div>{{mainLabel}}</div>
+                <div vertical layout>
+                  <paper-slider id="levelSlider" pin snaps max="5" step="1" value="0"></paper-slider>
+                  <div style="margin-left:20px;  font-style: italic;"><span style="font-weight: bold;"  ></span>  </div>
+                </div>
+              </core-label> 
+  </template>
+  <script type="application/dart" src="dartisan_at_work.dart"></script>
+</polymer-element>
