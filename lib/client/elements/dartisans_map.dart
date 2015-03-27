@@ -40,6 +40,7 @@ class DartisansMap extends Object with Showable, ApplicationEventPassenger {
   
   Bounds _lastBounds = null;
   void _checkBounds(){
+    event.trigger(_googleMap, 'resize', []);
     if (_googleMap.bounds == null){
       return;
     }
