@@ -36,18 +36,7 @@ class PageList extends Page with Showable {
   void _setAttributes() {
     layout = $["layout"] as Layout;
 
-    List<ButtonModel> buttonModels = new List<ButtonModel>();
-    buttonModels.add(new ButtonModel(
-        label: "Result on map", action: resultOnMap, image: new Image(mainImageUrl: "/images/button/map32.png")));
-    buttonModels.add(new ButtonModel(
-        label: "Search", action: search, image: new Image(mainImageUrl: "/images/button/search54.png")));
-    ToolbarModel toolbarModel = new ToolbarModel(
-        buttons: buttonModels,
-        color: Color.GREY_858585.lightColorAsColor,
-        colorUsage: ColorUsage.ALTERNATE_WITH_LIGHT,
-        orientation: Orientation.est);
-
-    LayoutModel layoutModel = new LayoutModel(toolbarModel: toolbarModel, color: Color.WHITE);
+    LayoutModel layoutModel = new LayoutModel( color: Color.WHITE);
     PageModel model = new PageModel(name: NAME, layoutModel: layoutModel);
     this.init(model);
   }

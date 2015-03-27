@@ -3,8 +3,10 @@
 part of connecting_dartisans_client;
 
 class Controller extends Object with ApplicationEventPassenger {
+  
+  final Logger log = new Logger("Controller");
+  
   Controller() {
-    _loadDartisans(new DartisansSearchForm());
   }
 
   Dartisans dartisans = new Dartisans.empty();
@@ -52,6 +54,12 @@ class Controller extends Object with ApplicationEventPassenger {
       request.send(event.user as Dartisan);
       return;
     }
+    
+    if (event.isCallPage){
+      if (event.pageKey.name == "list" || event.pageKey.name == "map" || event.pageKey.name == "stats"){
+        fireApplicationEvent(new DartisansApplicationEvent.callSearch(this, search));
+      }
+    }
   }
 
   void saveDartisanSuccess(Dartisan dartisan) {
@@ -68,6 +76,7 @@ class Controller extends Object with ApplicationEventPassenger {
     this.dartisans = dartisans;
     this.lastDartisansRefresh = new DateTime.now();
     waitingForDartisans = false;
+    log.info("DEBUG:  controller send ${dartisans.dartisanList.length} dartisans" );
     fireApplicationEvent(
         new DartisansApplicationEvent.searchSuccess(this, dartisans.newFilteredDartisans(search, bounds)));
   }

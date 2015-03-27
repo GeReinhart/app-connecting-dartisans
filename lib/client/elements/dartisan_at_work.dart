@@ -36,13 +36,13 @@ class DartisanAtWork extends Positionable with Showable, ApplicationEventPasseng
         atWorkLabel = "Only at home";
         break;
       case 2:
-        atWorkLabel = "Some experimentation only";
-        break;
-      case 3:
         atWorkLabel = "A small part of my time";
         break;
+      case 3:
+        atWorkLabel = "Half of my time";
+        break;
       case 4:
-        atWorkLabel = "A large part of my time";
+        atWorkLabel = "Most my time";
         break;
       case 5:
         atWorkLabel = "Full time on Dart";

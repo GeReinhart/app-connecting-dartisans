@@ -353,4 +353,11 @@ class Bounds {
         s.swLat == swLat &&
         s.swLng == swLng);
   }
+  
+  bool get isEmpty => neLat==swLat || neLng ==swLng ;
+  
+  @override
+  String toString(){
+    return "Bounds ${neLat}, ${neLng} : ${swLat}, ${swLng}";
+  }
 }

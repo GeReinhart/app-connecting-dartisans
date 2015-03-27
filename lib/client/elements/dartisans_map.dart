@@ -4,6 +4,7 @@ library connecting_dartisans.elements.dartisans_map;
 
 import "dart:html";
 import "dart:async";
+import 'package:logging/logging.dart';
 import 'package:gex_webapp_kit_client/webapp_kit_client.dart';
 import 'package:google_maps/google_maps.dart';
 import 'package:gex_webapp_kit_client/webapp_kit_common.dart';
@@ -11,10 +12,9 @@ import 'package:connecting_dartisans/connecting_dartisans_client.dart';
 import 'package:connecting_dartisans/connecting_dartisans_common.dart';
 
 class DartisansMap extends Object with Showable, ApplicationEventPassenger {
-  final LatLng defaultPosition = new LatLng(64.8377778, -147.71638889999997);
-  final LatLngBounds defaultBounds = new LatLngBounds(
-      new LatLng(-41.2864603, 174.77623600000004), // Wellington, New Zealand
-      new LatLng(49.2827291, -123.12073750000002)); // Vancouver, BC, Canada
+  final Logger log = new Logger('DartisansMap');
+  final LatLngBounds defaultBounds = new LatLngBounds( new LatLng(-64.85571932665043, 169.94338350712894), new LatLng(74.18969003290712, -157.91062039912103)  );
+  final LatLng defaultPosition = new LatLng(67.45196247235687, -149.95102567255853);
   DivElement _map;
   GMap _googleMap;
   Dartisans _dartisans;
@@ -28,7 +28,7 @@ class DartisansMap extends Object with Showable, ApplicationEventPassenger {
   void init() {
     final mapOptions = new MapOptions()
       ..center = defaultPosition
-      ..zoom = 3
+      ..zoom = 2
       ..mapTypeId = MapTypeId.ROADMAP
       ..streetViewControl = false;
 
@@ -40,13 +40,18 @@ class DartisansMap extends Object with Showable, ApplicationEventPassenger {
   
   Bounds _lastBounds = null;
   void _checkBounds(){
-    
+    if (_googleMap.bounds == null){
+      return;
+    }
+      
     Bounds bounds = new Bounds(_googleMap.bounds.northEast.lat, _googleMap.bounds.northEast.lng,
               _googleMap.bounds.southWest.lat, _googleMap.bounds.southWest.lng);
     if (_lastBounds == null  ||
         _lastBounds != null &&  _lastBounds != bounds   ){
       _lastBounds = bounds;
-      fireApplicationEvent(new DartisansApplicationEvent.mapChange(this, bounds));
+      if ( !_lastBounds.isEmpty ){
+        fireApplicationEvent(new DartisansApplicationEvent.mapChange(this, bounds));
+      }
     }
     new Timer(  new Duration(seconds: 1), _checkBounds ) ;
   }
@@ -123,6 +128,10 @@ class DartisansMap extends Object with Showable, ApplicationEventPassenger {
       // Browser doesn't support Geolocation
       _handleNoGeolocation();
     }
+  }
+  
+  void panToDefaultPosition(){
+    _googleMap.panToBounds(defaultBounds);
   }
 
   void _handleNoGeolocation() {
