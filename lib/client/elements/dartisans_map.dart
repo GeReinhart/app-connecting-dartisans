@@ -79,10 +79,10 @@ class DartisansMap extends Object with Showable, ApplicationEventPassenger {
       LatLng position = new LatLng(dartisan.locationLat, dartisan.locationLng);
 
       Icon image = new Icon()
-        ..url = dartisan.avatarUrl.replaceAll("sz=150", "sz=60")
-        ..size = new Size(60, 60)
+        ..url = dartisan.avatarUrl.replaceAll("sz=150", "sz=40")
+        ..size = new Size(40, 40)
         ..origin = new Point(0, 0)
-        ..anchor = new Point(30, 30);
+        ..anchor = new Point(20, 20);
 
       Marker marker = new Marker(new MarkerOptions()
         ..position = position
