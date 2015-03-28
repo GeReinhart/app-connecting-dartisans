@@ -135,11 +135,18 @@ class Dartisan extends User {
     }
 
     if (bounds != null) {
-      if (!(this.locationLat <= bounds.neLat &&
-          this.locationLng <= bounds.neLng &&
-          this.locationLat >= bounds.swLat &&
-          this.locationLng >= bounds.swLng)) {
-        return false;
+      if ( bounds.neLng < bounds.swLng  ){
+        if (!(this.locationLat <= bounds.neLat &&
+            this.locationLat >= bounds.swLat )) {
+          return false;
+        }
+      }else{
+        if (!(this.locationLat <= bounds.neLat &&
+            this.locationLng <= bounds.neLng &&
+            this.locationLat >= bounds.swLat &&
+            this.locationLng >= bounds.swLng)) {
+          return false;
+        }
       }
     }
 

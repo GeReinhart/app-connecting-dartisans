@@ -43,7 +43,7 @@ class PageHome extends Page with Showable {
     buttonModels.add(new ButtonModel(
         label: "Search", action: search, image: new Image(mainImageUrl: "/images/button/search54.png")));
     buttonModels.add(new ButtonModel(
-        label: "Login/Register",
+        label: "Login Register",
         image: new Image(mainImageUrl: "images/button/login.png"),
         type: ButtonType.LOGIN_PROFILE,
         targetPageKey: new PageKey(name: PageProfile.NAME)));    

@@ -118,7 +118,7 @@ class ConnectingDartisansApplication extends Application {
 
     List<ButtonModel> bottomToolbar = new List<ButtonModel>();
     bottomToolbar.add(new ButtonModel(
-        label: "Login/Register",
+        label: "Login Register",
         image: new Image(mainImageUrl: "images/button/login.png"),
         type: ButtonType.LOGIN_PROFILE,
         targetPageKey: new PageKey(name: PageProfile.NAME)));
