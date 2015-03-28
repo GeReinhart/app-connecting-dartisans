@@ -14,12 +14,12 @@ import 'package:connecting_dartisans/connecting_dartisans_common.dart';
 class DartisansMap extends Object with Showable, ApplicationEventPassenger {
   final Logger log = new Logger('DartisansMap');
   final LatLngBounds defaultBounds = new LatLngBounds( new LatLng(-64.85571932665043, 169.94338350712894), new LatLng(74.18969003290712, -157.91062039912103)  );
-  final LatLng defaultPosition = new LatLng(67.45196247235687, -149.95102567255853);
   DivElement _map;
   GMap _googleMap;
   Dartisans _dartisans;
   List<Marker> _markers = new List<Marker>();
-
+  bool hasBeenShown =false;
+  
   DartisansMap(this._map) {
     this._map.style.visibility = null;
     init();
@@ -28,7 +28,7 @@ class DartisansMap extends Object with Showable, ApplicationEventPassenger {
   void init() {
     final mapOptions = new MapOptions()
       ..center = defaultPosition
-      ..zoom = 2
+      ..zoom = 3
       ..mapTypeId = MapTypeId.ROADMAP
       ..streetViewControl = false;
 
@@ -50,7 +50,7 @@ class DartisansMap extends Object with Showable, ApplicationEventPassenger {
     if (_lastBounds == null  ||
         _lastBounds != null &&  _lastBounds != bounds   ){
       _lastBounds = bounds;
-      if ( !_lastBounds.isEmpty ){
+      if ( !_lastBounds.isEmpty && hasBeenShown){
         fireApplicationEvent(new DartisansApplicationEvent.mapChange(this, bounds));
       }
     }
@@ -111,6 +111,7 @@ class DartisansMap extends Object with Showable, ApplicationEventPassenger {
   void show() {
     _map.style.display = null;
     event.trigger(_googleMap, 'resize', []);
+    hasBeenShown=true;
   }
 
   @override
@@ -136,6 +137,6 @@ class DartisansMap extends Object with Showable, ApplicationEventPassenger {
   }
 
   void _handleNoGeolocation() {
-    _googleMap.panTo(defaultPosition);
+    panToDefaultPosition();
   }
 }
