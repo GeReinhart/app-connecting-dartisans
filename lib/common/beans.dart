@@ -14,10 +14,10 @@ class Dartisan extends User {
   @Field() String twitterAccount;
 
   Dartisan([String id, String openId, String email, String displayName, String givenName, String familyName,
-      String avatarUrl, num locationLat, num locationLng, String locationAddress])
-      : super(id, openId, email, displayName, avatarUrl, locationLat, locationLng, locationAddress);
+      String avatarUrl, String googlePlusUrl, num locationLat, num locationLng, String locationAddress])
+      : super(id, openId, email, displayName, avatarUrl, googlePlusUrl,locationLat, locationLng, locationAddress);
 
-  Dartisan.fromFields({String id, String openId, String email, String displayName, String avatarUrl, num locationLat,
+  Dartisan.fromFields({String id, String openId, String email, String displayName, String avatarUrl, String googlePlusUrl, num locationLat,
       num locationLng, String locationAddress, String this.bio, String this.dartisanBio, num this.level,
       num this.atWork, bool this.readyForTraining, bool this.readyToBeHired, bool this.readyForTalks,
       String this.gitHubAccount, String this.twitterAccount})
@@ -27,6 +27,7 @@ class Dartisan extends User {
           email: email,
           displayName: displayName,
           avatarUrl: avatarUrl,
+          googlePlusUrl:googlePlusUrl,
           locationLat: locationLat,
           locationLng: locationLng,
           locationAddress: locationAddress) {}
@@ -40,6 +41,7 @@ class Dartisan extends User {
           email: user.email,
           displayName: user.displayName,
           avatarUrl: user.avatarUrl,
+          googlePlusUrl: user.googlePlusUrl,
           locationLat: user.locationLat,
           locationLng: user.locationLng,
           locationAddress: user.locationAddress) {}
@@ -168,6 +170,7 @@ class Dartisan extends User {
         email: email,
         displayName: displayName,
         avatarUrl: avatarUrl,
+        googlePlusUrl:googlePlusUrl,
         locationLat: locationLat,
         locationLng: locationLng,
         locationAddress: locationAddress,
@@ -190,6 +193,7 @@ class Dartisan extends User {
       "email": email,
       "displayName": displayName,
       "avatarUrl": avatarUrl,
+      "googlePlusUrl":googlePlusUrl,
       "locationLat": locationLat,
       "locationLng": locationLng,
       "locationAddress": locationAddress,
@@ -212,6 +216,7 @@ class Dartisan extends User {
     email = json["email"];
     displayName = json["displayName"];
     avatarUrl = json["avatarUrl"];
+    googlePlusUrl = json["googlePlusUrl"];
     locationLat = json["locationLat"];
     locationLng = json["locationLng"];
     locationAddress = json["locationAddress"];

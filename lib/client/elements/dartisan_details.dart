@@ -22,7 +22,8 @@ class DartisanDetailsModel {
   bool get hasBio => dartisan.bio != null || dartisan.dartisanBio != null;
   bool get hasGitHub => dartisan.gitHubAccount != null;
   bool get hasTwitter => dartisan.twitterAccount != null;
-
+  bool get hasGooglePLus => dartisan.googlePlusUrl != null;
+  
   String get atWorkLabel {
     if (dartisan.atWork == null) {
       return null;
