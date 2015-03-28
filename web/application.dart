@@ -67,13 +67,12 @@ class ConnectingDartisansApplication extends Application {
   Color mainColor = DART_BLUE_ORANGE;
 
   ConnectingDartisansApplication.created() : super.created() {}
-  
+
   @override
   void ready() {
     super.ready();
 
     _setAttributes();
-    
   }
 
   void _setAttributes() {
@@ -136,12 +135,12 @@ class ConnectingDartisansApplication extends Application {
   bool _firstSearchLaunched = false;
   @override
   void recieveApplicationEvent(ApplicationEvent event) {
-    if (event.isViewPortChange && !_firstSearchLaunched){
+    if (event.isViewPortChange && !_firstSearchLaunched) {
       log.info("DEBUG:  application fire a search");
       fireApplicationEvent(new DartisansApplicationEvent.callSearch(this, new DartisansSearchForm()));
-      _firstSearchLaunched=true;
+      _firstSearchLaunched = true;
     }
-    
+
     if (event is DartisansApplicationEvent) {
       if (event.isDetailsSuccess) {
         showPage(pageName: event.pageKey.name, params: event.pageKey.params);

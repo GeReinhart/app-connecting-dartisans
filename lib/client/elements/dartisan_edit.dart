@@ -54,7 +54,7 @@ class DartisanEdit extends Positionable with Showable, ApplicationEventPassenger
     bio = dartisan.bio;
     dartisanBio = dartisan.dartisanBio;
     levelSlider.level = dartisan.level;
-    atWorkSlider.atWork = dartisan.atWork ;
+    atWorkSlider.atWork = dartisan.atWork;
     readyForTrainingCheckBox.checked = dartisan.readyForTraining;
     readyForTalksCheckBox.checked = dartisan.readyForTalks;
     readyToBeHiredCheckBox.checked = dartisan.readyToBeHired;

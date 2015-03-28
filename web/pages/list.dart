@@ -36,7 +36,7 @@ class PageList extends Page with Showable {
   void _setAttributes() {
     layout = $["layout"] as Layout;
 
-    LayoutModel layoutModel = new LayoutModel( color: Color.WHITE);
+    LayoutModel layoutModel = new LayoutModel(color: Color.WHITE);
     PageModel model = new PageModel(name: NAME, layoutModel: layoutModel);
     this.init(model);
   }

@@ -30,7 +30,7 @@ class PageStats extends Page with Showable {
   DivElement pieByLevelContainer;
   DivElement pieByCountryContainer;
   DivElement pieAtWorkContainer;
-  
+
   PageStats.created() : super.created();
 
   ready() {
@@ -42,7 +42,7 @@ class PageStats extends Page with Showable {
     layout = $["layout"] as Layout;
     pieByLevelContainer = $["pieByLevelContainer"];
     pieByCountryContainer = $["pieByCountryContainer"];
-    pieAtWorkContainer    = $["pieAtWorkContainer"];
+    pieAtWorkContainer = $["pieAtWorkContainer"];
     LayoutModel layoutModel = new LayoutModel();
     PageModel model = new PageModel(name: NAME, layoutModel: layoutModel);
     this.init(model);
@@ -118,8 +118,7 @@ class PageStats extends Page with Showable {
     var tableCountry = new DataTable(dataCountry);
     pieByCountryChart.draw(tableCountry, {'series': {'labels': {'enabled': false}}});
     pieByCountryChart.update();
-    
-    
+
     PieChart pieAtWorkChart = new PieChart(createPieDiv(pieAtWorkContainer));
     Map<String, num> dartisansAtWork = new Map<String, num>();
     dartisans.dartisanList.forEach((d) {

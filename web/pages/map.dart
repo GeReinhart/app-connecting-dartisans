@@ -35,7 +35,7 @@ class PageMap extends Page with Showable {
     LayoutModel layoutModel = new LayoutModel(color: Color.WHITE);
     PageModel model = new PageModel(name: NAME, layoutModel: layoutModel);
     this.init(model);
-    
+
     map.panToDefaultPosition();
   }
 
@@ -73,6 +73,5 @@ class PageMap extends Page with Showable {
         toastMessage("Profile saved", color: Color.BLUE_0082C8);
       }
     }
-
   }
 }

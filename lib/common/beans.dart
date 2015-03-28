@@ -18,9 +18,9 @@ class Dartisan extends User {
       : super(id, openId, email, displayName, avatarUrl, locationLat, locationLng, locationAddress);
 
   Dartisan.fromFields({String id, String openId, String email, String displayName, String avatarUrl, num locationLat,
-      num locationLng, String locationAddress, String this.bio, String this.dartisanBio, num this.level,num this.atWork,
-      bool this.readyForTraining, bool this.readyToBeHired, bool this.readyForTalks, String this.gitHubAccount,
-      String this.twitterAccount})
+      num locationLng, String locationAddress, String this.bio, String this.dartisanBio, num this.level,
+      num this.atWork, bool this.readyForTraining, bool this.readyToBeHired, bool this.readyForTalks,
+      String this.gitHubAccount, String this.twitterAccount})
       : super.fromFields(
           id: id,
           openId: openId,
@@ -31,8 +31,9 @@ class Dartisan extends User {
           locationLng: locationLng,
           locationAddress: locationAddress) {}
 
-  Dartisan.fromUser(User user, {String this.bio, String this.dartisanBio, num this.level, num this.atWork, bool this.readyForTraining,
-      bool this.readyToBeHired, bool this.readyForTalks, String this.gitHubAccount, String this.twitterAccount})
+  Dartisan.fromUser(User user, {String this.bio, String this.dartisanBio, num this.level, num this.atWork,
+      bool this.readyForTraining, bool this.readyToBeHired, bool this.readyForTalks, String this.gitHubAccount,
+      String this.twitterAccount})
       : super.fromFields(
           id: user.id,
           openId: user.openId,
@@ -48,7 +49,7 @@ class Dartisan extends User {
   }
 
   String get levelLabel {
-    if (level == null){
+    if (level == null) {
       return "";
     }
     switch (level.toInt()) {
@@ -66,11 +67,11 @@ class Dartisan extends User {
         return "";
     }
   }
-  
+
   String get atWorkLabel {
-    if (atWork == null){
+    if (atWork == null) {
       return "";
-    }    
+    }
     switch (atWork.toInt()) {
       case 1:
         return "Only at home";
@@ -165,7 +166,7 @@ class Dartisan extends User {
         locationAddress: locationAddress,
         bio: bio,
         level: level,
-        atWork :atWork,
+        atWork: atWork,
         dartisanBio: dartisanBio,
         readyToBeHired: readyToBeHired,
         readyForTalks: readyForTalks,
@@ -335,7 +336,7 @@ class Bounds {
   num swLng;
 
   Bounds(this.neLat, this.neLng, this.swLat, this.swLng);
-  
+
   int get hashCode {
     int result = 17;
     result = 37 * result + neLat.hashCode;
@@ -348,16 +349,13 @@ class Bounds {
   bool operator ==(other) {
     if (other is! Bounds) return false;
     Bounds s = other;
-    return (s.neLat == neLat &&
-        s.neLng == neLng &&
-        s.swLat == swLat &&
-        s.swLng == swLng);
+    return (s.neLat == neLat && s.neLng == neLng && s.swLat == swLat && s.swLng == swLng);
   }
-  
-  bool get isEmpty => neLat==swLat || neLng ==swLng ;
-  
+
+  bool get isEmpty => neLat == swLat || neLng == swLng;
+
   @override
-  String toString(){
+  String toString() {
     return "Bounds ${neLat}, ${neLng} : ${swLat}, ${swLng}";
   }
 }
