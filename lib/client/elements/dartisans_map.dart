@@ -128,7 +128,7 @@ class DartisansMap extends Object with Showable, ApplicationEventPassenger {
   void geoLocation() {
     if (window.navigator.geolocation != null) {
       window.navigator.geolocation.getCurrentPosition().then((position) {
-        _googleMap.center = new LatLng(position.coords.latitude, position.coords.longitude);
+        _googleMap.center = _adaptPosition(new LatLng(position.coords.latitude, position.coords.longitude));
       }, onError: (error) {
         _handleNoGeolocation();
       });

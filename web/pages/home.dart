@@ -25,7 +25,6 @@ class PageHome extends Page with Showable {
 
   Layout layout;
   ImageElement dartLogo;
-  ApplicationEventBus _applicationEventBus;
 
   PageHome.created() : super.created();
 
@@ -43,6 +42,11 @@ class PageHome extends Page with Showable {
         .add(new ButtonModel(label: "Map", action: map, image: new Image(mainImageUrl: "/images/button/map32.png")));
     buttonModels.add(new ButtonModel(
         label: "Search", action: search, image: new Image(mainImageUrl: "/images/button/search54.png")));
+    buttonModels.add(new ButtonModel(
+        label: "Login/Register",
+        image: new Image(mainImageUrl: "images/button/login.png"),
+        type: ButtonType.LOGIN_PROFILE,
+        targetPageKey: new PageKey(name: PageProfile.NAME)));    
     ToolbarModel toolbarModel = new ToolbarModel(
         buttons: buttonModels,
         color: Color.GREY_858585.lightColorAsColor,
@@ -60,11 +64,13 @@ class PageHome extends Page with Showable {
     num dartLogoWidth = position.width / 3 > 400 ? 400 : position.width / 3;
     dartLogo.style.width = "${dartLogoWidth}px";
   }
-
+  
   @override
-  void setApplicationEventBus(ApplicationEventBus value) {
-    super.setApplicationEventBus(value);
+  void recieveApplicationEvent(ApplicationEvent event) {
+    super.recieveApplicationEvent(event);
+    
   }
+
 
   map(Parameters params) {
     fireApplicationEvent(new ApplicationEvent.callPage(this, PageMap.NAME));
