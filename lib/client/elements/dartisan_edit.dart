@@ -65,6 +65,10 @@ class DartisanEdit extends Positionable with Showable, ApplicationEventPassenger
   set user(User user) {
     userEdit.user = user;
   }
+  
+  set userFromAuthentication(User user) {
+    userEdit.userFromAuthentication = user;
+  }
 
   Dartisan get dartisan => new Dartisan.fromUser(userEdit.user,
       bio: bioTextArea.value,

@@ -73,6 +73,9 @@ class PageProfile extends Page with Showable {
   void recieveApplicationEvent(ApplicationEvent event) {
     super.recieveApplicationEvent(event);
 
+    if (event.isUserAuthSuccess) {
+      dartisanEdit.userFromAuthentication = event.user;
+    }
     if (event.isLoginSuccess || event.isRegisterSuccess) {
       dartisanEdit.user = event.user;
     }
