@@ -15,19 +15,19 @@ class Dartisan extends User {
 
   Dartisan([String id, String openId, String email, String displayName, String givenName, String familyName,
       String avatarUrl, String googlePlusUrl, num locationLat, num locationLng, String locationAddress])
-      : super(id, openId, email, displayName, avatarUrl, googlePlusUrl,locationLat, locationLng, locationAddress);
+      : super(id, openId, email, displayName, avatarUrl, googlePlusUrl, locationLat, locationLng, locationAddress);
 
-  Dartisan.fromFields({String id, String openId, String email, String displayName, String avatarUrl, String googlePlusUrl, num locationLat,
-      num locationLng, String locationAddress, String this.bio, String this.dartisanBio, num this.level,
-      num this.atWork, bool this.readyForTraining, bool this.readyToBeHired, bool this.readyForTalks,
-      String this.gitHubAccount, String this.twitterAccount})
+  Dartisan.fromFields({String id, String openId, String email, String displayName, String avatarUrl,
+      String googlePlusUrl, num locationLat, num locationLng, String locationAddress, String this.bio,
+      String this.dartisanBio, num this.level, num this.atWork, bool this.readyForTraining, bool this.readyToBeHired,
+      bool this.readyForTalks, String this.gitHubAccount, String this.twitterAccount})
       : super.fromFields(
           id: id,
           openId: openId,
           email: email,
           displayName: displayName,
           avatarUrl: avatarUrl,
-          googlePlusUrl:googlePlusUrl,
+          googlePlusUrl: googlePlusUrl,
           locationLat: locationLat,
           locationLng: locationLng,
           locationAddress: locationAddress) {}
@@ -137,12 +137,11 @@ class Dartisan extends User {
     }
 
     if (bounds != null) {
-      if ( bounds.neLng < bounds.swLng  ){
-        if (!(this.locationLat <= bounds.neLat &&
-            this.locationLat >= bounds.swLat )) {
+      if (bounds.neLng < bounds.swLng) {
+        if (!(this.locationLat <= bounds.neLat && this.locationLat >= bounds.swLat)) {
           return false;
         }
-      }else{
+      } else {
         if (!(this.locationLat <= bounds.neLat &&
             this.locationLng <= bounds.neLng &&
             this.locationLat >= bounds.swLat &&
@@ -170,7 +169,7 @@ class Dartisan extends User {
         email: email,
         displayName: displayName,
         avatarUrl: avatarUrl,
-        googlePlusUrl:googlePlusUrl,
+        googlePlusUrl: googlePlusUrl,
         locationLat: locationLat,
         locationLng: locationLng,
         locationAddress: locationAddress,
@@ -193,7 +192,7 @@ class Dartisan extends User {
       "email": email,
       "displayName": displayName,
       "avatarUrl": avatarUrl,
-      "googlePlusUrl":googlePlusUrl,
+      "googlePlusUrl": googlePlusUrl,
       "locationLat": locationLat,
       "locationLng": locationLng,
       "locationAddress": locationAddress,

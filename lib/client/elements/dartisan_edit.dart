@@ -65,7 +65,7 @@ class DartisanEdit extends Positionable with Showable, ApplicationEventPassenger
   set user(User user) {
     userEdit.user = user;
   }
-  
+
   set userFromAuthentication(User user) {
     userEdit.userFromAuthentication = user;
   }

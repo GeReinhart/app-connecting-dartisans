@@ -45,8 +45,8 @@ void main() {
       application.setApplicationEventBus(applicationEventBus);
       applicationEventLogger.setApplicationEventBus(applicationEventBus);
 
-      router.init();
       application.init();
+      router.init();
     });
   });
 }
@@ -136,7 +136,6 @@ class ConnectingDartisansApplication extends Application {
   @override
   void recieveApplicationEvent(ApplicationEvent event) {
     if (event.isViewPortChange && !_firstSearchLaunched) {
-      log.info("DEBUG:  application fire a search");
       fireApplicationEvent(new DartisansApplicationEvent.callSearch(this, new DartisansSearchForm()));
       _firstSearchLaunched = true;
     }

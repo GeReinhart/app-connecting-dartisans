@@ -46,7 +46,7 @@ class PageHome extends Page with Showable {
         label: "Login Register",
         image: new Image(mainImageUrl: "images/button/login.png"),
         type: ButtonType.LOGIN_PROFILE,
-        targetPageKey: new PageKey(name: PageProfile.NAME)));    
+        targetPageKey: new PageKey(name: PageProfile.NAME)));
     ToolbarModel toolbarModel = new ToolbarModel(
         buttons: buttonModels,
         color: Color.GREY_858585.lightColorAsColor,
@@ -64,13 +64,11 @@ class PageHome extends Page with Showable {
     num dartLogoWidth = position.width / 3 > 400 ? 400 : position.width / 3;
     dartLogo.style.width = "${dartLogoWidth}px";
   }
-  
+
   @override
   void recieveApplicationEvent(ApplicationEvent event) {
     super.recieveApplicationEvent(event);
-    
   }
-
 
   map(Parameters params) {
     fireApplicationEvent(new ApplicationEvent.callPage(this, PageMap.NAME));

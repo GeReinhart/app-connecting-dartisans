@@ -4,6 +4,7 @@ import "dart:html";
 import 'package:logging/logging.dart';
 import 'package:polymer/polymer.dart';
 import 'package:gex_webapp_kit_client/webapp_kit_client.dart';
+import 'package:gex_webapp_kit_client/webapp_kit_common.dart';
 import 'package:gex_webapp_kit_client/elements/layout.dart';
 import 'package:gex_webapp_kit_client/elements/page.dart';
 import 'package:connecting_dartisans/connecting_dartisans_client.dart';
@@ -20,6 +21,8 @@ class PageDetails extends Page with Showable {
   Color mainColor = Color.WHITE;
 
   Layout layout;
+
+  String _dartisanOpenId;
 
   PageDetails.created() : super.created();
 
@@ -40,6 +43,14 @@ class PageDetails extends Page with Showable {
   void show() {
     super.show();
     details.show();
+  }
+
+  @override
+  void showPage({Parameters resources, Parameters params}) {
+    if (resources != null) {
+      fireApplicationEvent(new DartisansApplicationEvent.callDetails(this, resources.valueFor("id")));
+    }
+    show();
   }
 
   @override

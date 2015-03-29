@@ -19,10 +19,9 @@ class DartisansMap extends Object with Showable, ApplicationEventPassenger {
   DivElement _map;
   GMap _googleMap;
   Dartisans _dartisans;
-  Map<String,Marker> _markers = new Map<String,Marker>();
+  Map<String, Marker> _markers = new Map<String, Marker>();
   bool hasBeenShown = false;
 
-  
   DartisansMap(this._map) {
     this._map.style.visibility = null;
     init();
@@ -84,40 +83,38 @@ class DartisansMap extends Object with Showable, ApplicationEventPassenger {
   }
 
   void _updateMarkers() {
-    
-    Iterator keyIterator = _markers.keys.iterator ;
+    Iterator keyIterator = _markers.keys.iterator;
     List<String> markerToRemove = new List<String>();
-    while(keyIterator.moveNext()){
-      if (_dartisans.dartisans[keyIterator.current] == null){
+    while (keyIterator.moveNext()) {
+      if (_dartisans.dartisans[keyIterator.current] == null) {
         Marker currentMarker = _markers[keyIterator.current];
         currentMarker.map = null;
         markerToRemove.add(keyIterator.current);
       }
     }
-    markerToRemove.forEach((m)=> _markers.remove(m));
+    markerToRemove.forEach((m) => _markers.remove(m));
 
     _dartisans.dartisanList.forEach((dartisan) {
-      if (!_markers.containsKey(dartisan.openId)){
-          LatLng position = new LatLng(dartisan.locationLat, dartisan.locationLng);
-    
-          Icon image = new Icon()
-            ..url = dartisan.avatarUrl.replaceAll("sz=150", "sz=40")
-            ..size = new Size(40, 40)
-            ..origin = new Point(0, 0)
-            ..anchor = new Point(20, 20);
-    
-          Marker marker = new Marker(new MarkerOptions()
-            ..position = position
-            ..icon = image
-            ..map = _googleMap
-            ..title = dartisan.displayName);
-          marker.onClick.listen((_) {
-            fireApplicationEvent(new DartisansApplicationEvent.callDetails(this, dartisan.openId));
-          });
-          _markers[dartisan.openId]= marker;
+      if (!_markers.containsKey(dartisan.openId)) {
+        LatLng position = new LatLng(dartisan.locationLat, dartisan.locationLng);
+
+        Icon image = new Icon()
+          ..url = dartisan.avatarUrl.replaceAll("sz=150", "sz=40")
+          ..size = new Size(40, 40)
+          ..origin = new Point(0, 0)
+          ..anchor = new Point(20, 20);
+
+        Marker marker = new Marker(new MarkerOptions()
+          ..position = position
+          ..icon = image
+          ..map = _googleMap
+          ..title = dartisan.displayName);
+        marker.onClick.listen((_) {
+          fireApplicationEvent(new DartisansApplicationEvent.callDetails(this, dartisan.openId));
+        });
+        _markers[dartisan.openId] = marker;
       }
     });
-    
   }
 
   @override
