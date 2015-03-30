@@ -45,8 +45,8 @@ void main() {
       application.setApplicationEventBus(applicationEventBus);
       applicationEventLogger.setApplicationEventBus(applicationEventBus);
 
-      application.init();
       router.init();
+      application.init();
     });
   });
 }
