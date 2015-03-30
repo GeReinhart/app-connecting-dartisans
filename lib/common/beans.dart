@@ -78,11 +78,11 @@ class Dartisan extends User {
       case 1:
         return "Only at home";
       case 2:
-        return "Some experimentation only";
-      case 3:
         return "A small part of my time";
+      case 3:
+        return "Half of my time";
       case 4:
-        return "A large part of my time";
+        return "Most of my time";
       case 5:
         return "Full time on Dart";
       default:
@@ -136,6 +136,19 @@ class Dartisan extends User {
       }
     }
 
+    
+    if (search.selectedLevels != null && search.selectedLevels.isNotEmpty && search.selectedLevels.length != 5){
+      if ( ! search.selectedLevels.contains(this.level)  ){
+        return false;
+      }
+    }
+
+    if (search.selectedAtWork != null && search.selectedAtWork.isNotEmpty && search.selectedAtWork.length != 5){
+      if ( ! search.selectedAtWork.contains(this.atWork)  ){
+        return false;
+      }
+    }
+    
     if (bounds != null) {
       if (bounds.neLng < bounds.swLng) {
         if (!(this.locationLat <= bounds.neLat && this.locationLat >= bounds.swLat)) {
@@ -289,11 +302,13 @@ class DartisansSearchForm implements Bean {
   @Field() bool readyForTraining;
   @Field() bool readyForTalks;
   @Field() bool readyToBeHired;
+  @Field() Set<num> selectedLevels;
+  @Field() Set<num> selectedAtWork;
 
-  DartisansSearchForm([String fullTextSearch, String readyForTraining, String readyForTalks, String readyToBeHired]);
+  DartisansSearchForm([String fullTextSearch, String readyForTraining, String readyForTalks, String readyToBeHired,Set<num> selectedLevels,Set<num> selectedAtWork]);
 
   DartisansSearchForm.fromFields(
-      {String this.fullTextSearch, bool this.readyForTraining, bool this.readyForTalks, bool this.readyToBeHired});
+      {String this.fullTextSearch, bool this.readyForTraining, bool this.readyForTalks, bool this.readyToBeHired,Set<num> this.selectedLevels,Set<num> this.selectedAtWork});
 
   @override
   Map toJson() {
@@ -310,7 +325,9 @@ class DartisansSearchForm implements Bean {
         fullTextSearch: fullTextSearch,
         readyForTraining: readyForTraining,
         readyForTalks: readyForTalks,
-        readyToBeHired: readyToBeHired);
+        readyToBeHired: readyToBeHired,
+        selectedLevels:selectedLevels,
+        selectedAtWork:selectedAtWork);
   }
 
   @override
@@ -327,6 +344,8 @@ class DartisansSearchForm implements Bean {
     result = 37 * result + readyForTraining.hashCode;
     result = 37 * result + readyForTalks.hashCode;
     result = 37 * result + readyToBeHired.hashCode;
+    result = 37 * result + selectedLevels.hashCode;
+    result = 37 * result + selectedAtWork.hashCode;
     return result;
   }
 
@@ -336,7 +355,10 @@ class DartisansSearchForm implements Bean {
     return (s.fullTextSearch == fullTextSearch &&
         s.readyForTraining == readyForTraining &&
         s.readyForTalks == readyForTalks &&
-        s.readyToBeHired == readyToBeHired);
+        s.readyToBeHired == readyToBeHired &&
+        s.selectedLevels == selectedLevels &&
+        s.selectedAtWork == selectedAtWork                               
+        );
   }
 }
 

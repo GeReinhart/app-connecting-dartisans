@@ -11,6 +11,7 @@ import 'package:polymer/polymer.dart';
 import 'package:connecting_dartisans/connecting_dartisans_common.dart';
 import 'package:connecting_dartisans/connecting_dartisans_client.dart';
 import 'package:gex_webapp_kit_client/elements/ternary_options.dart';
+import 'package:gex_webapp_kit_client/elements/multi_select.dart';
 
 @CustomTag('dartisans-search-form')
 class DartisansSearchFormElement extends Positionable with Showable, ApplicationEventPassenger {
@@ -27,8 +28,28 @@ class DartisansSearchFormElement extends Positionable with Showable, Application
     new Timer(new Duration(seconds: 1), _updateDartisansSearchForm);
   }
 
+  
+  @override
+  void recieveApplicationEvent(ApplicationEvent event) {
+    super.recieveApplicationEvent(event);
+    if (event.isViewPortChange){
+      if (event.viewPort.windowWidth < 1000){
+        levelSelect.vertical();
+        atWorkSelect.vertical();
+      }else{
+        levelSelect.horizontal();
+        atWorkSelect.horizontal();
+      }
+    }
+  }
+
+  
   @override
   void ready() {
+    MultiSelectModel levelSelectModel = new MultiSelectModel(new Set<num>(),["","Beginner","Intermediate","Experienced","Advanced","Expert"]);
+    levelSelect.init( levelSelectModel);
+    MultiSelectModel atWorkSelectModel = new MultiSelectModel(new Set<num>(),["","At home","Small","Half","Most","Full time"]);
+    atWorkSelect.init( atWorkSelectModel);
     optionsReadyForTraining.init(new TernaryOptionsModel("Ready for training"));
     optionsReadyToBeHired.init(new TernaryOptionsModel("Ready to be hired"));
     optionsReadyForTalks.init(new TernaryOptionsModel("Ready for talks"));
@@ -41,6 +62,8 @@ class DartisansSearchFormElement extends Positionable with Showable, Application
     form.readyForTraining = optionsReadyForTraining.optionAsBool;
     form.readyForTalks = optionsReadyForTalks.optionAsBool;
     form.readyToBeHired = optionsReadyToBeHired.optionAsBool;
+    form.selectedLevels = levelSelect.selectedElements;
+    form.selectedAtWork = atWorkSelect.selectedElements;
 
     return form;
   }
@@ -55,4 +78,6 @@ class DartisansSearchFormElement extends Positionable with Showable, Application
   TernaryOptions get optionsReadyForTalks => $["optionsReadyForTalks"];
   TernaryOptions get optionsReadyToBeHired => $["optionsReadyToBeHired"];
   InputElement get fullTextSearch => $["fullTextSearch"];
+  MultiSelect get levelSelect => $["levelSelect"];
+  MultiSelect get atWorkSelect => $["atWorkSelect"];
 }
