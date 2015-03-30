@@ -326,8 +326,8 @@ class DartisansSearchForm implements Bean {
         readyForTraining: readyForTraining,
         readyForTalks: readyForTalks,
         readyToBeHired: readyToBeHired,
-        selectedLevels:selectedLevels,
-        selectedAtWork:selectedAtWork);
+        selectedLevels: new Set<num>()..addAll( selectedLevels),
+        selectedAtWork: new Set<num>()..addAll( selectedAtWork));
   }
 
   @override
@@ -352,12 +352,18 @@ class DartisansSearchForm implements Bean {
   bool operator ==(other) {
     if (other is! DartisansSearchForm) return false;
     DartisansSearchForm s = other;
+    
+    Set<num> s_selectedLevels = s.selectedLevels == null ? new Set<num>() :s.selectedLevels ;
+    Set<num> this_selectedLevels = selectedLevels == null ? new Set<num>() :selectedLevels ;
+    Set<num> s_selectedAtWork = s.selectedAtWork == null ? new Set<num>() :s.selectedAtWork ;
+    Set<num> this_selectedAtWork = selectedAtWork == null ? new Set<num>() :selectedAtWork ;    
+    
     return (s.fullTextSearch == fullTextSearch &&
         s.readyForTraining == readyForTraining &&
         s.readyForTalks == readyForTalks &&
         s.readyToBeHired == readyToBeHired &&
-        s.selectedLevels == selectedLevels &&
-        s.selectedAtWork == selectedAtWork                               
+        s_selectedLevels.containsAll(this_selectedLevels) && s_selectedLevels.length == this_selectedLevels.length  &&
+        s_selectedAtWork.containsAll(this_selectedAtWork) && s_selectedAtWork.length == this_selectedAtWork.length                                
         );
   }
 }
