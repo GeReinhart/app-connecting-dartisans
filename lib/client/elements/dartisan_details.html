@@ -39,13 +39,15 @@
           </div>
           <div class="column">
                   <h1>{{model.dartisan.displayName}}</h1>
+                  
+                  <div hidden?="{{!model.dartisan.isEmailVisible}}" style="padding-bottom: 10px" >{{model.dartisan.email}}</div>
                   <div style="padding-bottom: 10px" >{{model.dartisan.country}}</div>
                   <div style="font-weight: bolder;" >{{model.dartisan.levelLabel}} in Dart</div>
                   <div style="padding-bottom: 10px" >{{model.atWorkLabel}}</div>
                   <div>
-                     <a hidden?="{{!model.hasGooglePLus}}" href="{{model.dartisan.googlePlusUrl}}" ><img src="/images/gplus_logo.png"  style="width: 25px ; height: 25px" ></a>
-                     <a hidden?="{{!model.hasGitHub}}" href="https://github.com/{{model.dartisan.gitHubAccount}}" ><img src="/images/github_logo.png"  style="width: 25px ; height: 25px" ></a>
-                     <a hidden?="{{!model.hasTwitter}}" href="https://twitter.com/{{model.dartisan.twitterAccount}}" ><img src="/images/twitter_logo.png"  style="width: 25px ; height: 25px" ></a>
+                     <a hidden?="{{!model.hasGooglePLus}}" _href="{{model.dartisan.googlePlusUrl}}" ><img src="/images/gplus_logo.png"  style="width: 25px ; height: 25px" ></a>
+                     <a hidden?="{{!model.hasGitHub}}" _href="https://github.com/{{model.dartisan.gitHubAccount}}" ><img src="/images/github_logo.png"  style="width: 25px ; height: 25px" ></a>
+                     <a hidden?="{{!model.hasTwitter}}" _href="https://twitter.com/{{model.dartisan.twitterAccount}}" ><img src="/images/twitter_logo.png"  style="width: 25px ; height: 25px" ></a>
                   </div>
           </div>
       </div>

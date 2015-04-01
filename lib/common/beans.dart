@@ -13,11 +13,11 @@ class Dartisan extends User {
   @Field() String gitHubAccount;
   @Field() String twitterAccount;
 
-  Dartisan([String id, String openId, String email, String displayName, String givenName, String familyName,
+  Dartisan([String id, String openId, String email, bool emailVisible, String displayName, String givenName, String familyName,
       String avatarUrl, String googlePlusUrl, num locationLat, num locationLng, String locationAddress])
-      : super(id, openId, email, displayName, avatarUrl, googlePlusUrl, locationLat, locationLng, locationAddress);
+      : super(id, openId, email, emailVisible, displayName, avatarUrl, googlePlusUrl, locationLat, locationLng, locationAddress);
 
-  Dartisan.fromFields({String id, String openId, String email, String displayName, String avatarUrl,
+  Dartisan.fromFields({String id, String openId, String email, bool emailVisible, String displayName, String avatarUrl,
       String googlePlusUrl, num locationLat, num locationLng, String locationAddress, String this.bio,
       String this.dartisanBio, num this.level, num this.atWork, bool this.readyForTraining, bool this.readyToBeHired,
       bool this.readyForTalks, String this.gitHubAccount, String this.twitterAccount})
@@ -25,6 +25,7 @@ class Dartisan extends User {
           id: id,
           openId: openId,
           email: email,
+          emailVisible:emailVisible,
           displayName: displayName,
           avatarUrl: avatarUrl,
           googlePlusUrl: googlePlusUrl,
@@ -39,6 +40,7 @@ class Dartisan extends User {
           id: user.id,
           openId: user.openId,
           email: user.email,
+          emailVisible: user.emailVisible,
           displayName: user.displayName,
           avatarUrl: user.avatarUrl,
           googlePlusUrl: user.googlePlusUrl,
@@ -180,6 +182,7 @@ class Dartisan extends User {
         id: id,
         openId: openId,
         email: email,
+        emailVisible: emailVisible,
         displayName: displayName,
         avatarUrl: avatarUrl,
         googlePlusUrl: googlePlusUrl,
@@ -203,6 +206,7 @@ class Dartisan extends User {
       "id": id,
       "openId": openId,
       "email": email,
+      "emailVisible" :emailVisible,
       "displayName": displayName,
       "avatarUrl": avatarUrl,
       "googlePlusUrl": googlePlusUrl,
@@ -226,6 +230,7 @@ class Dartisan extends User {
     id = json["id"];
     openId = json["openId"];
     email = json["email"];
+    emailVisible = json["emailVisible"];
     displayName = json["displayName"];
     avatarUrl = json["avatarUrl"];
     googlePlusUrl = json["googlePlusUrl"];
@@ -273,6 +278,14 @@ class Dartisans implements Bean {
     fromJson(json);
   }
 
+  bool hasDartisanByOpenId(String openId){
+    return dartisans[openId] != null;
+  }
+  
+  Dartisan getDartisanByOpenId(String openId){
+    return dartisans[openId] ;
+  }
+  
   void put(Dartisan dartisan) {
     dartisans[dartisan.openId] = dartisan;
   }

@@ -1,6 +1,7 @@
 library connecting_dartisans.pages.map;
 
 import "dart:html";
+import "dart:async";
 import 'package:logging/logging.dart';
 import 'package:polymer/polymer.dart';
 import 'package:gex_webapp_kit_client/webapp_kit_client.dart';
@@ -20,7 +21,7 @@ class PageMap extends Page with Showable {
   Color mainColor = Color.WHITE;
   DartisansMap map;
   Layout layout;
-
+  bool _hasBeenShown = false;
   PageMap.created() : super.created();
 
   ready() {
@@ -43,6 +44,13 @@ class PageMap extends Page with Showable {
   void show() {
     super.show();
     map.show();
+    if (!_hasBeenShown){
+      new Timer( new Duration(seconds: 2), ()=> toastMessage("Dartisans will be filtered also on their location") );
+       ;
+    }
+    
+    _hasBeenShown= true;
+    
   }
 
   @override

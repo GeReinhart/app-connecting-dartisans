@@ -39,18 +39,7 @@ class PageSearch extends Page with Showable {
     form = $["form"] as DartisansSearchFormElement;
     form.setApplicationEventBus(this.applicationEventBus);
 
-    List<ButtonModel> buttonModels = new List<ButtonModel>();
-    buttonModels.add(new ButtonModel(
-        label: "Result on map", action: resultOnMap, image: new Image(mainImageUrl: "/images/button/map32.png")));
-    buttonModels.add(new ButtonModel(
-        label: "Result as list", action: resultOnList, image: new Image(mainImageUrl: "/images/button/list23.png")));
-    ToolbarModel toolbarModel = new ToolbarModel(
-        buttons: buttonModels,
-        color: Color.GREY_858585.lightColorAsColor,
-        colorUsage: ColorUsage.ALTERNATE_WITH_LIGHT,
-        orientation: Orientation.est);
-
-    LayoutModel layoutModel = new LayoutModel(toolbarModel: toolbarModel, color: Color.WHITE);
+    LayoutModel layoutModel = new LayoutModel( color: Color.WHITE);
     PageModel model = new PageModel(name: NAME, layoutModel: layoutModel);
     this.init(model);
   }

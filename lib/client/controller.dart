@@ -40,6 +40,11 @@ class Controller extends Object with ApplicationEventPassenger {
       }
 
       if (event.isCallDetails) {
+        
+        if (dartisans!= null && dartisans.hasDartisanByOpenId(event.openId)){
+          fireApplicationEvent(new DartisansApplicationEvent.detailsSuccess(this, dartisans.getDartisanByOpenId(event.openId)));
+        }
+        
         GetJsonRequest request = new GetJsonRequest("/services/dartisan/${event.openId}",
             (Map output) => callDetailsSuccess(new Dartisan.loadJSON(output)), (status) => callDetailsFailure(status));
         request.send();

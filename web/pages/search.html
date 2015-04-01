@@ -5,12 +5,20 @@
 
 <polymer-element name="page-search"  >
   <template>
+  <style>
+    .button{
+    width: 25px; 
+    height: 25px ;
+    vertical-align: bottom;
+    }
+  </style>
     <gex-layout id="layout">
                <h1>Search dartisans</h1>
                
                
       <div style="margin-top: 15px"  >&nbsp;</div>
       <dartisans-search-form id="form"></dartisans-search-form>          
+      <div style="margin-top: 20px;">Use <img src="/images/button/map32.png" class="button"  />,&nbsp;<img src="/images/button/list23.png" class="button"  />&nbsp;or&nbsp;<img src="/images/button/data-analytics1.png" class="button"  />&nbsp; to get results.</div>
                
     </gex-layout>
   </template>
