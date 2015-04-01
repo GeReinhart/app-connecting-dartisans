@@ -13,9 +13,11 @@ class Dartisan extends User {
   @Field() String gitHubAccount;
   @Field() String twitterAccount;
 
-  Dartisan([String id, String openId, String email, bool emailVisible, String displayName, String givenName, String familyName,
-      String avatarUrl, String googlePlusUrl, num locationLat, num locationLng, String locationAddress])
-      : super(id, openId, email, emailVisible, displayName, avatarUrl, googlePlusUrl, locationLat, locationLng, locationAddress);
+  Dartisan([String id, String openId, String email, bool emailVisible, String displayName, String givenName,
+      String familyName, String avatarUrl, String googlePlusUrl, num locationLat, num locationLng,
+      String locationAddress])
+      : super(id, openId, email, emailVisible, displayName, avatarUrl, googlePlusUrl, locationLat, locationLng,
+          locationAddress);
 
   Dartisan.fromFields({String id, String openId, String email, bool emailVisible, String displayName, String avatarUrl,
       String googlePlusUrl, num locationLat, num locationLng, String locationAddress, String this.bio,
@@ -25,7 +27,7 @@ class Dartisan extends User {
           id: id,
           openId: openId,
           email: email,
-          emailVisible:emailVisible,
+          emailVisible: emailVisible,
           displayName: displayName,
           avatarUrl: avatarUrl,
           googlePlusUrl: googlePlusUrl,
@@ -138,19 +140,18 @@ class Dartisan extends User {
       }
     }
 
-    
-    if (search.selectedLevels != null && search.selectedLevels.isNotEmpty && search.selectedLevels.length != 5){
-      if ( ! search.selectedLevels.contains(this.level)  ){
+    if (search.selectedLevels != null && search.selectedLevels.isNotEmpty && search.selectedLevels.length != 5) {
+      if (!search.selectedLevels.contains(this.level)) {
         return false;
       }
     }
 
-    if (search.selectedAtWork != null && search.selectedAtWork.isNotEmpty && search.selectedAtWork.length != 5){
-      if ( ! search.selectedAtWork.contains(this.atWork)  ){
+    if (search.selectedAtWork != null && search.selectedAtWork.isNotEmpty && search.selectedAtWork.length != 5) {
+      if (!search.selectedAtWork.contains(this.atWork)) {
         return false;
       }
     }
-    
+
     if (bounds != null) {
       if (bounds.neLng < bounds.swLng) {
         if (!(this.locationLat <= bounds.neLat && this.locationLat >= bounds.swLat)) {
@@ -206,7 +207,7 @@ class Dartisan extends User {
       "id": id,
       "openId": openId,
       "email": email,
-      "emailVisible" :emailVisible,
+      "emailVisible": emailVisible,
       "displayName": displayName,
       "avatarUrl": avatarUrl,
       "googlePlusUrl": googlePlusUrl,
@@ -278,14 +279,14 @@ class Dartisans implements Bean {
     fromJson(json);
   }
 
-  bool hasDartisanByOpenId(String openId){
+  bool hasDartisanByOpenId(String openId) {
     return dartisans[openId] != null;
   }
-  
-  Dartisan getDartisanByOpenId(String openId){
-    return dartisans[openId] ;
+
+  Dartisan getDartisanByOpenId(String openId) {
+    return dartisans[openId];
   }
-  
+
   void put(Dartisan dartisan) {
     dartisans[dartisan.openId] = dartisan;
   }
@@ -318,10 +319,11 @@ class DartisansSearchForm implements Bean {
   @Field() Set<num> selectedLevels;
   @Field() Set<num> selectedAtWork;
 
-  DartisansSearchForm([String fullTextSearch, String readyForTraining, String readyForTalks, String readyToBeHired,Set<num> selectedLevels,Set<num> selectedAtWork]);
+  DartisansSearchForm([String fullTextSearch, String readyForTraining, String readyForTalks, String readyToBeHired,
+      Set<num> selectedLevels, Set<num> selectedAtWork]);
 
-  DartisansSearchForm.fromFields(
-      {String this.fullTextSearch, bool this.readyForTraining, bool this.readyForTalks, bool this.readyToBeHired,Set<num> this.selectedLevels,Set<num> this.selectedAtWork});
+  DartisansSearchForm.fromFields({String this.fullTextSearch, bool this.readyForTraining, bool this.readyForTalks,
+      bool this.readyToBeHired, Set<num> this.selectedLevels, Set<num> this.selectedAtWork});
 
   @override
   Map toJson() {
@@ -339,8 +341,8 @@ class DartisansSearchForm implements Bean {
         readyForTraining: readyForTraining,
         readyForTalks: readyForTalks,
         readyToBeHired: readyToBeHired,
-        selectedLevels: new Set<num>()..addAll( selectedLevels),
-        selectedAtWork: new Set<num>()..addAll( selectedAtWork));
+        selectedLevels: new Set<num>()..addAll(selectedLevels),
+        selectedAtWork: new Set<num>()..addAll(selectedAtWork));
   }
 
   @override
@@ -365,19 +367,20 @@ class DartisansSearchForm implements Bean {
   bool operator ==(other) {
     if (other is! DartisansSearchForm) return false;
     DartisansSearchForm s = other;
-    
-    Set<num> s_selectedLevels = s.selectedLevels == null ? new Set<num>() :s.selectedLevels ;
-    Set<num> this_selectedLevels = selectedLevels == null ? new Set<num>() :selectedLevels ;
-    Set<num> s_selectedAtWork = s.selectedAtWork == null ? new Set<num>() :s.selectedAtWork ;
-    Set<num> this_selectedAtWork = selectedAtWork == null ? new Set<num>() :selectedAtWork ;    
-    
+
+    Set<num> s_selectedLevels = s.selectedLevels == null ? new Set<num>() : s.selectedLevels;
+    Set<num> this_selectedLevels = selectedLevels == null ? new Set<num>() : selectedLevels;
+    Set<num> s_selectedAtWork = s.selectedAtWork == null ? new Set<num>() : s.selectedAtWork;
+    Set<num> this_selectedAtWork = selectedAtWork == null ? new Set<num>() : selectedAtWork;
+
     return (s.fullTextSearch == fullTextSearch &&
         s.readyForTraining == readyForTraining &&
         s.readyForTalks == readyForTalks &&
         s.readyToBeHired == readyToBeHired &&
-        s_selectedLevels.containsAll(this_selectedLevels) && s_selectedLevels.length == this_selectedLevels.length  &&
-        s_selectedAtWork.containsAll(this_selectedAtWork) && s_selectedAtWork.length == this_selectedAtWork.length                                
-        );
+        s_selectedLevels.containsAll(this_selectedLevels) &&
+        s_selectedLevels.length == this_selectedLevels.length &&
+        s_selectedAtWork.containsAll(this_selectedAtWork) &&
+        s_selectedAtWork.length == this_selectedAtWork.length);
   }
 }
 

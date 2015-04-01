@@ -39,7 +39,7 @@ class PageSearch extends Page with Showable {
     form = $["form"] as DartisansSearchFormElement;
     form.setApplicationEventBus(this.applicationEventBus);
 
-    LayoutModel layoutModel = new LayoutModel( color: Color.WHITE);
+    LayoutModel layoutModel = new LayoutModel(color: Color.WHITE);
     PageModel model = new PageModel(name: NAME, layoutModel: layoutModel);
     this.init(model);
   }

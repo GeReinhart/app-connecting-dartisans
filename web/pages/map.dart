@@ -44,13 +44,12 @@ class PageMap extends Page with Showable {
   void show() {
     super.show();
     map.show();
-    if (!_hasBeenShown){
-      new Timer( new Duration(seconds: 2), ()=> toastMessage("Dartisans will be filtered also on their location") );
-       ;
+    if (!_hasBeenShown) {
+      new Timer(new Duration(seconds: 2), () => toastMessage("Dartisans will be filtered also on their location"));
+      ;
     }
-    
-    _hasBeenShown= true;
-    
+
+    _hasBeenShown = true;
   }
 
   @override

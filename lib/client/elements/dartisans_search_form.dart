@@ -21,7 +21,7 @@ class DartisansSearchFormElement extends Positionable with Showable, Application
 
   DartisansSearchForm _lastSearchFormFired = new DartisansSearchForm();
   void _updateDartisansSearchForm() {
-    DartisansSearchForm current = dartisansSearchForm ;
+    DartisansSearchForm current = dartisansSearchForm;
     if (_lastSearchFormFired != current) {
       _lastSearchFormFired = current.clone();
       fireApplicationEvent(new DartisansApplicationEvent.callSearch(this, _lastSearchFormFired));
@@ -29,38 +29,38 @@ class DartisansSearchFormElement extends Positionable with Showable, Application
     new Timer(new Duration(seconds: 1), _updateDartisansSearchForm);
   }
 
-  
   @override
   void recieveApplicationEvent(ApplicationEvent event) {
     super.recieveApplicationEvent(event);
-    if (event.isViewPortChange){
+    if (event.isViewPortChange) {
       _orientationMultiSelect(event.viewPort.windowWidth);
     }
   }
 
-  void _orientationMultiSelect(num windowWidth){
-    if (windowWidth < 975){
+  void _orientationMultiSelect(num windowWidth) {
+    if (windowWidth < 975) {
       levelSelect.vertical();
       atWorkSelect.vertical();
-    }else{
+    } else {
       levelSelect.horizontal();
       atWorkSelect.horizontal();
     }
   }
-  
-  
+
   @override
   void ready() {
-    MultiSelectModel levelSelectModel = new MultiSelectModel(new Set<num>(),["","Beginner","Intermediate","Experienced","Advanced","Expert"]);
-    levelSelect.init( levelSelectModel);
-    MultiSelectModel atWorkSelectModel = new MultiSelectModel(new Set<num>(),["","At home","Little time","Half time","Most of time","Full time"]);
-    atWorkSelect.init( atWorkSelectModel);
+    MultiSelectModel levelSelectModel =
+        new MultiSelectModel(new Set<num>(), ["", "Beginner", "Intermediate", "Experienced", "Advanced", "Expert"]);
+    levelSelect.init(levelSelectModel);
+    MultiSelectModel atWorkSelectModel =
+        new MultiSelectModel(new Set<num>(), ["", "At home", "Little time", "Half time", "Most of time", "Full time"]);
+    atWorkSelect.init(atWorkSelectModel);
     _orientationMultiSelect(window.innerWidth);
-    
+
     optionsReadyForTraining.init(new TernaryOptionsModel("Ready for training"));
     optionsReadyToBeHired.init(new TernaryOptionsModel("Ready to be hired"));
     optionsReadyForTalks.init(new TernaryOptionsModel("Ready for talks"));
-    
+
     _updateDartisansSearchForm();
   }
 

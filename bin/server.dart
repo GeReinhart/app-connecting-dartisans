@@ -8,15 +8,14 @@ import 'package:gex_webapp_kit_client/webapp_kit_server.dart';
 import 'package:connecting_dartisans/connecting_dartisans_server.dart';
 
 main() {
-
   MongoDbManager dbManager = new MongoDbManager(dbUri(), poolSize: poolSize());
   app.addPlugin(getMapperPlugin(dbManager, "/services/.+"));
 
   app.setShelfHandler(
       createStaticHandler(staticPathToServe(), defaultDocument: "index.html", serveFilesOutsidePath: supportDartium()));
 
-  UserService_googleOAuthClientId =  googleOAuthClientId();
-  
+  UserService_googleOAuthClientId = googleOAuthClientId();
+
   app.setupConsoleLog();
   app.start(port: serverPort());
 }
