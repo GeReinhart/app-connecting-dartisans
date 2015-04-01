@@ -6,8 +6,8 @@
 <link rel="import" href="../../../../packages/paper_elements/roboto.html">
 <link rel="import" href="../../../../packages/core_elements/core_label.html">
 <link rel="import" href="../../../../packages/paper_elements/paper_shadow.html">
+<link rel="import" href="../../../../packages/gex_webapp_kit_client/elements/formated_text.html">
 <link rel="stylesheet" href="../../../../packages/paper_elements/src/paper-shadow/paper-shadow.css">
-
 
 <polymer-element name="dartisan-details" >
   <template>
@@ -56,11 +56,11 @@
        <div class="container" id="bios" >
           <div class="column"  style="width: 50% ; text-align: left ; ">
                   <h3>Bio</h3>
-                  <div  >{{model.dartisan.bio}}</div> 
+                  <gex-formated-text id="formatedBio" ></gex-formated-text> 
           </div>
           <div class="column"  style="width: 50% ; text-align: left ;"  >
                   <h3>Bio as a dartisan</h3>
-                  <div  >{{model.dartisan.dartisanBio}}</div> 
+                  <gex-formated-text  id="formatedDartisanBio"></gex-formated-text> 
           </div>          
       </div>
     </paper-shadow>

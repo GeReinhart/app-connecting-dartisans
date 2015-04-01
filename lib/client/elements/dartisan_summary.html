@@ -6,6 +6,7 @@
 <link rel="import" href="../../../../packages/paper_elements/roboto.html">
 <link rel="import" href="../../../../packages/core_elements/core_label.html">
 <link rel="import" href="../../../../packages/paper_elements/paper_shadow.html">
+<link rel="import" href="../../../../packages/gex_webapp_kit_client/elements/formated_text.html">
 <link rel="stylesheet" href="../../../../packages/paper_elements/src/paper-shadow/paper-shadow.css">
 
 
@@ -35,7 +36,7 @@
           </div>
           <div class="column">
                   <div style="font-weight: bolder;" >{{model.dartisan.levelLabel}}</div>
-                  <div  >{{model.bioSummary}}</div>
+                  <gex-formated-text id="formatedBio" ></gex-formated-text> 
           </div>
       </div>
     </paper-shadow>    

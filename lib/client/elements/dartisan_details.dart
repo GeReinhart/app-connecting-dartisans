@@ -3,17 +3,11 @@
 library connecting_dartisans.elements.dartisan_details;
 
 import "dart:html";
-import 'dart:js' as js;
 import 'package:logging/logging.dart';
-import 'dart:async';
 import 'package:gex_webapp_kit_client/webapp_kit_client.dart';
-import 'package:gex_webapp_kit_client/webapp_kit_common.dart';
-import 'package:gex_webapp_kit_client/elements/user_edit.dart';
 import 'package:polymer/polymer.dart';
 import 'package:connecting_dartisans/connecting_dartisans_common.dart';
-import 'package:paper_elements/paper_checkbox.dart';
-import 'package:connecting_dartisans/client/elements/dartisan_checkbox.dart';
-import 'package:connecting_dartisans/client/elements/dartisan_level.dart';
+import 'package:gex_webapp_kit_client/elements/formated_text.dart';
 
 class DartisanDetailsModel {
   Dartisan dartisan;
@@ -34,6 +28,7 @@ class DartisanDetailsModel {
       return "At my job : " + dartisan.atWorkLabel;
     }
   }
+  
 }
 
 @CustomTag('dartisan-details')
@@ -48,9 +43,10 @@ class DartisanDetails extends Positionable with Showable {
     return (new Element.tag('dartisan-details') as DartisanDetails)..dartisan = dartisan;
   }
 
-  set dartisan(Dartisan value) {
-    model = new DartisanDetailsModel()..dartisan = value;
+  set dartisan(Dartisan dartisan) {
+    model = new DartisanDetailsModel()..dartisan = dartisan;
+    ($["formatedBio"]as FormatedText).text =dartisan.bio ;
+    ($["formatedDartisanBio"]as FormatedText).text =dartisan.dartisanBio ;
   }
 
-  HtmlElement get mainElement => $["main"] as HtmlElement;
 }

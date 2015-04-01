@@ -14,6 +14,7 @@ import 'package:connecting_dartisans/connecting_dartisans_common.dart';
 import 'package:paper_elements/paper_checkbox.dart';
 import 'package:connecting_dartisans/client/elements/dartisan_checkbox.dart';
 import 'package:connecting_dartisans/client/elements/dartisan_level.dart';
+import 'package:gex_webapp_kit_client/elements/formated_text.dart';
 
 class DartisanSummaryModel {
   Dartisan dartisan;
@@ -30,8 +31,8 @@ class DartisanSummaryModel {
     if (dartisan.bio != null) {
       bioSummary += " " + dartisan.bio;
     }
-    if (bioSummary.length > 500) {
-      bioSummary = bioSummary.substring(0, 497) + "...";
+    if (bioSummary.length > 200) {
+      bioSummary = bioSummary.substring(0, 197) + "...";
     }
     return bioSummary;
   }
@@ -58,6 +59,7 @@ class DartisanSummary extends Positionable with Showable {
 
   set dartisan(Dartisan value) {
     model = new DartisanSummaryModel()..dartisan = value;
+    ($["formatedBio"]as FormatedText).text = model.bioSummary ;
   }
 
   Dartisan get dartisan => model.dartisan;
