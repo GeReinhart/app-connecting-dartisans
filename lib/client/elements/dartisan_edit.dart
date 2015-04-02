@@ -9,6 +9,7 @@ import 'dart:async';
 import 'package:gex_webapp_kit_client/webapp_kit_client.dart';
 import 'package:gex_webapp_kit_client/webapp_kit_common.dart';
 import 'package:gex_webapp_kit_client/elements/user_edit.dart';
+import 'package:gex_webapp_kit_client/elements/formated_textarea.dart';
 import 'package:polymer/polymer.dart';
 import 'package:connecting_dartisans/connecting_dartisans_common.dart';
 import 'package:paper_elements/paper_checkbox.dart';
@@ -20,8 +21,6 @@ import 'package:connecting_dartisans/client/elements/dartisan_at_work.dart';
 class DartisanEdit extends Positionable with Showable, ApplicationEventPassenger {
   final Logger log = new Logger('DartisanEdit');
 
-  @observable String bio;
-  @observable String dartisanBio;
   @observable String gitHubAccount;
   @observable String twitterAccount;
 
@@ -29,10 +28,6 @@ class DartisanEdit extends Positionable with Showable, ApplicationEventPassenger
 
   @override
   void ready() {
-    bioTextArea.rows = 10;
-    bioTextArea.maxLength = 5000;
-    dartisanBioTextArea.rows = 10;
-    dartisanBioTextArea.maxLength = 5000;
     userEdit.map.editionMode = false;
     userEdit.map.lock.checked = true;
   }
@@ -51,8 +46,8 @@ class DartisanEdit extends Positionable with Showable, ApplicationEventPassenger
 
   set dartisan(Dartisan dartisan) {
     userEdit.user = dartisan;
-    bio = dartisan.bio;
-    dartisanBio = dartisan.dartisanBio;
+    bioTextArea.value = dartisan.bio;
+    dartisanBioTextArea.value = dartisan.dartisanBio;
     levelSlider.level = dartisan.level;
     atWorkSlider.atWork = dartisan.atWork;
     readyForTrainingCheckBox.checked = dartisan.readyForTraining;
@@ -82,8 +77,8 @@ class DartisanEdit extends Positionable with Showable, ApplicationEventPassenger
       twitterAccount: twitterAccount);
 
   UserEdit get userEdit => $["userEdit"] as UserEdit;
-  TextAreaElement get bioTextArea => $["bioTextArea"] as TextAreaElement;
-  TextAreaElement get dartisanBioTextArea => $["dartisanBioTextArea"] as TextAreaElement;
+  FormatedTextArea get bioTextArea => $["bioTextArea"] as FormatedTextArea;
+  FormatedTextArea get dartisanBioTextArea => $["dartisanBioTextArea"] as FormatedTextArea;
   DartisanLevel get levelSlider => $["level"] as DartisanLevel;
   DartisanAtWork get atWorkSlider => $["atWork"] as DartisanAtWork;
   DartisanCheckBox get readyForTrainingCheckBox => $["readyForTraining"] as DartisanCheckBox;

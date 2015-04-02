@@ -10,6 +10,7 @@
 <link rel="import" href="../../../../packages/core_elements/core_label.html">
 
 <link rel="import" href="../../../../packages/gex_webapp_kit_client/elements/user_edit.html">
+<link rel="import" href="../../../../packages/gex_webapp_kit_client/elements/formated_textarea.html">
 
 <link rel="import" href="dartisan_level.html">
 <link rel="import" href="dartisan_at_work.html">
@@ -58,14 +59,10 @@
                 <dartisan-level id="level" mainLabel="Level" ></dartisan-level>
             </li>             
              <li>
-                <paper-input-decorator   label="Bio" floatingLabel>
-                   <textarea id="bioTextArea">{{bio}}</textarea>
-               </paper-input-decorator>
+                <gex-formated-textarea id="bioTextArea" label="Bio" rows="10"  maxLength="5000"></gex-formated-textarea>
             </li>
              <li>
-                <paper-input-decorator   label="Bio as a dartisan" floatingLabel>
-                   <textarea id="dartisanBioTextArea">{{dartisanBio}}</textarea>
-               </paper-input-decorator>
+                <gex-formated-textarea  id="dartisanBioTextArea" label="Bio as a dartisan" rows="10" maxLength="5000"></gex-formated-textarea>
             </li>
              <li>
                 <dartisan-at-work id="atWork" mainLabel="Dart in my job" ></dartisan-at-work>
