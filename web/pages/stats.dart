@@ -67,6 +67,12 @@ class PageStats extends Page with Showable {
     if (container.children.isNotEmpty) {
       container.children.clear();
     }
+    
+    num pieSize = this.pieSize ;
+    if (window.innerWidth < pieSize*3 ){
+      pieSize = (window.innerWidth-20) / 3;
+    }
+    
     var e = new DivElement()
       ..style.height = '${pieSize}px'
       ..style.width = '${pieSize*3}px'

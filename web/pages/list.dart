@@ -61,6 +61,7 @@ class PageList extends Page with Showable {
       ul.append(li);
       DartisanSummary dartisanSummary = new DartisanSummary.newElement(dartisan);
       dartisanSummaries.add(dartisanSummary);
+      dartisanSummary.small = window.innerWidth < 600 ;
       dartisanSummary.style.cursor = "pointer";
       dartisanSummary.onClick.listen((event) {
         fireApplicationEvent(new DartisansApplicationEvent.callDetails(this, dartisan.openId));
