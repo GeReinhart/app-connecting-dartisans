@@ -33,8 +33,9 @@
                   <img _src="{{model.dartisan.avatarUrl}}"  /> 
                   <div>{{model.dartisan.displayName}}</div>
                   <div>{{model.dartisan.country}}</div>
+                  <div hidden?="{{!small}}" style="font-weight: bolder;" >{{model.dartisan.levelLabel}}</div>
           </div>
-          <div class="column">
+          <div hidden?="{{small}}" class="column">
                   <div style="font-weight: bolder;" >{{model.dartisan.levelLabel}}</div>
                   <gex-formated-text id="formatedBio" ></gex-formated-text> 
           </div>

@@ -24,7 +24,8 @@ class PageList extends Page with Showable {
   Color mainColor = Color.WHITE;
   Layout layout;
   Dartisans dartisans;
-
+  List<DartisanSummary> dartisanSummaries= new List<DartisanSummary>();
+  
   PageList.created() : super.created();
 
   @override
@@ -52,13 +53,14 @@ class PageList extends Page with Showable {
 
   void updateList() {
     listElement.children.removeWhere((_) => true);
+    dartisanSummaries= new List<DartisanSummary>();
     UListElement ul = new UListElement();
     listElement.append(ul);
     dartisans.dartisanList.reversed.forEach((dartisan) {
       LIElement li = new LIElement();
       ul.append(li);
       DartisanSummary dartisanSummary = new DartisanSummary.newElement(dartisan);
-
+      dartisanSummaries.add(dartisanSummary);
       dartisanSummary.style.cursor = "pointer";
       dartisanSummary.onClick.listen((event) {
         fireApplicationEvent(new DartisansApplicationEvent.callDetails(this, dartisan.openId));
@@ -70,6 +72,12 @@ class PageList extends Page with Showable {
 
   @override
   void recieveApplicationEvent(ApplicationEvent event) {
+    if (event.isViewPortChange){
+      dartisanSummaries.forEach((d){
+        d.small=(event.viewPort.windowWidth < 600);
+      });
+    }
+    
     if (event is DartisansApplicationEvent) {
       if (event.isSearchSuccess || event.isMapChangeDartisans) {
         this.dartisans = event.dartisans;
