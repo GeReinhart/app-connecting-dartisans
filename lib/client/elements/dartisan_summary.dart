@@ -31,8 +31,8 @@ class DartisanSummaryModel {
     if (dartisan.bio != null) {
       bioSummary += " " + dartisan.bio;
     }
-    if (bioSummary.length > 200) {
-      bioSummary = bioSummary.substring(0, 197) + "...";
+    if (bioSummary.length > 300) {
+      bioSummary = bioSummary.substring(0, 297) + "...";
     }
     return bioSummary;
   }

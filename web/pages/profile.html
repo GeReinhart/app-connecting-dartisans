@@ -2,12 +2,24 @@
 <link rel="import" href="../../../packages/polymer/polymer.html">
 <link rel="import" href="../../../packages/gex_webapp_kit_client/elements/layout.html">
 <link rel="import" href="../../../packages/connecting_dartisans/client/elements/dartisan_edit.html">
+<link rel="import" href="../../../packages/connecting_dartisans/client/elements/dartisan_summary.html">
+<link rel="import" href="../../../packages/connecting_dartisans/client/elements/dartisan_details.html">
 
 <polymer-element name="page-profile"  >
   <template>
     <gex-layout id="layout">
            <h1>My profile</h1>
            <dartisan-edit id="dartisanEdit" ></dartisan-edit>
+           
+            <paper-action-dialog id="dialogPreview" backdrop autoCloseDisabled>
+                <h2>Preview</h2>        
+                <h3>Summary</h3>
+                  <dartisan-summary id="summary"></dartisan-summary>
+                <h3>Details</h3>
+                  <dartisan-details id="details"></dartisan-details>
+                  <div style="height: 15px" >&nbsp;</div>
+            <paper-button  affirmative autofocus>Close</paper-button>
+        </paper-action-dialog>
     </gex-layout>
   </template>
   <script type="application/dart" src="profile.dart"></script>

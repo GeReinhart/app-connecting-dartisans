@@ -8,13 +8,12 @@ import 'package:gex_webapp_kit_client/webapp_kit_common.dart';
 import 'package:gex_webapp_kit_client/elements/layout.dart';
 import 'package:gex_webapp_kit_client/elements/page.dart';
 import 'package:connecting_dartisans/client/elements/dartisan_edit.dart';
+import 'package:connecting_dartisans/client/elements/dartisan_summary.dart';
+import 'package:connecting_dartisans/client/elements/dartisan_details.dart';
 import 'package:connecting_dartisans/connecting_dartisans_client.dart';
 import 'package:connecting_dartisans/connecting_dartisans_common.dart';
+import 'package:paper_elements/paper_action_dialog.dart';
 
-import '../application.dart';
-import 'list.dart';
-import 'map.dart';
-import 'search.dart';
 
 @CustomTag('page-profile')
 class PageProfile extends Page with Showable {
@@ -51,11 +50,11 @@ class PageProfile extends Page with Showable {
 
     List<ButtonModel> buttonModels = new List<ButtonModel>();
     buttonModels.add(new ButtonModel(
-        label: "Save & Map",
-        action: saveAndMap,
-        image: new Image(mainImageUrl: "/images/button/save29.png", mainImageUrl2: "/images/button/map32.png")));
+        label: "Save", action: save, image: new Image(mainImageUrl: "/images/button/save29.png")));
     buttonModels.add(new ButtonModel(
-        label: "Save & Stay", action: save, image: new Image(mainImageUrl: "/images/button/save29.png")));
+        label: "Preview",
+        action: preview,
+        image: new Image(mainImageUrl: "/images/button/eye110.png")));
     buttonModels.add(
         new ButtonModel(label: "Logout", action: logout, image: new Image(mainImageUrl: "/images/button/logout.png")));
     ToolbarModel toolbarModel = new ToolbarModel(
@@ -95,13 +94,23 @@ class PageProfile extends Page with Showable {
   save(Parameters params) {
     fireApplicationEvent(new ApplicationEvent.callSaveUser(this, dartisanEdit.dartisan));
   }
-  saveAndMap(Parameters params) {
-    save(params);
-    fireApplicationEvent(new ApplicationEvent.callPage(this, PageMap.NAME));
+  void preview(Parameters params) {
+    if (!dialogPreview.opened) {
+      details.dartisan = dartisanEdit.dartisan ;
+      summary.dartisan = dartisanEdit.dartisan ;
+      dialogPreview.toggle();
+    }
   }
+  
   logout(Parameters params) {
     // TODO Should call logout first...
     fireApplicationEvent(new ApplicationEvent.logoutSuccess(this, dartisanEdit.dartisan));
     dartisanEdit.dartisan = new Dartisan();
   }
+  
+  PaperActionDialog get dialogPreview => $["dialogPreview"] as PaperActionDialog;
+  DartisanDetails get details => $["details"] ;
+  DartisanSummary get summary => $["summary"] ;
+
+  
 }
