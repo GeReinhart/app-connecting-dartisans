@@ -24,7 +24,7 @@ class PageStats extends Page with Showable {
 
   Color mainColor = Color.WHITE;
   @observable Dartisans dartisans;
-  @observable num pieSize = 400;
+  bool small = false;
 
   Layout layout;
   DivElement pieByLevelContainer;
@@ -35,6 +35,8 @@ class PageStats extends Page with Showable {
 
   ready() {
     super.ready();
+    small = window.innerWidth  < 800 ;
+    
     _setAttributes();
   }
 
@@ -61,21 +63,29 @@ class PageStats extends Page with Showable {
         this.dartisans = event.dartisans;
       }
     }
+    if (event.isViewPortChange){
+      small = window.innerWidth  < 800 ;
+      _updateCharts();
+    }
   }
 
   Element createPieDiv(Element container) {
     if (container.children.isNotEmpty) {
       container.children.clear();
     }
-    
-    num pieSize = this.pieSize ;
-    if (window.innerWidth < pieSize*3 ){
-      pieSize = (window.innerWidth-20) / 3;
+    num pieWidth ;
+    num pieHeight ;
+    if (small){
+      pieWidth = window.innerWidth *0.7 ;
+      pieHeight = pieWidth ;
+    }else{
+      pieWidth = 800;
+      pieHeight = 350;
     }
     
     var e = new DivElement()
-      ..style.height = '${pieSize}px'
-      ..style.width = '${pieSize*3}px'
+      ..style.height = '${pieHeight}px'
+      ..style.width = '${pieWidth}px'
       ..style.maxWidth = '100%'
       ..style.marginBottom = '5px';
     container.append(e);
@@ -104,7 +114,11 @@ class PageStats extends Page with Showable {
     dataLevel.add(["Dartisans", "Level"]);
     dartisansByLevel.keys.forEach((level) => dataLevel.add([level, dartisansByLevel[level]]));
     var tableLevel = new DataTable(dataLevel);
-    pieByLevelChart.draw(tableLevel, {'series': {'labels': {'enabled': false}}});
+    if (small){
+      pieByLevelChart.draw(tableLevel, {'series': {'labels': {'enabled': false}}, 'legend' : {'position': 'none'}});
+    }else{
+      pieByLevelChart.draw(tableLevel, {'series': {'labels': {'enabled': false}}});
+    }
     pieByLevelChart.update();
 
     PieChart pieByCountryChart = new PieChart(createPieDiv(pieByCountryContainer));
@@ -122,7 +136,12 @@ class PageStats extends Page with Showable {
     dataCountry.add(["Dartisans", "Country"]);
     dartisansByCountry.keys.forEach((country) => dataCountry.add([country, dartisansByCountry[country]]));
     var tableCountry = new DataTable(dataCountry);
-    pieByCountryChart.draw(tableCountry, {'series': {'labels': {'enabled': false}}});
+    
+    if (small){
+      pieByCountryChart.draw(tableCountry, {'series': {'labels': {'enabled': false}}, 'legend' : {'position': 'none'}});
+    }else{
+      pieByCountryChart.draw(tableCountry, {'series': {'labels': {'enabled': false}}});
+    }
     pieByCountryChart.update();
 
     PieChart pieAtWorkChart = new PieChart(createPieDiv(pieAtWorkContainer));
@@ -140,7 +159,12 @@ class PageStats extends Page with Showable {
     dataAtWork.add(["Dartisans", "At work"]);
     dartisansAtWork.keys.forEach((atWork) => dataAtWork.add([atWork, dartisansAtWork[atWork]]));
     var tableAtWork = new DataTable(dataAtWork);
-    pieAtWorkChart.draw(tableAtWork);
+    if (small){
+      pieAtWorkChart.draw(tableAtWork, {'series': {'labels': {'enabled': false}}, 'legend' : {'position': 'none'}});
+    }else{
+      pieAtWorkChart.draw(tableAtWork, {'series': {'labels': {'enabled': false}}});
+    }
+    pieAtWorkChart.update();
     pieAtWorkChart.update();
   }
 }
