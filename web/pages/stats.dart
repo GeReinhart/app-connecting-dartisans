@@ -101,6 +101,10 @@ class PageStats extends Page with Showable {
     dartisansByLevel[new Dartisan.fromFields(level: 4).levelLabel] = 0;
     dartisansByLevel[new Dartisan.fromFields(level: 5).levelLabel] = 0;
 
+    if (dartisans == null){
+      return;
+    }
+    
     dartisans.dartisanList.forEach((d) {
       num number = dartisansByLevel[d.levelLabel];
       if (number == null) {
