@@ -1,7 +1,7 @@
 name: connecting_dartisans
 author : Gérald Reinhart <gerald.reinhart@gmail.com>
 homepage : https://github.com/GeReinhart/app-connecting-dartisans
-version: 0.1.0
+version: 1.0.0
 description: Application to help dartisans connections.
 environment:
   sdk: '>=1.8.0 <2.0.0'
