@@ -1,4 +1,6 @@
 name: connecting_dartisans
+author : Gérald Reinhart <gerald.reinhart@gmail.com>
+homepage : https://github.com/GeReinhart/app-connecting-dartisans
 version: 0.1.0
 description: Application to help dartisans connections.
 environment:
@@ -9,8 +11,7 @@ dependencies:
   paper_elements: '>=0.6.0 <0.7.0'
   polymer: '>=0.15.0 <0.16.0'
   modern_charts: '>=0.1.1 <0.2.0'
-  gex_webapp_kit_client:
-    git: git://github.com/GeReinhart/dart-gex-webapp-kit-client.git  
+  gex_webapp_kit: '>=0.1.0 <0.2.0'
   shelf: '>=0.5.6 <0.6.0'
   shelf_static: '>=0.2.1 <0.3.0'
 dev_dependencies:

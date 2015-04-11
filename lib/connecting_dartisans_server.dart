@@ -13,7 +13,7 @@ import "package:redstone_mapper/plugin.dart";
 import "package:redstone_mapper_mongo/service.dart";
 
 import 'package:connecting_dartisans/connecting_dartisans_common.dart';
-import 'package:gex_webapp_kit_client/webapp_kit_server.dart' hide UserService;
-import 'package:gex_webapp_kit_client/webapp_kit_common.dart';
+import 'package:gex_webapp_kit/webapp_kit_server.dart' hide UserService;
+import 'package:gex_webapp_kit/webapp_kit_common.dart';
 
 part 'server/dartisan_service.dart';

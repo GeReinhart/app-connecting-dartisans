@@ -2,17 +2,13 @@
 // is governed by a BSD-style license that can be found in the LICENSE file.
 library connecting_dartisans.elements.dartisan_edit;
 
-import "dart:html";
-import 'dart:js' as js;
 import 'package:logging/logging.dart';
-import 'dart:async';
-import 'package:gex_webapp_kit_client/webapp_kit_client.dart';
-import 'package:gex_webapp_kit_client/webapp_kit_common.dart';
-import 'package:gex_webapp_kit_client/elements/user_edit.dart';
-import 'package:gex_webapp_kit_client/elements/formated_textarea.dart';
+import 'package:gex_webapp_kit/webapp_kit_client.dart';
+import 'package:gex_webapp_kit/webapp_kit_common.dart';
+import 'package:gex_webapp_kit/client/elements/user_edit.dart';
+import 'package:gex_webapp_kit/client/elements/formated_textarea.dart';
 import 'package:polymer/polymer.dart';
 import 'package:connecting_dartisans/connecting_dartisans_common.dart';
-import 'package:paper_elements/paper_checkbox.dart';
 import 'package:connecting_dartisans/client/elements/dartisan_checkbox.dart';
 import 'package:connecting_dartisans/client/elements/dartisan_level.dart';
 import 'package:connecting_dartisans/client/elements/dartisan_at_work.dart';

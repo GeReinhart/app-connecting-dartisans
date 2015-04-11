@@ -10,8 +10,8 @@ import 'package:polymer/polymer.dart';
 import 'package:logging/logging.dart';
 import "package:google_oauth2_client/google_oauth2_browser.dart";
 
-import 'package:gex_webapp_kit_client/webapp_kit_common.dart';
-import 'package:gex_webapp_kit_client/webapp_kit_client.dart';
+import 'package:gex_webapp_kit/webapp_kit_common.dart';
+import 'package:gex_webapp_kit/webapp_kit_client.dart';
 import 'package:connecting_dartisans/connecting_dartisans_common.dart';
 
 part 'client/controller.dart';

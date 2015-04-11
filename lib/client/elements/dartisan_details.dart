@@ -4,10 +4,10 @@ library connecting_dartisans.elements.dartisan_details;
 
 import "dart:html";
 import 'package:logging/logging.dart';
-import 'package:gex_webapp_kit_client/webapp_kit_client.dart';
+import 'package:gex_webapp_kit/webapp_kit_client.dart';
 import 'package:polymer/polymer.dart';
 import 'package:connecting_dartisans/connecting_dartisans_common.dart';
-import 'package:gex_webapp_kit_client/elements/formated_text.dart';
+import 'package:gex_webapp_kit/client/elements/formated_text.dart';
 
 class DartisanDetailsModel {
   Dartisan dartisan;

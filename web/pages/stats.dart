@@ -3,19 +3,13 @@ library connecting_dartisans.pages.stats;
 import "dart:html";
 import 'package:logging/logging.dart';
 import 'package:polymer/polymer.dart';
-import 'package:gex_webapp_kit_client/webapp_kit_client.dart';
-import 'package:gex_webapp_kit_client/webapp_kit_common.dart';
-import 'package:gex_webapp_kit_client/elements/layout.dart';
-import 'package:gex_webapp_kit_client/elements/page.dart';
+import 'package:gex_webapp_kit/webapp_kit_client.dart';
+import 'package:gex_webapp_kit/client/elements/layout.dart';
+import 'package:gex_webapp_kit/client/elements/page.dart';
 import 'package:connecting_dartisans/connecting_dartisans_client.dart';
 import 'package:connecting_dartisans/connecting_dartisans_common.dart';
 import 'package:modern_charts/modern_charts.dart';
 
-import '../application.dart';
-import 'list.dart';
-import 'map.dart';
-import 'search.dart';
-import 'profile.dart';
 
 @CustomTag('page-stats')
 class PageStats extends Page with Showable {

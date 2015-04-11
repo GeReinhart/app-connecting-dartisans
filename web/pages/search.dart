@@ -1,21 +1,15 @@
 library connecting_dartisans.pages.search;
 
-import "dart:html";
 import 'package:logging/logging.dart';
 import 'package:polymer/polymer.dart';
-import 'package:gex_webapp_kit_client/webapp_kit_client.dart';
-import 'package:gex_webapp_kit_client/webapp_kit_common.dart';
-import 'package:gex_webapp_kit_client/elements/layout.dart';
-import 'package:gex_webapp_kit_client/elements/ternary_options.dart';
-import 'package:gex_webapp_kit_client/elements/page.dart';
-import 'package:connecting_dartisans/connecting_dartisans_client.dart';
-import 'package:connecting_dartisans/connecting_dartisans_common.dart';
+import 'package:gex_webapp_kit/webapp_kit_client.dart';
+import 'package:gex_webapp_kit/webapp_kit_common.dart';
+import 'package:gex_webapp_kit/client/elements/layout.dart';
+import 'package:gex_webapp_kit/client/elements/page.dart';
 import 'package:connecting_dartisans/client/elements/dartisans_search_form.dart';
 
-import '../application.dart';
 import 'list.dart';
 import 'map.dart';
-import 'search.dart';
 
 @CustomTag('page-search')
 class PageSearch extends Page with Showable {
