@@ -109,7 +109,7 @@ class PageStats extends Page with Showable {
 
     List<List> dataLevel = new List<List>();
     dataLevel.add(["Dartisans", "Level"]);
-    dartisansByLevel.keys.forEach((level) => dataLevel.add([level, dartisansByLevel[level]]));
+    dartisansByLevel.keys.forEach((level) => dataLevel.add([level.trim().isEmpty ? "Unknown" : level, dartisansByLevel[level]]));
     var tableLevel = new DataTable(dataLevel);
     if (small) {
       pieByLevelChart.draw(tableLevel, {'series': {'labels': {'enabled': false}}, 'legend': {'position': 'none'}});
@@ -131,7 +131,7 @@ class PageStats extends Page with Showable {
 
     List<List> dataCountry = new List<List>();
     dataCountry.add(["Dartisans", "Country"]);
-    dartisansByCountry.keys.forEach((country) => dataCountry.add([country, dartisansByCountry[country]]));
+    dartisansByCountry.keys.forEach((country) => dataCountry.add([country.trim().isEmpty ? "Unknown" : country, dartisansByCountry[country]]));
     var tableCountry = new DataTable(dataCountry);
 
     if (small) {
@@ -153,8 +153,8 @@ class PageStats extends Page with Showable {
     });
 
     List<List> dataAtWork = new List<List>();
-    dataAtWork.add(["Dartisans", "At work"]);
-    dartisansAtWork.keys.forEach((atWork) => dataAtWork.add([atWork, dartisansAtWork[atWork]]));
+    dataAtWork.add(["Dartisans", "At Work"]);
+    dartisansAtWork.keys.forEach((atWork) => dataAtWork.add([atWork.trim().isEmpty ? "Unknown" : atWork, dartisansAtWork[atWork]]));
     var tableAtWork = new DataTable(dataAtWork);
     if (small) {
       pieAtWorkChart.draw(tableAtWork, {'series': {'labels': {'enabled': false}}, 'legend': {'position': 'none'}});
