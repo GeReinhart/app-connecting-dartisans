@@ -2,12 +2,7 @@
 // is governed by a BSD-style license that can be found in the LICENSE file.
 part of connecting_dartisans_client;
 
-enum DartisansEventType {
-  SEARCH,
-  DETAILS,
-  SAVE_DARTISAN,
-  MAP
-}
+enum DartisansEventType { SEARCH, DETAILS, SAVE_DARTISAN, MAP }
 
 class DartisansApplicationEvent extends ApplicationEvent {
   DartisansEventType dartisansPageType;

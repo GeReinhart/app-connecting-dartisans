@@ -13,7 +13,6 @@ import 'package:connecting_dartisans/connecting_dartisans_client.dart';
 import 'package:connecting_dartisans/connecting_dartisans_common.dart';
 import 'package:paper_elements/paper_action_dialog.dart';
 
-
 @CustomTag('page-profile')
 class PageProfile extends Page with Showable {
   static final String NAME = "profile";
@@ -48,12 +47,10 @@ class PageProfile extends Page with Showable {
     dartisanEdit = $["dartisanEdit"] as DartisanEdit;
 
     List<ButtonModel> buttonModels = new List<ButtonModel>();
+    buttonModels
+        .add(new ButtonModel(label: "Save", action: save, image: new Image(mainImageUrl: "/images/button/save29.png")));
     buttonModels.add(new ButtonModel(
-        label: "Save", action: save, image: new Image(mainImageUrl: "/images/button/save29.png")));
-    buttonModels.add(new ButtonModel(
-        label: "Preview",
-        action: preview,
-        image: new Image(mainImageUrl: "/images/button/eye110.png")));
+        label: "Preview", action: preview, image: new Image(mainImageUrl: "/images/button/eye110.png")));
     buttonModels.add(
         new ButtonModel(label: "Logout", action: logout, image: new Image(mainImageUrl: "/images/button/logout.png")));
     ToolbarModel toolbarModel = new ToolbarModel(
@@ -95,21 +92,19 @@ class PageProfile extends Page with Showable {
   }
   void preview(Parameters params) {
     if (!dialogPreview.opened) {
-      details.dartisan = dartisanEdit.dartisan ;
-      summary.dartisan = dartisanEdit.dartisan ;
+      details.dartisan = dartisanEdit.dartisan;
+      summary.dartisan = dartisanEdit.dartisan;
       dialogPreview.toggle();
     }
   }
-  
+
   logout(Parameters params) {
     // TODO Should call logout first...
     fireApplicationEvent(new ApplicationEvent.logoutSuccess(this, dartisanEdit.dartisan));
     dartisanEdit.dartisan = new Dartisan();
   }
-  
-  PaperActionDialog get dialogPreview => $["dialogPreview"] as PaperActionDialog;
-  DartisanDetails get details => $["details"] ;
-  DartisanSummary get summary => $["summary"] ;
 
-  
+  PaperActionDialog get dialogPreview => $["dialogPreview"] as PaperActionDialog;
+  DartisanDetails get details => $["details"];
+  DartisanSummary get summary => $["summary"];
 }

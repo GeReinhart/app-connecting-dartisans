@@ -9,7 +9,6 @@ import 'package:gex_webapp_kit/client/elements/page.dart';
 import 'package:connecting_dartisans/connecting_dartisans_client.dart';
 import 'package:connecting_dartisans/client/elements/dartisan_details.dart';
 
-
 @CustomTag('page-details')
 class PageDetails extends Page with Showable {
   static final String NAME = "dartisan";

@@ -33,9 +33,9 @@ class DartisansSearchFormElement extends Positionable with Showable, Application
     super.recieveApplicationEvent(event);
     if (event.isViewPortChange) {
       _orientationMultiSelect(event.viewPort.windowWidth);
-      optionsReadyForTraining.width = event.viewPort.windowWidth *0.7;
-      optionsReadyToBeHired.width = event.viewPort.windowWidth *0.7;
-      optionsReadyForTalks.width = event.viewPort.windowWidth *0.7;
+      optionsReadyForTraining.width = event.viewPort.windowWidth * 0.7;
+      optionsReadyToBeHired.width = event.viewPort.windowWidth * 0.7;
+      optionsReadyForTalks.width = event.viewPort.windowWidth * 0.7;
     }
   }
 
@@ -60,9 +60,9 @@ class DartisansSearchFormElement extends Positionable with Showable, Application
     _orientationMultiSelect(window.innerWidth);
 
     num optionsWidth = window.innerWidth * 0.7;
-    optionsReadyForTraining.init(new TernaryOptionsModel("Ready for training",width:optionsWidth ));
-    optionsReadyToBeHired.init(new TernaryOptionsModel("Ready to be hired",width:optionsWidth));
-    optionsReadyForTalks.init(new TernaryOptionsModel("Ready for talks",width:optionsWidth));
+    optionsReadyForTraining.init(new TernaryOptionsModel("Ready for training", width: optionsWidth));
+    optionsReadyToBeHired.init(new TernaryOptionsModel("Ready to be hired", width: optionsWidth));
+    optionsReadyForTalks.init(new TernaryOptionsModel("Ready for talks", width: optionsWidth));
 
     _updateDartisansSearchForm();
   }
