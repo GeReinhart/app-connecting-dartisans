@@ -36,7 +36,7 @@ class DartisanSummary extends Positionable with Showable {
   final Logger log = new Logger('DartisanSummary');
 
   @observable bool small = false;
-  
+
   @observable DartisanSummaryModel model;
   @observable Color color = Color.BLUE_0082C8.lightColorAsColor;
 
@@ -54,7 +54,7 @@ class DartisanSummary extends Positionable with Showable {
 
   set dartisan(Dartisan value) {
     model = new DartisanSummaryModel()..dartisan = value;
-    ($["formatedBio"]as FormatedText).text = model.bioSummary ;
+    ($["formatedBio"] as FormatedText).text = model.bioSummary;
   }
 
   Dartisan get dartisan => model.dartisan;
