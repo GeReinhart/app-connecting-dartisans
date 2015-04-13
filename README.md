@@ -5,7 +5,7 @@
 
 The idea of the application is to have a central point the know where dartisans are....﻿
 
-Will be available soon on production at http://connecting.dartisans.net
+Available at http://connecting.dartisans.net
 
 ## Aim
 

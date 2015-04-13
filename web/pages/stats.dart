@@ -101,9 +101,7 @@ class PageStats extends Page with Showable {
     
     dartisans.dartisanList.forEach((d) {
       num number = dartisansByLevel[d.levelLabel];
-      if (number == null) {
-        dartisansByLevel[d.levelLabel] = 1;
-      } else {
+      if (number != null) {
         dartisansByLevel[d.levelLabel] = number + 1;
       }
     });
@@ -129,10 +127,35 @@ class PageStats extends Page with Showable {
         dartisansByCountry[d.country] = number + 1;
       }
     });
-
+    List<num> dartisansByCountryValues = new List<num>();
+    dartisansByCountryValues.addAll(dartisansByCountry.values) ;
+    dartisansByCountryValues.sort();
+    Map<String, num> dartisansByCountryTop = new Map<String, num>();
+    if (dartisansByCountryValues.length > 7){
+      num threashold = dartisansByCountryValues[7] ;
+      dartisansByCountry.forEach((country,count) {
+        log.info("${country} -> ${count}");
+        if (threashold < count  ){
+          dartisansByCountryTop[country] = count ;
+        }else{
+          String other = "Others" ;
+          if ( dartisansByCountryTop[other] == null){
+            dartisansByCountryTop[other] = count ;
+          }else{
+            dartisansByCountryTop[other] = dartisansByCountryTop[other] + count ;
+          }
+          
+        }
+      });
+      
+      
+    }else{
+      dartisansByCountryTop = dartisansByCountry;
+    }
+    
     List<List> dataCountry = new List<List>();
     dataCountry.add(["Dartisans", "Country"]);
-    dartisansByCountry.keys.forEach((country) => dataCountry.add([country, dartisansByCountry[country]]));
+    dartisansByCountryTop.keys.forEach((country) => dataCountry.add([country, dartisansByCountryTop[country]]));
     var tableCountry = new DataTable(dataCountry);
     
     if (small){
@@ -144,11 +167,15 @@ class PageStats extends Page with Showable {
 
     PieChart pieAtWorkChart = new PieChart(createPieDiv(pieAtWorkContainer));
     Map<String, num> dartisansAtWork = new Map<String, num>();
+    dartisansAtWork[new Dartisan.fromFields(atWork: 1).atWorkLabel] = 0;
+    dartisansAtWork[new Dartisan.fromFields(atWork: 2).atWorkLabel] = 0;
+    dartisansAtWork[new Dartisan.fromFields(atWork: 3).atWorkLabel] = 0;
+    dartisansAtWork[new Dartisan.fromFields(atWork: 4).atWorkLabel] = 0;
+    dartisansAtWork[new Dartisan.fromFields(atWork: 5).atWorkLabel] = 0;
+    
     dartisans.dartisanList.forEach((d) {
       num number = dartisansAtWork[d.atWorkLabel];
-      if (number == null) {
-        dartisansAtWork[d.atWorkLabel] = 1;
-      } else {
+      if (number!= null) {
         dartisansAtWork[d.atWorkLabel] = number + 1;
       }
     });
