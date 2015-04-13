@@ -18,6 +18,31 @@ class DartisanDetailsModel {
   bool get hasTwitter => dartisan.twitterAccount != null;
   bool get hasGooglePLus => dartisan.googlePlusUrl != null;
 
+  
+  String get cleanTwitterAccount{
+    String twitterAccount = dartisan.twitterAccount;
+    String twitterBaseUrl = "https://twitter.com/";
+    if (twitterAccount == null){
+      return null;
+    }
+    if (twitterAccount.startsWith(twitterBaseUrl)){
+      return twitterAccount.substring(twitterBaseUrl.length);
+    }
+    return twitterAccount;
+  }
+  
+  String get cleanGitHubAccount{
+    String gitHubAccount = dartisan.gitHubAccount;
+    String gitHubBaseUrl = "https://github.com/";
+    if (gitHubAccount == null){
+      return null;
+    }
+    if (gitHubAccount.startsWith(gitHubBaseUrl)){
+      return gitHubAccount.substring(gitHubBaseUrl.length);
+    }
+    return gitHubAccount;
+  }
+  
   String get atWorkLabel {
     if (dartisan.atWork == null) {
       return null;

@@ -46,8 +46,8 @@
                   <div style="padding-bottom: 10px" >{{model.atWorkLabel}}</div>
                   <div>
                      <a hidden?="{{!model.hasGooglePLus}}" _href="{{model.dartisan.googlePlusUrl}}" ><img src="/images/gplus_logo.png"  style="width: 25px ; height: 25px" ></a>
-                     <a hidden?="{{!model.hasGitHub}}" _href="https://github.com/{{model.dartisan.gitHubAccount}}" ><img src="/images/github_logo.png"  style="width: 25px ; height: 25px" ></a>
-                     <a hidden?="{{!model.hasTwitter}}" _href="https://twitter.com/{{model.dartisan.twitterAccount}}" ><img src="/images/twitter_logo.png"  style="width: 25px ; height: 25px" ></a>
+                     <a hidden?="{{!model.hasGitHub}}" _href="https://github.com/{{model.cleanGitHubAccount}}" ><img src="/images/github_logo.png"  style="width: 25px ; height: 25px" ></a>
+                     <a hidden?="{{!model.hasTwitter}}" _href="https://twitter.com/{{model.cleanTwitterAccount}}" ><img src="/images/twitter_logo.png"  style="width: 25px ; height: 25px" ></a>
                   </div>
           </div>
       </div>
