@@ -9,7 +9,6 @@ import 'package:gex_webapp_kit/client/elements/page.dart';
 import 'package:connecting_dartisans/client/elements/dartisans_map.dart';
 import 'package:connecting_dartisans/connecting_dartisans_client.dart';
 
-
 @CustomTag('page-map')
 class PageMap extends Page with Showable {
   static final String NAME = "map";

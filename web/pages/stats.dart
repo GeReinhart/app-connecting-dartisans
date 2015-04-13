@@ -10,7 +10,6 @@ import 'package:connecting_dartisans/connecting_dartisans_client.dart';
 import 'package:connecting_dartisans/connecting_dartisans_common.dart';
 import 'package:modern_charts/modern_charts.dart';
 
-
 @CustomTag('page-stats')
 class PageStats extends Page with Showable {
   static final String NAME = "stats";
@@ -29,8 +28,8 @@ class PageStats extends Page with Showable {
 
   ready() {
     super.ready();
-    small = window.innerWidth  < 800 ;
-    
+    small = window.innerWidth < 800;
+
     _setAttributes();
   }
 
@@ -57,8 +56,8 @@ class PageStats extends Page with Showable {
         this.dartisans = event.dartisans;
       }
     }
-    if (event.isViewPortChange){
-      small = window.innerWidth  < 800 ;
+    if (event.isViewPortChange) {
+      small = window.innerWidth < 800;
       _updateCharts();
     }
   }
@@ -67,16 +66,16 @@ class PageStats extends Page with Showable {
     if (container.children.isNotEmpty) {
       container.children.clear();
     }
-    num pieWidth ;
-    num pieHeight ;
-    if (small){
-      pieWidth = window.innerWidth *0.7 ;
-      pieHeight = pieWidth ;
-    }else{
+    num pieWidth;
+    num pieHeight;
+    if (small) {
+      pieWidth = window.innerWidth * 0.7;
+      pieHeight = pieWidth;
+    } else {
       pieWidth = 800;
       pieHeight = 350;
     }
-    
+
     var e = new DivElement()
       ..style.height = '${pieHeight}px'
       ..style.width = '${pieWidth}px'
@@ -95,10 +94,10 @@ class PageStats extends Page with Showable {
     dartisansByLevel[new Dartisan.fromFields(level: 4).levelLabel] = 0;
     dartisansByLevel[new Dartisan.fromFields(level: 5).levelLabel] = 0;
 
-    if (dartisans == null){
+    if (dartisans == null) {
       return;
     }
-    
+
     dartisans.dartisanList.forEach((d) {
       num number = dartisansByLevel[d.levelLabel];
       if (number != null) {
@@ -108,11 +107,11 @@ class PageStats extends Page with Showable {
 
     List<List> dataLevel = new List<List>();
     dataLevel.add(["Dartisans", "Level"]);
-    dartisansByLevel.keys.forEach((level) => dataLevel.add([level, dartisansByLevel[level]]));
+    dartisansByLevel.keys.forEach((level) => dataLevel.add([level.trim().isEmpty ? "Unknown" : level, dartisansByLevel[level]]));
     var tableLevel = new DataTable(dataLevel);
-    if (small){
-      pieByLevelChart.draw(tableLevel, {'series': {'labels': {'enabled': false}}, 'legend' : {'position': 'none'}});
-    }else{
+    if (small) {
+      pieByLevelChart.draw(tableLevel, {'series': {'labels': {'enabled': false}}, 'legend': {'position': 'none'}});
+    } else {
       pieByLevelChart.draw(tableLevel, {'series': {'labels': {'enabled': false}}});
     }
     pieByLevelChart.update();
@@ -154,12 +153,12 @@ class PageStats extends Page with Showable {
     
     List<List> dataCountry = new List<List>();
     dataCountry.add(["Dartisans", "Country"]);
-    dartisansByCountryTop.keys.forEach((country) => dataCountry.add([country, dartisansByCountryTop[country]]));
+    dartisansByCountryTop.keys.forEach((country) => dataCountry.add([country.trim().isEmpty ? "Unknown" : country, dartisansByCountryTop[country]]));
     var tableCountry = new DataTable(dataCountry);
-    
-    if (small){
-      pieByCountryChart.draw(tableCountry, {'series': {'labels': {'enabled': false}}, 'legend' : {'position': 'none'}});
-    }else{
+
+    if (small) {
+      pieByCountryChart.draw(tableCountry, {'series': {'labels': {'enabled': false}}, 'legend': {'position': 'none'}});
+    } else {
       pieByCountryChart.draw(tableCountry, {'series': {'labels': {'enabled': false}}});
     }
     pieByCountryChart.update();
@@ -180,12 +179,12 @@ class PageStats extends Page with Showable {
     });
 
     List<List> dataAtWork = new List<List>();
-    dataAtWork.add(["Dartisans", "At work"]);
-    dartisansAtWork.keys.forEach((atWork) => dataAtWork.add([atWork, dartisansAtWork[atWork]]));
+    dataAtWork.add(["Dartisans", "At Work"]);
+    dartisansAtWork.keys.forEach((atWork) => dataAtWork.add([atWork.trim().isEmpty ? "Unknown" : atWork, dartisansAtWork[atWork]]));
     var tableAtWork = new DataTable(dataAtWork);
-    if (small){
-      pieAtWorkChart.draw(tableAtWork, {'series': {'labels': {'enabled': false}}, 'legend' : {'position': 'none'}});
-    }else{
+    if (small) {
+      pieAtWorkChart.draw(tableAtWork, {'series': {'labels': {'enabled': false}}, 'legend': {'position': 'none'}});
+    } else {
       pieAtWorkChart.draw(tableAtWork, {'series': {'labels': {'enabled': false}}});
     }
     pieAtWorkChart.update();

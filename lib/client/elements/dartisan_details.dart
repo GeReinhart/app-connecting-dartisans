@@ -55,7 +55,6 @@ class DartisanDetailsModel {
       return "At my job: " + dartisan.atWorkLabel;
     }
   }
-  
 }
 
 @CustomTag('dartisan-details')
@@ -72,8 +71,7 @@ class DartisanDetails extends Positionable with Showable {
 
   set dartisan(Dartisan dartisan) {
     model = new DartisanDetailsModel()..dartisan = dartisan;
-    ($["formatedBio"]as FormatedText).text =dartisan.bio ;
-    ($["formatedDartisanBio"]as FormatedText).text =dartisan.dartisanBio ;
+    ($["formatedBio"] as FormatedText).text = dartisan.bio;
+    ($["formatedDartisanBio"] as FormatedText).text = dartisan.dartisanBio;
   }
-
 }

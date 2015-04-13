@@ -31,16 +31,15 @@ The current application
 - Server: redstone on mongodb 
   - using [gex-webapp-kit][4]
 
+## Development guidelines
 
-## Development guide lines
 - Write reusable code
 - Mobile first
-- TDD 
+- TDD
 - Continuous integration (using [drone.io][1])
 
-## Deployement
+## Deployment
 Should be [dartvoid][2]
-
 
 [1]: https://drone.io/github.com/GeReinhart/dapp-connecting-dartisans/latest
 [2]: http://www.dartvoid.com

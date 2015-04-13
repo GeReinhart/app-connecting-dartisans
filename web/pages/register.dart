@@ -11,7 +11,6 @@ import 'package:gex_webapp_kit/client/elements/user_edit.dart';
 import 'package:gex_webapp_kit/client/elements/page.dart';
 import 'package:connecting_dartisans/connecting_dartisans_client.dart';
 
-
 @CustomTag('page-register')
 class PageRegister extends Page with Showable {
   static final String NAME = "register";
