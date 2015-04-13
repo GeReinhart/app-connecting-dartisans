@@ -42,7 +42,7 @@
                   
                   <div hidden?="{{!model.dartisan.isEmailVisible}}" style="padding-bottom: 10px" >{{model.dartisan.email}}</div>
                   <div style="padding-bottom: 10px" >{{model.dartisan.country}}</div>
-                  <div style="font-weight: bolder;" >{{model.dartisan.levelLabel}} in Dart</div>
+                  <div style="font-weight: bolder;" >{{model.cleanLevelLabel}}</div>
                   <div style="padding-bottom: 10px" >{{model.atWorkLabel}}</div>
                   <div>
                      <a hidden?="{{!model.hasGooglePLus}}" _href="{{model.dartisan.googlePlusUrl}}" ><img src="/images/gplus_logo.png"  style="width: 25px ; height: 25px" ></a>

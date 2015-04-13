@@ -50,10 +50,6 @@ class PageProfile extends Page with Showable {
     List<ButtonModel> buttonModels = new List<ButtonModel>();
     buttonModels.add(new ButtonModel(
         label: "Save", action: save, image: new Image(mainImageUrl: "/images/button/save29.png")));
-    buttonModels.add(new ButtonModel(
-        label: "Preview",
-        action: preview,
-        image: new Image(mainImageUrl: "/images/button/eye110.png")));
     buttonModels.add(
         new ButtonModel(label: "Logout", action: logout, image: new Image(mainImageUrl: "/images/button/logout.png")));
     ToolbarModel toolbarModel = new ToolbarModel(
@@ -92,13 +88,6 @@ class PageProfile extends Page with Showable {
 
   save(Parameters params) {
     fireApplicationEvent(new ApplicationEvent.callSaveUser(this, dartisanEdit.dartisan));
-  }
-  void preview(Parameters params) {
-    if (!dialogPreview.opened) {
-      details.dartisan = dartisanEdit.dartisan ;
-      summary.dartisan = dartisanEdit.dartisan ;
-      dialogPreview.toggle();
-    }
   }
   
   logout(Parameters params) {

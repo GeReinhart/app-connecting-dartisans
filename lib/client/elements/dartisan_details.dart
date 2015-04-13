@@ -17,7 +17,9 @@ class DartisanDetailsModel {
   bool get hasGitHub => dartisan.gitHubAccount != null;
   bool get hasTwitter => dartisan.twitterAccount != null;
   bool get hasGooglePLus => dartisan.googlePlusUrl != null;
+  bool get hasLevel => dartisan.level != null;
 
+  String get cleanLevelLabel => dartisan.level == null ||  dartisan.level == 0  ? "" : "${dartisan.levelLabel} in Dart" ;  
   
   String get cleanTwitterAccount{
     String twitterAccount = dartisan.twitterAccount;
@@ -44,13 +46,13 @@ class DartisanDetailsModel {
   }
   
   String get atWorkLabel {
-    if (dartisan.atWork == null) {
-      return null;
+    if (dartisan.atWork == null ||  dartisan.atWork == 0 ) {
+      return "";
     }
     if (dartisan.atWork == 1) {
       return "Work on Dart only at home";
     } else {
-      return "At my job : " + dartisan.atWorkLabel;
+      return "At my job: " + dartisan.atWorkLabel;
     }
   }
   
