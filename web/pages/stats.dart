@@ -134,7 +134,6 @@ class PageStats extends Page with Showable {
     if (dartisansByCountryValues.length > 7){
       num threashold = dartisansByCountryValues[7] ;
       dartisansByCountry.forEach((country,count) {
-        log.info("${country} -> ${count}");
         if (threashold < count  ){
           dartisansByCountryTop[country] = count ;
         }else{
