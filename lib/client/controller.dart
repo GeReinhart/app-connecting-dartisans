@@ -79,7 +79,6 @@ class Controller extends Object with ApplicationEventPassenger {
     this.dartisans = dartisans;
     this.lastDartisansRefresh = new DateTime.now();
     waitingForDartisans = false;
-    log.info("DEBUG:  controller send ${dartisans.dartisanList.length} dartisans");
     fireApplicationEvent(
         new DartisansApplicationEvent.searchSuccess(this, dartisans.newFilteredDartisans(search, bounds)));
   }

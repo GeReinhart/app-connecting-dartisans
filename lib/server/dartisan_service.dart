@@ -32,14 +32,23 @@ class DartisanService extends MongoDbService<Dartisan> {
 
   @app.Route("/dartisan/:openId", methods: const [app.POST])
   Future<Dartisan> addOrUpdate(@Decode() Dartisan inputDartisan) {
+    if (inputDartisan.openId == null){
+      throw new app.ErrorResponse(422, {"error": "no openId"});
+    }
+  
     return findOne({"openId": inputDartisan.openId}).then((existingDartisan) {
       if (existingDartisan == null) {
         inputDartisan.creation();
         return insert(inputDartisan).then((_) => inputDartisan);
       } else {
+        if ( !isUserOfSession(inputDartisan.openId) ){
+          throw new app.ErrorResponse(403, {"error": "forbidden to update another dartisan"});
+        }        
         inputDartisan.update();
         return update({"openId": existingDartisan.openId}, inputDartisan).then((_) => inputDartisan);
       }
     });
   }
+  
+  bool isUserOfSession(String openId)=> app.request.session["openid"]!= null && app.request.session["openid"] == openId;
 }
