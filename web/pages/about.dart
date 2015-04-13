@@ -1,5 +1,6 @@
 library connecting_dartisans.pages.about;
 
+import "dart:html";
 import 'package:logging/logging.dart';
 import 'package:polymer/polymer.dart';
 import 'package:gex_webapp_kit/webapp_kit_client.dart';
@@ -19,6 +20,7 @@ class PageAbout extends Page with Showable {
 
   Color mainColor = Color.WHITE;
 
+  
   Layout layout;
   DartisanSummary author;
 
@@ -33,6 +35,7 @@ class PageAbout extends Page with Showable {
     layout = $["layout"] as Layout;
     author = $["author"] as DartisanSummary;
     author.style.cursor = "pointer";
+    author.small = window.innerWidth < 600 ;
     author.onClick.listen((event) {
       fireApplicationEvent(new DartisansApplicationEvent.callDetails(this, author.dartisan.openId));
     });
@@ -52,6 +55,9 @@ class PageAbout extends Page with Showable {
           author.dartisan = event.dartisans.dartisans[authorOpenId];
         }
       }
+    }
+    if (event.isViewPortChange){
+      author.small = event.viewPort.windowWidth < 600 ;
     }
   }
 }
