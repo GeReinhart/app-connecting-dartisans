@@ -38,8 +38,9 @@ The current application
 - TDD
 - Continuous integration (using [drone.io][1])
 
-## Deployment
-Should be [dartvoid][2]
+## Hosting
+Will be [dartvoid][2] soon. 
+For the moment, it's Heroku. 
 
 [1]: https://drone.io/github.com/GeReinhart/dapp-connecting-dartisans/latest
 [2]: http://www.dartvoid.com
