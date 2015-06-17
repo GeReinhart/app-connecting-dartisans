@@ -335,7 +335,7 @@ class DartisansSearchForm implements Bean {
     };
   }
 
-  bool get isEmpty => fullTextSearch == null 
+  bool get isEmpty => (fullTextSearch == null || fullTextSearch == "")
                  && readyForTraining == null 
                  && readyForTalks == null
                  && readyToBeHired == null
