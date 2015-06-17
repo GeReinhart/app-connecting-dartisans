@@ -8,6 +8,7 @@ import 'package:gex_webapp_kit/client/elements/layout.dart';
 import 'package:gex_webapp_kit/client/elements/page.dart';
 import 'package:connecting_dartisans/connecting_dartisans_client.dart';
 import 'package:connecting_dartisans/connecting_dartisans_common.dart';
+import 'package:connecting_dartisans/client/elements/dartisans_filter_status.dart';
 import 'package:modern_charts/modern_charts.dart';
 
 @CustomTag('page-stats')
@@ -16,13 +17,14 @@ class PageStats extends Page with Showable {
   final Logger log = new Logger(NAME);
 
   Color mainColor = Color.WHITE;
-  @observable Dartisans dartisans;
+  Dartisans dartisans;
   bool small = false;
 
   Layout layout;
   DivElement pieByLevelContainer;
   DivElement pieByCountryContainer;
   DivElement pieAtWorkContainer;
+  DartisansFilterStatus dartisansFilterStatus;
 
   PageStats.created() : super.created();
 
@@ -38,6 +40,7 @@ class PageStats extends Page with Showable {
     pieByLevelContainer = $["pieByLevelContainer"];
     pieByCountryContainer = $["pieByCountryContainer"];
     pieAtWorkContainer = $["pieAtWorkContainer"];
+    dartisansFilterStatus = $["dartisansFilterStatus"];
     LayoutModel layoutModel = new LayoutModel();
     PageModel model = new PageModel(name: NAME, layoutModel: layoutModel);
     this.init(model);
@@ -85,6 +88,12 @@ class PageStats extends Page with Showable {
     return e;
   }
 
+  @override
+  void setApplicationEventBus(ApplicationEventBus value) {
+    super.setApplicationEventBus(value);
+    dartisansFilterStatus.setApplicationEventBus(value);
+  }
+  
   void _updateCharts() {
     PieChart pieByLevelChart = new PieChart(createPieDiv(pieByLevelContainer));
     Map<String, num> dartisansByLevel = new Map<String, num>();

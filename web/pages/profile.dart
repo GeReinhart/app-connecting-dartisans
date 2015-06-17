@@ -49,8 +49,6 @@ class PageProfile extends Page with Showable {
     List<ButtonModel> buttonModels = new List<ButtonModel>();
     buttonModels
         .add(new ButtonModel(label: "Save", action: save, image: new Image(mainImageUrl: "/images/button/save29.png")));
-    buttonModels.add(new ButtonModel(
-        label: "Save", action: save, image: new Image(mainImageUrl: "/images/button/save29.png")));
     buttonModels.add(
         new ButtonModel(label: "Logout", action: logout, image: new Image(mainImageUrl: "/images/button/logout.png")));
     ToolbarModel toolbarModel = new ToolbarModel(

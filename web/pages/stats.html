@@ -1,6 +1,7 @@
 <!-- import polymer-element's definition -->
 <link rel="import" href="../../../packages/polymer/polymer.html">
 <link rel="import" href="../../../packages/gex_webapp_kit/client/elements/layout.html">
+<link rel="import" href="../../../packages/connecting_dartisans/client/elements/dartisans_filter_status.html">
 
 <polymer-element name="page-stats"  >
   <template>
@@ -12,7 +13,7 @@
     </style>
     <gex-layout id="layout">
          <h1>Statistics on Dartisans</h1>
-         <div style="margin-bottom: 20px">{{dartisans.number}} in the current selection</div>
+         <dartisans-filter-status id="dartisansFilterStatus" ></dartisans-filter-status>
          <h2>Country</h2>
          <div id="pieByCountryContainer"  style="position: relative">
             <div class="pie" ></div>

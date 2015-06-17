@@ -1,0 +1,24 @@
+<!-- import polymer-element's definition -->
+<link rel="import" href="../../../../packages/polymer/polymer.html">
+<link rel="import" href="../../../../packages/core_elements/core_label.html">
+
+
+
+
+<polymer-element name="dartisans-filter-status"  >
+  <template>
+    <style shim-shadowdom>
+    body {
+      font-family: RobotoDraft, 'Helvetica Neue', Helvetica, Arial;
+    }
+    </style>
+        <core-label vertical layout>
+          <div vertical layout>
+            <div style="margin-left: 20px;" >{{currentSelectionNb}} / {{nbAllDartisans}} Dartisans</div>
+            <div hidden?="{{!filteredBySearchCriterias}}" style="margin-left: 40px;" >some search creterias are active</div>
+            <div hidden?="{{!filteredByMap}}" style="margin-left: 40px;" >location filter is active</div>
+          </div>
+        </core-label> 
+  </template>
+  <script type="application/dart" src="dartisans_filter_status.dart"></script>
+</polymer-element>

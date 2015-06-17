@@ -2,6 +2,7 @@
 <link rel="import" href="../../../packages/polymer/polymer.html">
 <link rel="import" href="../../../packages/gex_webapp_kit/client/elements/layout.html">
 <link rel="import" href="../../../packages/connecting_dartisans/client/elements/dartisan_summary.html">
+<link rel="import" href="../../../packages/connecting_dartisans/client/elements/dartisans_filter_status.html">
 
 
 <polymer-element name="page-list"  >
@@ -26,6 +27,7 @@
     </style>    
     <gex-layout id="layout">
                <h1>Dartisans</h1>
+               <dartisans-filter-status id="dartisansFilterStatus" ></dartisans-filter-status>
                <div id="list" >
                   <dartisan-summary></dartisan-summary>
                </div>

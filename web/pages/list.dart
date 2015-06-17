@@ -10,6 +10,7 @@ import 'package:gex_webapp_kit/client/elements/page.dart';
 import 'package:connecting_dartisans/connecting_dartisans_client.dart';
 import 'package:connecting_dartisans/connecting_dartisans_common.dart';
 import 'package:connecting_dartisans/client/elements/dartisan_summary.dart';
+import 'package:connecting_dartisans/client/elements/dartisans_filter_status.dart';
 
 import '../application.dart';
 import 'list.dart';
@@ -25,7 +26,8 @@ class PageList extends Page with Showable {
   Layout layout;
   Dartisans dartisans;
   List<DartisanSummary> dartisanSummaries = new List<DartisanSummary>();
-
+  DartisansFilterStatus dartisansFilterStatus;
+  
   PageList.created() : super.created();
 
   @override
@@ -33,10 +35,16 @@ class PageList extends Page with Showable {
     super.ready();
     _setAttributes();
   }
+  
+  @override
+  void setApplicationEventBus(ApplicationEventBus value) {
+    super.setApplicationEventBus(value);
+    dartisansFilterStatus.setApplicationEventBus(value);
+  }
 
   void _setAttributes() {
     layout = $["layout"] as Layout;
-
+    dartisansFilterStatus = $["dartisansFilterStatus"];
     LayoutModel layoutModel = new LayoutModel(color: Color.WHITE);
     PageModel model = new PageModel(name: NAME, layoutModel: layoutModel);
     this.init(model);
