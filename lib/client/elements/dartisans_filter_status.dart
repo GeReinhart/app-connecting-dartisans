@@ -23,15 +23,16 @@ class DartisansFilterStatus extends Positionable with Showable, ApplicationEvent
   @override
   void recieveApplicationEvent(ApplicationEvent event) {
     if (event is DartisansApplicationEvent) {
+      if (event.isCallSearch ) {
+        filteredBySearchCriterias = event.search != null && ! event.search.isEmpty ;
+      }
+      
       if (event.isSearchSuccess || event.isMapChangeDartisans) {
         this.currentSelectionNb = event.dartisans.number;
         if (nbAllDartisans<currentSelectionNb){
           nbAllDartisans=currentSelectionNb;
         }
         
-        if (event.isSearchSuccess){
-          filteredBySearchCriterias = true;
-        }
         if (event.isMapChangeDartisans){
           filteredByMap = true;
         }        
@@ -42,6 +43,8 @@ class DartisansFilterStatus extends Positionable with Showable, ApplicationEvent
         }
       }
     }
-
   }
+
+
+
 }

@@ -335,6 +335,13 @@ class DartisansSearchForm implements Bean {
     };
   }
 
+  bool get isEmpty => fullTextSearch == null 
+                 && readyForTraining == null 
+                 && readyForTalks == null
+                 && readyToBeHired == null
+                 && (selectedLevels== null ||   selectedLevels.isEmpty)
+                 && (selectedAtWork== null ||   selectedAtWork.isEmpty) ;
+  
   DartisansSearchForm clone() {
     return new DartisansSearchForm.fromFields(
         fullTextSearch: fullTextSearch,
